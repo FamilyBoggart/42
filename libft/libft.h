@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 16:44:52 by alerome2          #+#    #+#             */
-/*   Updated: 2024/04/19 18:03:59 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/04/22 18:53:38 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,13 @@ void			*ft_bzero(void *s, unsigned long n);
 //Copia un string src en un string dest
 void			*ft_memcpy(void *dest, const void *src, unsigned int n);
 void			*ft_memmove(void *dest, void *src, unsigned int n);
-// size_t strlcpy(char *dst, char *src, unsigned int dst size);
-//size_t	ft_strlcat(char *dst, const char *src, unsigned long dst_size);
+size_t			strlcpy(char *dst, const char *src, size_t size);
+size_t			ft_strlcat(char *dst, const char *src, unsigned long dst_size);
 char			*ft_strnstr(const char *big, const char *little, size_t len);
+// Devuelve una subcadena dentro del string
+char			*ft_substr(const char *s, unsigned int start, size_t len);
+// Concatena las strings s1 y s2 mediante malloc
+char			*ft_strjoin(const char *s1, const char *s2);
 //FIND
 char			*ft_strchr(const char *s, int c);
 char			*ft_strrchr(const char *s, int c);
