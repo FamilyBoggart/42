@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 17:35:31 by alerome2          #+#    #+#             */
-/*   Updated: 2024/04/22 19:27:30 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/04/22 20:04:10 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -35,7 +35,7 @@ char	*ft_strjoin(const char *s1, const char *s2)
 		aux[i + j] = s2[j];
 		j++;
 	}
-	aux[i + j] = '\0';	
+	aux[i + j] = '\0';
 	return (aux);
 }
 /*

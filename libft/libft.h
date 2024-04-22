@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 16:44:52 by alerome2          #+#    #+#             */
-/*   Updated: 2024/04/22 18:53:38 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/04/22 19:37:50 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ char			*ft_strchr(const char *s, int c);
 char			*ft_strrchr(const char *s, int c);
 //CONVERSION
 int				ft_atoi(const char *str);
+char			*ft_itoa(int n);
 
 // ---------LEVEL 2---------
 void			*ft_calloc(size_t count, size_t size);
 char			*ft_strdup(const char *s1);
-//char	*ft_itoa(int n);

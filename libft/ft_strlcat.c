@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 16:38:04 by alerome2          #+#    #+#             */
-/*   Updated: 2024/04/19 13:48:16 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/04/22 19:28:23 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,29 @@
 
 unsigned long	ft_strlcat(char *dst, const char *src, unsigned long dstsize)
 {
-	unsigned long	i;
-	unsigned long	j;
-	char			*aux_src;
-	unsigned long	total_size;
+	size_t	i;
+	size_t	j;
+	size_t	a;
 
-	aux_src = (char *)src;
 	i = 0;
 	j = 0;
-	while (dst[i] != '\0' && i < dstsize)
+	a = 0;
+	while (dst[i] != '\0')
 		i++;
-	total_size = ft_strlen(src) + i;
-	while (i < dstsize - 1)
+	while (src[a] != '\0')
+		a++;
+	if (i <= dstsize)
+		a += i;
+	else
+		a += dstsize;
+	while (src[j] != '\0' && (i + 1) < dstsize)
 	{
-		dst[i] = aux_src[j];
-		i++;
+		dst[i] = src[j];
 		j++;
+		i++;
 	}
 	dst[i] = '\0';
-	return (total_size);
+	return (a);
 }
 /*
 #include <string.h>
