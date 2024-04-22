@@ -3,28 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alerome2 <alerome2@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: alerome2 <<alerome2@student.42malaga.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/17 19:03:57 by alerome2          #+#    #+#             */
-/*   Updated: 2024/04/19 17:28:56 by alerome2         ###   ########.fr       */
+/*   Created: 2024/04/09 15:10:25 by jcallejo          #+#    #+#             */
+/*   Updated: 2024/04/22 16:24:40 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*strlcpy(char *dst, const char *src, long dstsize)
+#include <stdlib.h>
+
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	char		*aux_src;
-	char		*aux_dest;
-	long		i;
+	size_t	i;
 
-	aux_src = (char *)src;
-	aux_dest = (char *)dst;
 	i = 0;
-
-	if(dstsize <= 0 || !aux_src || !aux_dest)
-	while (i < (dstsize -1))
+	if (size > 0)
 	{
-		i++;
-		aux_dest[i] = aux_src[i];
+		while (src[i] != '\0' && i < size - 1)
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
 	}
-	
+	while (src[i] != '\0')
+		i++;
+	return (i);
 }
