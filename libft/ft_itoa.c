@@ -5,59 +5,50 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alerome2 <alerome2@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/14 07:02:42 by alerome2          #+#    #+#             */
-/*   Updated: 2024/04/15 19:46:50 by alerome2         ###   ########.fr       */
+/*   Created: 2024/04/25 19:43:15 by alerome2          #+#    #+#             */
+/*   Updated: 2024/04/25 20:14:53 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int	size_n(int n)
+int	n_size(int n)
 {
-	int	aux;
-	int	size;
+	int	counter;
 
-	size = 1;
-	aux = n;
-	while (aux >= 10)
+	counter = 0;
+	while (n != 0)
 	{
-		aux = aux / 10;
-		size = size * 10;
+		n /= 10;
+		counter++;
 	}
-	return (size);
+	return (counter);
 }
 
 char	*ft_itoa(int n)
 {
-	char	*s1;
-	int		counter;
 	int		size;
+	char	*aux;
+	int		res;
 
-	if (n == -2147483648)
-		return ("-2147483648");
-	counter = 0;
-	s1 = (char *) malloc(11);
+	size = n_size(n);
+	if (n < 0 || n == 0)
+		size++;
+	aux = (char *)malloc(size + 1);
+	if (!aux)
+		return (NULL);
+	aux[size] = '\0';
 	if (n < 0)
+		aux[0] = '-';
+	else if (n == 0)
+		aux[0] = '0';
+	while (n != 0)
 	{
-		s1[counter] = '-';
-		counter++;
-		n = -n;
+		res = n % 10;
+		if (res < 0)
+			res = -res;
+		n /= 10;
+		aux[--size] = res + '0';
 	}
-	size = size_n(n);
-	while (size >= 1)
-	{
-		s1[counter] = n / size + '0';
-		n = n % size;
-		size = size / 10;
-		counter++;
-	}
-	free(s1);
-	return (s1);
+	return (aux);
 }
-/*
-#include <stdio.h>
-int main(void)
-{
-	printf("%s",ft_itoa(2143648));
-}
-*/

@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 16:44:52 by alerome2          #+#    #+#             */
-/*   Updated: 2024/04/25 15:15:14 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/04/25 19:12:36 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int				ft_atoi(const char *str);
 char			*ft_itoa(int n);
 //FUNCION COMO ARGUMENTOS
 char			*ft_strmapi(const char *s, char (*f)(unsigned int, char));
+char			*ft_striteri(char *s, void (*f)(unsigned int, char *));
 
 // FILE DESCRIPTORS
 void			ft_putchar_fd(char c, int fd);
