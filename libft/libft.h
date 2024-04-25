@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 16:44:52 by alerome2          #+#    #+#             */
-/*   Updated: 2024/04/22 20:59:24 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/04/25 15:15:14 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,21 @@ char			*ft_strnstr(const char *big, const char *little, size_t len);
 char			*ft_substr(const char *s, unsigned int start, size_t len);
 // Concatena las strings s1 y s2 mediante malloc
 char			*ft_strjoin(const char *s1, const char *s2);
+// Elimina de la cadena s1, los caracteres del string set
+//char			*ft_strtrim(const char *s1, const char *set);
 //FIND
 char			*ft_strchr(const char *s, int c);
 char			*ft_strrchr(const char *s, int c);
 //CONVERSION
 int				ft_atoi(const char *str);
 char			*ft_itoa(int n);
+//FUNCION COMO ARGUMENTOS
+char			*ft_strmapi(const char *s, char (*f)(unsigned int, char));
 
+// FILE DESCRIPTORS
+void			ft_putchar_fd(char c, int fd);
+void			ft_putstr_fd(char *s, int fd);
+void			ft_putendl_fd(char *s, int fd);
 // ---------LEVEL 2---------
 void			*ft_calloc(size_t count, size_t size);
 char			*ft_strdup(const char *s1);
