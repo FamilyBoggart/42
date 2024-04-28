@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alerome2 <alerome2@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 18:12:32 by alerome2          #+#    #+#             */
-/*   Updated: 2024/04/23 11:51:18 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/04/28 17:05:33 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <stdlib.h>
 #include "libft.h"
 
@@ -40,6 +39,7 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	return (sub_str);
 }
 /*
+#include <stdio.h>
 int main (void)
 {
 	char	*s1 = ""; // 0 
@@ -54,6 +54,8 @@ int main (void)
 	printf("3: %s\n", ft_substr(s3,0,7));
 	// OPCION 4: Longitud mayor a strlen
 	printf("4: %s\n", ft_substr(s2,0,15));
+	// SPLIT
+	printf("split: %s\n", ft_substr("_Hola_Mundo_",1,4));
 	return 0;
 }
 */
