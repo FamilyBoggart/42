@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alerome2 <alerome2@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 16:44:52 by alerome2          #+#    #+#             */
-/*   Updated: 2024/04/25 19:12:36 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/04/28 17:35:35 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,16 @@ char			*ft_substr(const char *s, unsigned int start, size_t len);
 char			*ft_strjoin(const char *s1, const char *s2);
 // Elimina de la cadena s1, los caracteres del string set
 //char			*ft_strtrim(const char *s1, const char *set);
+/*
+*   ft_split split the string ins subtrstrings divides each char c
+*/
+char			**ft_split(const char *s, char c);
+//--------------
 //FIND
+//-------------
+/*
+ * ft_strchr find the first occurence of character c in the string s
+ */
 char			*ft_strchr(const char *s, int c);
 char			*ft_strrchr(const char *s, int c);
 //CONVERSION
