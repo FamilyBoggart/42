@@ -1,48 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alerome2 <alerome2@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/23 12:01:26 by alerome2          #+#    #+#             */
-/*   Updated: 2024/04/23 14:55:53 by alerome2         ###   ########.fr       */
+/*   Created: 2024/04/30 09:20:49 by alerome2          #+#    #+#             */
+/*   Updated: 2024/04/30 19:07:24 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
-#include <stdlib.h>
 
-char	*ft_strtrim(const char *s1, const char *set)
+int	ft_lstsize(t_list *lst)
 {
-	int		i;
-	int		set_len_counter;
-	char	*aux;
+	int	counter;
 
-	aux = (char *)malloc(ft_strlen((char *)set);
-	i = 0;
-	set_len_counter = ft_strlen(set);
-	while (s[i] != '\0')
+	counter = 0;
+	if (lst == NULL)
+		return (counter);
+	while (lst->next != NULL)
 	{
-		while(set_len_counter > 0;
-		if (!ft_strchr(s1,set[i]))
-			
-		else
-		{
-			
-			counter++
-
-		}
+		counter++;
+		lst = lst->next;
 	}
-	return (aux);
+	return (counter + 1);
 }
-
+/*
 #include <stdio.h>
 int main(void)
 {
-	char	*s1 = "Hola mundo";
-	char 	*remover = "om";
-	printf("%s",ft_strtrim(s1,remover));
+	t_list *head = NULL;
+
+	t_list *o2=malloc(sizeof(t_list));
+	o2->content = "Mundo";
+	o2->next = NULL;
+	head = o2;
+
+	t_list *o3=malloc(sizeof(t_list));
+	o3->content = "Bonito";
+	o3->next = NULL;
+	o2->next = o3;
+
+	printf("Nº de nodos %d",ft_lstsize(head));
 	return 0;
 }
-
+*/

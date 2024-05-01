@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 16:44:52 by alerome2          #+#    #+#             */
-/*   Updated: 2024/04/28 17:35:35 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/05/01 12:17:42 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,3 +68,24 @@ void			ft_putendl_fd(char *s, int fd);
 // ---------LEVEL 2---------
 void			*ft_calloc(size_t count, size_t size);
 char			*ft_strdup(const char *s1);
+
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}	t_list;
+
+// Crea un nuevo nodo con el contenido dado
+t_list			*ft_lstnew(void *content);
+// Añade el nuevo nodo 'new' al principio de la lista 'lst'
+void			ft_lstadd_front(t_list	**lst, t_list *new);
+//Obtiene el tamaño de la cadena desde el primer nodo de la lista 'lst'
+int				ft_lstsize(t_list *lst);
+//Devuelve el ultimo nodo de la lista recibiendo el primer nodo 'lst'
+t_list			*ft_lstlast(t_list *lst);
+void			ft_lstadd_back(t_list **lst, t_list *new); //Falta un poco
+// lstdelone borra el nodo de en medio y conecta el anterior y siguiente
+void			ft_lstdelone(t_list *lst, void (*del)(void *));
+void			ft_lstclear(t_list **lst, void (*del)(void *));
+void			ft_lstiter(t_list *lst, void (*f)(void *));
+t_list			*ft_lstmap(t_list *l, void *(*f)(void *), void (*del)(void *));

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 12:04:36 by alerome2          #+#    #+#             */
-/*   Updated: 2024/04/30 17:49:19 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/05/01 13:44:05 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ t_list	*ft_lstnew(void *content)
 	t_list	*temp;
 
 	temp = malloc(sizeof(t_list));
+	if (!temp)
+		return (NULL);
 	temp->content = content;
 	temp->next = NULL;
 	return (temp);
