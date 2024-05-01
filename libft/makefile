@@ -16,6 +16,7 @@ STRINGS = ft_strlcat.o\
 		  ft_strchr.o\
 		  ft_strrchr.o\
 		  ft_strnstr.o\
+		  ft_strtrim.o\
 		  ft_split.o
 CONVERTERS = ft_toupper.o ft_tolower.o ft_atoi.o ft_itoa.o
 FILE_DESCRIPTOR = ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o
