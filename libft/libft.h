@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 16:44:52 by alerome2          #+#    #+#             */
-/*   Updated: 2024/05/01 12:17:42 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/05/01 17:59:51 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ void			*ft_bzero(void *s, unsigned long n);
 //Copia un string src en un string dest
 void			*ft_memcpy(void *dest, const void *src, unsigned int n);
 void			*ft_memmove(void *dest, void *src, unsigned int n);
+// Encuentra un caracter c, en la cadena s y devuelve el byte donde se encuentra
+void			*ft_memchr(const void *s, int c, unsigned long n);
+int				ft_memcmp(const void *s1, const void *s2, size_t n);
 size_t			ft_strlcpy(char *dst, const char *src, size_t size);
 size_t			ft_strlcat(char *dst, const char *src, unsigned long dst_size);
 char			*ft_strnstr(const char *big, const char *little, size_t len);

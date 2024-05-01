@@ -7,8 +7,16 @@ LIBFT_NAMES= ft_isalpha.o\
 		  ft_isascii.o\
 		  ft_isprint.o\
 		  ft_strncmp.o
-MEMORY= ft_memset.o ft_bzero.o ft_memcpy.o ft_calloc.o ft_strdup.o ft_memmove.o
-STRINGS = ft_strlcat.o ft_strlcpy.o ft_substr.o ft_strjoin.o ft_strlen.o ft_strchr.o ft_strrchr.o ft_strnstr.o ft_split.o
+MEMORY= ft_memset.o ft_bzero.o ft_memcpy.o ft_calloc.o ft_strdup.o ft_memmove.o ft_memchr.o ft_memcmp.o
+STRINGS = ft_strlcat.o\
+		  ft_strlcpy.o\
+		  ft_substr.o\
+		  ft_strjoin.o\
+		  ft_strlen.o\
+		  ft_strchr.o\
+		  ft_strrchr.o\
+		  ft_strnstr.o\
+		  ft_split.o
 CONVERTERS = ft_toupper.o ft_tolower.o ft_atoi.o ft_itoa.o
 FILE_DESCRIPTOR = ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o
 FUNCTION_ARGS = ft_strmapi.o ft_striteri.o
