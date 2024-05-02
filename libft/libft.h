@@ -6,11 +6,21 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 16:44:52 by alerome2          #+#    #+#             */
-/*   Updated: 2024/05/01 18:31:11 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/05/01 22:45:57 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+
+// COUNTERS
+typedef struct contador
+{
+	int	i;
+	int	j;
+	int	k;
+	int	len;
+	int	size;
+}	t_counter;
 
 //CHECKING
 
@@ -68,6 +78,7 @@ char			*ft_striteri(char *s, void (*f)(unsigned int, char *));
 void			ft_putchar_fd(char c, int fd);
 void			ft_putstr_fd(char *s, int fd);
 void			ft_putendl_fd(char *s, int fd);
+void			ft_putnbr_fd(int n, int fd);
 // ---------LEVEL 2---------
 void			*ft_calloc(size_t count, size_t size);
 char			*ft_strdup(const char *s1);

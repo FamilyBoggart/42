@@ -19,7 +19,10 @@ STRINGS = ft_strlcat.o\
 		  ft_strtrim.o\
 		  ft_split.o
 CONVERTERS = ft_toupper.o ft_tolower.o ft_atoi.o ft_itoa.o
-FILE_DESCRIPTOR = ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o
+FILE_DESCRIPTOR = ft_putchar_fd.o\
+				  ft_putstr_fd.o\
+				  ft_putendl_fd.o\
+				  ft_putnbr_fd.o
 FUNCTION_ARGS = ft_strmapi.o ft_striteri.o
 LISTS = ft_lstnew_bonus.o ft_lstadd_front.o ft_lstsize.o ft_lstlast_bonus.o ft_lstadd_back.o ft_lstdelone.o ft_lstclear.o ft_lstiter.o ft_lstmap_bonus.o
 all: $(NAME)
