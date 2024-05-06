@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alerome2 <alerome2@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 13:15:55 by alerome2          #+#    #+#             */
-/*   Updated: 2024/05/01 13:31:31 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/05/06 15:29:02 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,24 @@
 
 t_list	*ft_lstmap(t_list *l, void *(*f)(void *), void (*del)(void *))
 {
+	t_list	*pointer;
 	t_list	*newlist;
 
-	newlist = malloc(sizeof(t_list));
-	if (!newlist || !l || !f || !del)
+	if (!l)
 		return (NULL);
-	while (l->next != NULL)
+	pointer = NULL;
+	while (l != NULL)
 	{
-		newlist->content = f(l->content);
-		newlist = l->next;
-		del(l->content);
+		newlist = ft_lstnew(f(l->content));
+		if (!newlist)
+		{
+			ft_lstclear(&pointer, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&pointer, newlist);
 		l = l->next;
 	}
-	newlist->content = f(l->content);
-	newlist = l->next;
-	l = l->next;
-	return (newlist);
+	return (pointer);
 }
 /*
 void  *f(void *content)

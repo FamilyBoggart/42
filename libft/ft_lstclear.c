@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 11:34:33 by alerome2          #+#    #+#             */
-/*   Updated: 2024/05/01 12:01:00 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/05/06 15:23:29 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,16 @@
 
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
+	t_list	*aux;
+
 	if (!(*lst) || !del)
 		return ;
-	while ((*lst)->next != NULL)
+	while (*lst)
 	{
+		aux = (*lst)->next;
 		del((*lst)->content);
-		*lst = (*lst)->next;
+		free(*lst);
+		(*lst) = aux;
 	}
 }
 /*
