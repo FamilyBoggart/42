@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 18:11:48 by alerome2          #+#    #+#             */
-/*   Updated: 2024/04/30 19:08:31 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/05/06 15:55:42 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,14 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	t_list	*temp;
 
-	if (!new)
+	if (!new || !lst)
 		return ;
-	if (*lst == NULL)
-	{
+	if (lst && *lst == NULL)
 		*lst = new;
-		return ;
-	}
-	else
+	else if (lst)
 	{
 		temp = ft_lstlast(*lst);
 		temp->next = new;
-		new->next = NULL;
 	}
 }
 /*
