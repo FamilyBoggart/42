@@ -1,10 +1,9 @@
-NAME=libftprintf.a
+NAME = libftprintf.a
+CFLAGS = -Wall -Wextra -Werror
+COMPILER = cc $(CFLAGS)
+LIBRARY = ar src $(NAME)
 
-LIBFT_OBJS=main.c
+all : $(NAME) 
 
-clean : 
-	@rm -f $(LIBFT_OBJS)
-fclean :
-	rm -f $(LIBF_OBS) $(NAME)
-
-.PHONY : clean fclean
+$(NAME) : 
+	$(LIBRARY)
