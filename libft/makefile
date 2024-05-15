@@ -25,17 +25,6 @@ LIBFT_NAMES= ft_isalpha.o\
 		  ft_strrchr.o\
 		  ft_strnstr.o\
 		  ft_strtrim.o\
-<<<<<<< HEAD
-		  ft_split.o
-CONVERTERS = ft_toupper.o ft_tolower.o ft_atoi.o ft_itoa.o
-FILE_DESCRIPTOR = 	ft_putchar_fd.o\
-			ft_putstr_fd.o\
-			ft_putendl_fd.o\
-			ft_putnbr_fd.o
-FUNCTION_ARGS = ft_strmapi.o ft_striteri.o
-LISTS = ft_lstnew_bonus.o ft_lstadd_front.o ft_lstsize.o ft_lstlast_bonus.o ft_lstadd_back.o ft_lstdelone.o ft_lstclear.o ft_lstiter.o ft_lstmap_bonus.o
-all: $(NAME)
-=======
 		  ft_split.o\
 		  ft_toupper.o\
 		  ft_tolower.o\
@@ -48,8 +37,15 @@ all: $(NAME)
 		  ft_strmapi.o\
 		  ft_striteri.o\
 
-LISTS=ft_lstnew.o ft_lstadd_front.o ft_lstsize.o ft_lstlast.o ft_lstadd_back.o ft_lstdelone.o ft_lstclear.o ft_lstiter.o ft_lstmap.o
->>>>>>> 64443aae9a92725178e280fcb23ea7ca1207a356
+LISTS=ft_lstnew_bonus.o\
+	  ft_lstadd_front_bonus.o\
+	  ft_lstsize_bonus.o\
+	  ft_lstlast_bonus.o\
+	  ft_lstadd_back_bonus.o\
+	  ft_lstdelone_bonus.o\
+	  ft_lstclear_bonus.o\
+	  ft_lstiter_bonus.o\
+	  ft_lstmap_bonus.o
 
 #Crear la libreria
 LIBRARY= ar src $(NAME)
@@ -65,7 +61,7 @@ $(NAME) : $(OBJS)
 
 # Obtener los archivos .o 
 %.o : %.c
-	cc $(CFLAGS) -c $< -o $@
+	@cc $(CFLAGS) -c $< -o $@
 
 
 clean: 

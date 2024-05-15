@@ -6,12 +6,11 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 12:04:36 by alerome2          #+#    #+#             */
-/*   Updated: 2024/05/01 13:44:05 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/05/14 20:11:14 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 t_list	*ft_lstnew(void *content)
 {

@@ -6,9 +6,11 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 15:52:37 by alerome2          #+#    #+#             */
-/*   Updated: 2024/04/17 17:30:00 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/05/14 20:13:40 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_strncmp(const char *s1, const char *s2, unsigned int n)
 {

@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alerome2 <alerome2@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 11:10:00 by alerome2          #+#    #+#             */
-/*   Updated: 2024/04/16 14:01:18 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/05/14 20:30:31 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	size_str(char *s)
 {
@@ -23,17 +25,17 @@ int	size_str(char *s)
 	return (size);
 }
 
-char	*ft_strrchr(char *s, int c)
+char	*ft_strrchr(const char *s, int c)
 {
 	int	size;
 
-	size = size_str(s);
+	size = size_str((char *)s);
 	while (*s != '\0')
 		s++;
 	while (size >= 0)
 	{
 		if (*s == (char)c)
-			return (s);
+			return ((char *)s);
 		s--;
 		size--;
 	}

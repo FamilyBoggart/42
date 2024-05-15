@@ -6,37 +6,37 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 18:12:32 by alerome2          #+#    #+#             */
-/*   Updated: 2024/04/28 17:05:33 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/05/14 20:39:50 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
 char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
-	char			*sub_str;
-	size_t			i;
-	size_t			j;
+	char	*aux;
+	size_t	i;
+	size_t	slen;
 
-	if (len > (ft_strlen(s) - start))
-		len = ft_strlen(s) - start;
-	if ((int)start > ft_strlen(s))
-		sub_str = malloc (1);
-	else
-		sub_str = malloc(sizeof(char) * (len + 1));
-	if (!s || start < 0 || !sub_str)
-		return (NULL);
 	i = 0;
-	j = 0;
-	while (s[i] != '\0')
+	slen = ft_strlen(s);
+	if (start >= slen)
 	{
-		if (i >= start && i < (len + start) && s[i] != '\0')
-			sub_str[j++] = s[i];
-		i++;
+		aux = malloc(1);
+		if (!aux)
+			return (NULL);
+		aux[0] = '\0';
+		return (aux);
 	}
-	sub_str[j] = '\0';
-	return (sub_str);
+	if (len > (size_t)ft_strlen(&s[start]))
+		len = ft_strlen(&s[start]);
+	aux = malloc(len + 1);
+	if (!aux)
+		return (NULL);
+	while (i < len && s[start] != '\0')
+		aux[i++] = s[start++];
+	aux[i] = '\0';
+	return (aux);
 }
 /*
 #include <stdio.h>

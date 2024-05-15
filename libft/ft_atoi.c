@@ -6,9 +6,11 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 16:09:36 by alerome2          #+#    #+#             */
-/*   Updated: 2024/04/16 12:25:58 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/05/14 20:09:04 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_atoi(const char *str)
 {

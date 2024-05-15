@@ -6,11 +6,15 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 16:44:52 by alerome2          #+#    #+#             */
-/*   Updated: 2024/05/01 22:45:57 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/05/15 10:22:04 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#ifndef LIBFT_H
+# define LIBFT_H
+# include <stdlib.h>
+# include <string.h>
+# include <unistd.h>
 
 // COUNTERS
 typedef struct contador
@@ -42,7 +46,7 @@ void			*ft_memset(void *s, int c, unsigned long n);
 void			*ft_bzero(void *s, unsigned long n);
 //Copia un string src en un string dest
 void			*ft_memcpy(void *dest, const void *src, unsigned int n);
-void			*ft_memmove(void *dest, void *src, unsigned int n);
+void			*ft_memmove(void *dest, const void *src, unsigned int n);
 // Encuentra un caracter c, en la cadena s y devuelve el byte donde se encuentra
 void			*ft_memchr(const void *s, int c, unsigned long n);
 int				ft_memcmp(const void *s1, const void *s2, size_t n);
@@ -72,7 +76,7 @@ int				ft_atoi(const char *str);
 char			*ft_itoa(int n);
 //FUNCION COMO ARGUMENTOS
 char			*ft_strmapi(const char *s, char (*f)(unsigned int, char));
-char			*ft_striteri(char *s, void (*f)(unsigned int, char *));
+void			ft_striteri(char *s, void (*f)(unsigned int, char *));
 
 // FILE DESCRIPTORS
 void			ft_putchar_fd(char c, int fd);
@@ -103,3 +107,5 @@ void			ft_lstdelone(t_list *lst, void (*del)(void *));
 void			ft_lstclear(t_list **lst, void (*del)(void *));
 void			ft_lstiter(t_list *lst, void (*f)(void *));
 t_list			*ft_lstmap(t_list *l, void *(*f)(void *), void (*del)(void *));
+
+#endif
