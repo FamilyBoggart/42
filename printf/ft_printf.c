@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 17:39:09 by alerome2          #+#    #+#             */
-/*   Updated: 2024/05/16 17:23:16 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/05/16 19:05:41 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	clasify(va_list args, char format)
 	if (format == 'd')
 		printf("Double");
 	if (format == 'i')
-		printf("Integer");
+		return (ft_putnbr(va_arg(args, int)));
 	if (format == 'u')
 		printf("Decimal en base 10");
 	if (format == 'x')
@@ -32,7 +32,7 @@ int	clasify(va_list args, char format)
 	if (format == 'X')
 		printf("Hexadecimal Mayus");
 	if (format == '%')
-		printf("Simbolo de porcentaje");
+		return (ft_putchar('%'));
 	return (0);
 }
 
@@ -49,17 +49,26 @@ int	ft_printf(const char *text, ...)
 	{
 		if (text[i] == '%')
 			argument += clasify(args, text[++i]);
+		else
+			ft_putchar(text[i]);
 		i++;
 	}
 	return (argument);
+}
+// Comentar de aqui hasta abajo
+#include <stdlib.h>
+void	ft_leaks(void)
+{
+	system("leaks -q programa");
 }
 
 int	main(void)
 {
 	const char	*s;
 
+	//atexit(ft_leaks);
 	s = "Hola Mundo";
-	ft_printf(s);
-	printf("Hola %c Mundo", 'a');
+	int n = ft_printf("Hola %c Mundo %c %%",'a','b');
+	ft_printf("\nNumero de bytes usados: %d",s);
 	return (0);
 }

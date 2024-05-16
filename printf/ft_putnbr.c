@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/15 22:11:09 by usuario           #+#    #+#             */
-/*   Updated: 2024/05/16 19:10:34 by alerome2         ###   ########.fr       */
+/*   Created: 2024/05/16 18:59:41 by alerome2          #+#    #+#             */
+/*   Updated: 2024/05/16 19:04:23 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include <stdarg.h>
-# include <unistd.h>
+int	ft_putnbr(int number)
+{
+	int	n;
+	int	res;
 
-int	ft_putchar(char c);
-int	ft_putnbr(int n);
-#endif
+	n = 0;
+	res = 0;
+	if (n < 0)
+		n++;
+	while (number > 0)
+	{
+		n++;
+		number = number / 10;
+	}
+	write (1, &number, n);
+	return (n);
+}
