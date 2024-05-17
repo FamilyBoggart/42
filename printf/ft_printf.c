@@ -50,13 +50,14 @@ int	ft_printf(const char *text, ...)
 		if (text[i] == '%')
 			argument += clasify(args, text[++i]);
 		else
-			ft_putchar(text[i]);
+			argument += ft_putchar(text[i]);
 		i++;
 	}
 	return (argument);
 }
 // Comentar de aqui hasta abajo
 #include <stdlib.h>
+#include <stdio.h>
 void	ft_leaks(void)
 {
 	system("leaks -q programa");
@@ -64,11 +65,9 @@ void	ft_leaks(void)
 
 int	main(void)
 {
-	const char	*s;
-
 	//atexit(ft_leaks);
-	s = "Hola Mundo";
-	int n = ft_printf("Hola %c Mundo %c %%",'a','b');
-	ft_printf("\nNumero de bytes usados: %d",s);
+	int n = ft_printf("Hola %c Mundo %c %%\n",'a','b');
+	int aux = printf("Hola %c Mundo %c %%\n",'a','b');
+	ft_printf("\nBytes usados: %i, printf: %i\n",n,aux);
 	return (0);
 }

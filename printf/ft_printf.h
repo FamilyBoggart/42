@@ -14,6 +14,7 @@
 # define FT_PRINTF_H
 # include <stdarg.h>
 # include <unistd.h>
+# include <stdlib.h>
 
 int	ft_putchar(char c);
 int	ft_putnbr(int n);
