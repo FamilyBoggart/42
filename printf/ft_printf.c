@@ -3,60 +3,72 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alerome2 <alerome2@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 17:39:09 by alerome2          #+#    #+#             */
-/*   Updated: 2024/05/13 20:52:46 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/05/16 19:05:41 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include <unistd.h>
+#include "ft_printf.h"
 #include <stdio.h>
 
-int check_char(const char *text, int i)
+int	clasify(va_list args, char format)
 {
-	if (text[i + 1] == 'c')
-		printf("Caracter");
-	if (text[i + 1] == 's')
+	if (format == 'c')
+		return (ft_putchar(va_arg(args, int)));
+	if (format == 's')
 		printf("String");
-	if (text[i + 1] == 'p')
+	if (format == 'p')
 		printf("Puntero void");
-	if (text[i + 1] == 'd')
+	if (format == 'd')
 		printf("Double");
-	if (text[i + 1] == 'i')
-		printf("Integer");
-	if (text[i + 1] == 'u')
+	if (format == 'i')
+		return (ft_putnbr(va_arg(args, int)));
+	if (format == 'u')
 		printf("Decimal en base 10");
-	if (text[i + 1] == 'x')
+	if (format == 'x')
 		printf("Hexadecimal minus");
-	if (text[i + 1] == 'X')
+	if (format == 'X')
 		printf("Hexadecimal Mayus");
-	if (text[i + 1] == '%')
-		printf("Simbolo de porcentaje");
+	if (format == '%')
+		return (ft_putchar('%'));
 	return (0);
 }
-int	ft_printf(const char *text,...)
+
+int	ft_printf(const char *text, ...)
 {
+	int		argument;
+	va_list	args;
 	int		i;
-	va_list args;
-	va_start(args,text);
+
 	i = 0;
+	argument = 0;
+	va_start(args, text);
 	while (text[i] != '\0')
 	{
 		if (text[i] == '%')
-			check_char(text, i);
+			argument += clasify(args, text[++i]);
 		else
-			write(1, &text[i], 1);
+			ft_putchar(text[i]);
 		i++;
 	}
-	write(1, "\0", 1);
-	return (0);
+	return (argument);
+}
+// Comentar de aqui hasta abajo
+#include <stdlib.h>
+void	ft_leaks(void)
+{
+	system("leaks -q programa");
 }
 
-int main()
+int	main(void)
 {
-	const char *s = "Hola Mundo";
-	ft_printf(s);
+	const char	*s;
+
+	//atexit(ft_leaks);
+	s = "Hola Mundo";
+	int n = ft_printf("Hola %c Mundo %c %%",'a','b');
+	ft_printf("\nNumero de bytes usados: %d",s);
 	return (0);
 }
