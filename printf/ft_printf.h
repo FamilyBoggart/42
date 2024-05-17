@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alerome2 <alerome2@sutdent.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/15 22:11:09 by usuario           #+#    #+#             */
-/*   Updated: 2024/05/16 19:10:34 by alerome2         ###   ########.fr       */
+/*   Created: 2024/05/17 12:14:48 by alerome2          #+#    #+#             */
+/*   Updated: 2024/05/17 12:14:50 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H

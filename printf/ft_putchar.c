@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alerome2 <alerome2@sutdent.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/16 15:22:54 by alerome2          #+#    #+#             */
-/*   Updated: 2024/05/16 17:14:16 by alerome2         ###   ########.fr       */
+/*   Created: 2024/05/17 12:14:25 by alerome2          #+#    #+#             */
+/*   Updated: 2024/05/17 12:14:27 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "ft_printf.h"
 

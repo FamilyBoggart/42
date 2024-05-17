@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alerome2 <alerome2@sutdent.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 17:39:09 by alerome2          #+#    #+#             */
-/*   Updated: 2024/05/16 19:05:41 by alerome2         ###   ########.fr       */
+/*   Created: 2024/05/17 12:15:04 by alerome2          #+#    #+#             */
+/*   Updated: 2024/05/17 12:15:15 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "ft_printf.h"
 #include <stdio.h>
@@ -22,7 +23,7 @@ int	clasify(va_list args, char format)
 	if (format == 'p')
 		printf("Puntero void");
 	if (format == 'd')
-		printf("Double");
+		return (ft_putnbr(va_arg(args, int)));
 	if (format == 'i')
 		return (ft_putnbr(va_arg(args, int)));
 	if (format == 'u')
@@ -66,8 +67,8 @@ void	ft_leaks(void)
 int	main(void)
 {
 	
-	int n = ft_printf("Hola %c %s %c , nº %i %%\n",'a',"Mundo",'b',7);
-	int aux =  printf("Hola %c %s %c , nº %i %%\n",'a',"Mundo",'b',7);
+	int n = ft_printf("Hola %c %s %c , nº %i %% %d\n",'a',"Mundo",'b',-7, -10);
+	int aux =  printf("Hola %c %s %c , nº %i %% %d\n",'a',"Mundo",'b',-7,-10);
 	ft_printf("\nBytes usados: %i, printf: %i\n",n,aux);
 	//atexit(ft_leaks);
 	return (0);
