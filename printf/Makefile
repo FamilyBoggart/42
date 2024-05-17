@@ -4,7 +4,8 @@ COMPILER = cc $(CFLAGS)
 LIBRARY = ar src $(NAME)
 PRINTF_NAMES =	ft_putchar.o\
 				ft_putnbr.o\
-				ft_putstr.o
+				ft_putstr.o\
+				ft_putnbr_u.o
 
 
 all : $(NAME)

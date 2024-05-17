@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putnbr_u.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alerome2 <alerome2@sutdent.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/17 12:14:48 by alerome2          #+#    #+#             */
-/*   Updated: 2024/05/17 12:14:50 by alerome2         ###   ########.fr       */
+/*   Created: 2024/05/17 12:12:24 by alerome2          #+#    #+#             */
+/*   Updated: 2024/05/17 12:12:32 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include <stdarg.h>
-# include <unistd.h>
-# include <stdlib.h>
+#include "ft_printf.h"
 
-int	ft_putchar(char c);
-int	ft_putnbr(int n);
-int	ft_putstr(char *str);
-int ft_putnbr_u(unsigned int n);
-#endif
+int ft_putnbr_u(unsigned int u_number)
+{
+	return (ft_putnbr((int)u_number));
+}

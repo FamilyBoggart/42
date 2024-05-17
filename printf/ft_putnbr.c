@@ -61,12 +61,15 @@ int	ft_putnbr(int number)
 	n = 0;
 	str = ft_itoa(number);
 	if (number < 0)
+	{
 		n++;
+		number = -number;
+	}		
 	while(number > 0)
 	{
 		n++;
 		number = number/10;
-	}	
+	}
 	write(1,str,n);
 	free(str);
 	return (n);
