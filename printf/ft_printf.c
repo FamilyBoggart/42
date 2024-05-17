@@ -18,7 +18,7 @@ int	clasify(va_list args, char format)
 	if (format == 'c')
 		return (ft_putchar(va_arg(args, int)));
 	if (format == 's')
-		printf("String");
+		return (ft_putstr(va_arg(args, char *)));
 	if (format == 'p')
 		printf("Puntero void");
 	if (format == 'd')
@@ -60,14 +60,15 @@ int	ft_printf(const char *text, ...)
 #include <stdio.h>
 void	ft_leaks(void)
 {
-	system("leaks -q programa");
+	system("valgrind --tool=memcheck --leak-check=yes ./a.out");
 }
 
 int	main(void)
 {
-	//atexit(ft_leaks);
-	int n = ft_printf("Hola %c Mundo %c %%\n",'a','b');
-	int aux = printf("Hola %c Mundo %c %%\n",'a','b');
+	
+	int n = ft_printf("Hola %c %s %c , nº %i %%\n",'a',"Mundo",'b',7);
+	int aux =  printf("Hola %c %s %c , nº %i %%\n",'a',"Mundo",'b',7);
 	ft_printf("\nBytes usados: %i, printf: %i\n",n,aux);
+	//atexit(ft_leaks);
 	return (0);
 }

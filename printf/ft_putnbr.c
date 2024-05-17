@@ -68,5 +68,6 @@ int	ft_putnbr(int number)
 		number = number/10;
 	}	
 	write(1,str,n);
+	free(str);
 	return (n);
 }
