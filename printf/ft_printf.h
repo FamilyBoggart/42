@@ -16,9 +16,41 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdlib.h>
-
+# define MAX_UINT 4294967295
+/**
+ * @brief The main function. Emulate printf function
+ * 
+ * @param str Text which will be analyzed and printed
+ * @param ... Variable arguments
+ * @return int 
+ */
+int	ft_printf(const char *str,...);
+/**
+ * @brief This function writes a character
+ * 
+ * @param c The character which will we written
+ * @return int 
+ */
 int	ft_putchar(char c);
+/**
+ * @brief This function writes a number
+ * 
+ * @param n The number which will be written
+ * @return int 
+ */
 int	ft_putnbr(int n);
+/**
+ * @brief This function writes a string
+ * 
+ * @param str Thw string which will be written
+ * @return int 
+ */
 int	ft_putstr(char *str);
+/**
+ * @brief This function works as ft_putnbr but is used for unsigned integers
+ * 
+ * @param n The number which will be written, in unsigned range
+ * @return int 
+ */
 int ft_putnbr_u(unsigned int n);
 #endif
