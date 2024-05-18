@@ -27,11 +27,11 @@ int	clasify(va_list args, char format)
 	if (format == 'i')
 		return (ft_putnbr(va_arg(args, int)));
 	if (format == 'u')
-		return (ft_putnbr_u(va_arg(args,unsigned int)));
+		return (ft_putnbr_u(va_arg(args,int)));
 	if (format == 'x')
-		printf("Hexadecimal minus");
+		return(ft_hexadecimal(va_arg(args,int),0));
 	if (format == 'X')
-		printf("Hexadecimal Mayus");
+		return(ft_hexadecimal(va_arg(args,int),1));
 	if (format == '%')
 		return (ft_putchar('%'));
 	return (0);
@@ -57,19 +57,10 @@ int	ft_printf(const char *text, ...)
 	return (argument);
 }
 // Comentar de aqui hasta abajo
-#include <stdlib.h>
-#include <stdio.h>
+/*
 void	ft_leaks(void)
 {
 	system("valgrind --tool=memcheck --leak-check=yes ./a.out");
 }
+*/
 
-int	main(void)
-{
-	
-	int n = ft_printf("Hola %c %s %c , nº %i %% %d\n Unsigned: %u\n",'a',"Mundo",'b',-7, -10, 8);
-	int aux =  printf("Hola %c %s %c , nº %i %% %d\n Unsigned: %u\n",'a',"Mundo",'b',-7, -10, 8);
-	ft_printf("\nBytes usados: %i, printf: %i\n",n,aux);
-	//atexit(ft_leaks);
-	return (0);
-}

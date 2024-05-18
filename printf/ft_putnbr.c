@@ -60,7 +60,7 @@ int	ft_putnbr(int number)
 
 	n = 0;
 	str = ft_itoa(number);
-	if (number < 0)
+	if (number <= 0)
 	{
 		n++;
 		number = -number;

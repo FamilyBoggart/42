@@ -2,10 +2,12 @@ NAME = libftprintf.a
 CFLAGS = -Wall -Wextra -Werror
 COMPILER = cc $(CFLAGS)
 LIBRARY = ar src $(NAME)
-PRINTF_NAMES =	ft_putchar.o\
+PRINTF_NAMES =	ft_printf.o\
+				ft_putchar.o\
 				ft_putnbr.o\
 				ft_putstr.o\
-				ft_putnbr_u.o
+				ft_putnbr_u.o\
+				ft_hexadecimal.o
 
 
 all : $(NAME)

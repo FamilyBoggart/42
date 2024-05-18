@@ -52,5 +52,6 @@ int	ft_putstr(char *str);
  * @param n The number which will be written, in unsigned range
  * @return int 
  */
-int ft_putnbr_u(unsigned int n);
+int ft_putnbr_u(int n);
+int ft_hexadecimal(int n, int max);
 #endif
