@@ -14,14 +14,38 @@ int write_hex(int b,int max)
 
 	return (n);
 }
-int ft_hexadecimal(int number, int max)
+int ft_hexadecimal_u(unsigned int number, int max)
 {
-	int	a;
-	int	b;
+	unsigned int	a;
+	int				b;
+	int				n;
 
+	n = 0;
 	a = number / 16;
 	b = number % 16;
 	if (a > 0)
-		ft_hexadecimal(a,max);
-	return (write_hex(b,max));
+		n += ft_hexadecimal_u(a,max);
+	n += write_hex(b,max);
+	return (n);
+}
+int ft_hexadecimal(int number, int max)
+{
+	unsigned int	a;
+	int				b;
+	unsigned int 	u_number;
+	int				n;
+
+	if(number < 0)
+		u_number = MAX_UINT + (number + 1);
+	else
+		u_number = number;
+	a = u_number / 16;
+	b = u_number % 16;
+	n = 0;
+	if (a > 0 && number >= 0)
+		n += ft_hexadecimal(a,max);
+	else if (a > 0 && number < 0)
+		n += ft_hexadecimal_u(a,max);
+	n += write_hex(b,max);
+	return (n);
 }

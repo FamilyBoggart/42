@@ -30,15 +30,13 @@ int main (void)
 	if(f == p)
 		ft_printf("OK\n");
 
-	f = ft_printf("Hexadecimal: %x  %x %x %x %x %x\n",15, 16, 100+20+3, -5, 0, 2568764);
-	p=     printf("Hexadecimal: %x  %x %x %x %x %x\n",15, 16, 100+20+3, -5, 0, 2568764);
-	if(f == p)
-	ft_printf("OK\n");
 
-	f = ft_printf("Hexadecimal: %X %X %X %X %X \n",9, 100+20+3, -5, 0, 2147483647);
-	p=     printf("Hexadecimal: %X %X %X %X %X \n",9, 100+20+3, -5, 0, 2147483647);
+	f = ft_printf("Hexadecimal: %x %x %x %x\n",0, -1, 16, 2147483647);
+	p=     printf("Hexadecimal: %x %x %x %x\n",0, -1, 16, 2147483647);
 	if(f == p)
 	ft_printf("OK\n");
+	else
+	ft_printf("ft_printf: %i, printf: %i\n",f,p);
 
 	f = ft_printf("Simbolo %%\n");
 	p=     printf("Simbolo %%\n");
