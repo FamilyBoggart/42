@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alerome2 <alerome2@sutdent.42malaga.com>   +#+  +:+       +#+        */
+/*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 12:15:04 by alerome2          #+#    #+#             */
-/*   Updated: 2024/05/17 12:15:15 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/05/23 12:17:04 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	clasify(va_list args, char format)
 	if (format == 's')
 		return (ft_putstr(va_arg(args, char *)));
 	if (format == 'p')
-		printf("Puntero void");
+		return (ft_putptr(va_arg(args,size_t)));
 	if (format == 'd')
 		return (ft_putnbr(va_arg(args, int)));
 	if (format == 'i')
@@ -29,9 +29,9 @@ int	clasify(va_list args, char format)
 	if (format == 'u')
 		return (ft_putnbr_u(va_arg(args,int)));
 	if (format == 'x')
-		return(ft_hexadecimal(va_arg(args,int),0));
+		return(ft_hexadecimal(va_arg(args,int), 0));
 	if (format == 'X')
-		return(ft_hexadecimal(va_arg(args,int),1));
+		return(ft_hexadecimal(va_arg(args,int), 1));
 	if (format == '%')
 		return (ft_putchar('%'));
 	return (0);

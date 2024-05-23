@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alerome2 <alerome2@sutdent.42malaga.com>   +#+  +:+       +#+        */
+/*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 12:14:48 by alerome2          #+#    #+#             */
-/*   Updated: 2024/05/17 12:14:50 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/05/23 12:21:53 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,6 @@ int	ft_putstr(char *str);
  */
 int ft_putnbr_u(int n);
 int ft_hexadecimal(int n, int max);
+int	ft_hexadecimal_u(size_t number, int max);
+int ft_putptr(size_t ptr);
 #endif

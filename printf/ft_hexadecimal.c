@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_hexadecimal.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/23 11:46:28 by alerome2          #+#    #+#             */
+/*   Updated: 2024/05/23 12:21:09 by alerome2         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-int write_hex(int b,int max)
+int	write_hex(int b, int max)
 {
 	char	*hex;
 	int		n;
@@ -11,12 +23,12 @@ int write_hex(int b,int max)
 	else
 		hex = "0123456789ABCDEF";
 	n += ft_putchar(hex[b]);
-
 	return (n);
 }
-int ft_hexadecimal_u(unsigned int number, int max)
+
+int	ft_hexadecimal_u(size_t number, int max)
 {
-	unsigned int	a;
+	size_t	a;
 	int				b;
 	int				n;
 
@@ -24,18 +36,18 @@ int ft_hexadecimal_u(unsigned int number, int max)
 	a = number / 16;
 	b = number % 16;
 	if (a > 0)
-		n += ft_hexadecimal_u(a,max);
-	n += write_hex(b,max);
+		n += ft_hexadecimal_u(a, max);
+	n += write_hex(b, max);
 	return (n);
 }
-int ft_hexadecimal(int number, int max)
+int	ft_hexadecimal(int number, int max)
 {
-	unsigned int	a;
+	size_t	a;
 	int				b;
-	unsigned int 	u_number;
+	size_t	u_number;
 	int				n;
 
-	if(number < 0)
+	if (number < 0)
 		u_number = MAX_UINT + (number + 1);
 	else
 		u_number = number;

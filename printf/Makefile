@@ -7,7 +7,8 @@ PRINTF_NAMES =	ft_printf.o\
 				ft_putnbr.o\
 				ft_putstr.o\
 				ft_putnbr_u.o\
-				ft_hexadecimal.o
+				ft_hexadecimal.o\
+				ft_putptr.o
 
 
 all : $(NAME)
