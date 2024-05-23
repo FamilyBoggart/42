@@ -1,6 +1,6 @@
 NAME = libftprintf.a
 CFLAGS = -Wall -Wextra -Werror
-COMPILER = cc $(CFLAGS)
+COMPILER = clang $(CFLAGS)
 LIBRARY = ar src $(NAME)
 PRINTF_NAMES =	ft_printf.o\
 				ft_putchar.o\

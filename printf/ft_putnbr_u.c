@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 12:12:24 by alerome2          #+#    #+#             */
-/*   Updated: 2024/05/23 15:27:32 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/05/23 16:15:16 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	u_n_size(unsigned int n)
 	return (size);
 }
 
-char	ft_utoa(unsigned int number)
+char	*ft_utoa(unsigned int number)
 {
 	char			*str;
 	unsigned int	size;
