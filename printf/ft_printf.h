@@ -6,10 +6,9 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 12:14:48 by alerome2          #+#    #+#             */
-/*   Updated: 2024/05/23 12:21:53 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/05/23 15:26:03 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
@@ -24,7 +23,7 @@
  * @param ... Variable arguments
  * @return int 
  */
-int	ft_printf(const char *str,...);
+int	ft_printf(const char *str, ...);
 /**
  * @brief This function writes a character
  * 
@@ -52,8 +51,8 @@ int	ft_putstr(char *str);
  * @param n The number which will be written, in unsigned range
  * @return int 
  */
-int ft_putnbr_u(int n);
-int ft_hexadecimal(int n, int max);
+int	ft_putnbr_u(int n);
+int	ft_hexadecimal(int n, int max);
 int	ft_hexadecimal_u(size_t number, int max);
-int ft_putptr(size_t ptr);
+int	ft_putptr(size_t ptr);
 #endif

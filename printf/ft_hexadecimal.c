@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 11:46:28 by alerome2          #+#    #+#             */
-/*   Updated: 2024/05/23 12:21:09 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/05/23 15:23:10 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int	write_hex(int b, int max)
 int	ft_hexadecimal_u(size_t number, int max)
 {
 	size_t	a;
-	int				b;
-	int				n;
+	int		b;
+	int		n;
 
 	n = 0;
 	a = number / 16;
@@ -40,12 +40,13 @@ int	ft_hexadecimal_u(size_t number, int max)
 	n += write_hex(b, max);
 	return (n);
 }
+
 int	ft_hexadecimal(int number, int max)
 {
 	size_t	a;
-	int				b;
+	int		b;
 	size_t	u_number;
-	int				n;
+	int		n;
 
 	if (number < 0)
 		u_number = MAX_UINT + (number + 1);
@@ -55,9 +56,9 @@ int	ft_hexadecimal(int number, int max)
 	b = u_number % 16;
 	n = 0;
 	if (a > 0 && number >= 0)
-		n += ft_hexadecimal(a,max);
+		n += ft_hexadecimal(a, max);
 	else if (a > 0 && number < 0)
-		n += ft_hexadecimal_u(a,max);
-	n += write_hex(b,max);
+		n += ft_hexadecimal_u(a, max);
+	n += write_hex(b, max);
 	return (n);
 }

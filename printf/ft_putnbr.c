@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alerome2 <alerome2@sutdent.42malaga.com>   +#+  +:+       +#+        */
+/*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 12:14:02 by alerome2          #+#    #+#             */
-/*   Updated: 2024/05/17 12:14:09 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/05/23 15:28:16 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,12 @@ int	ft_putnbr(int number)
 		n++;
 		number = -number;
 	}		
-	while(number > 0)
+	while (number > 0)
 	{
 		n++;
-		number = number/10;
+		number = number / 10;
 	}
-	write(1,str,n);
+	write(1, str, n);
 	free(str);
 	return (n);
 }
