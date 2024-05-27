@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 12:15:04 by alerome2          #+#    #+#             */
-/*   Updated: 2024/05/23 15:29:22 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/05/24 12:13:30 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,6 @@ int	ft_printf(const char *text, ...)
 			argument += ft_putchar(text[i]);
 		i++;
 	}
+	va_end(args);
 	return (argument);
 }
