@@ -6,32 +6,31 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 12:15:04 by alerome2          #+#    #+#             */
-/*   Updated: 2024/05/24 12:13:30 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/05/29 16:20:28 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
-int	clasify(va_list args, char format)
+static int	clasify(va_list args, char format)
 {
 	if (format == 'c')
 		return (ft_putchar(va_arg(args, int)));
-	if (format == 's')
+	else if (format == 's')
 		return (ft_putstr(va_arg(args, char *)));
-	if (format == 'p')
+	else if (format == 'p')
 		return (ft_putptr(va_arg(args, size_t)));
-	if (format == 'd')
+	else if (format == 'd')
 		return (ft_putnbr(va_arg(args, int)));
-	if (format == 'i')
+	else if (format == 'i')
 		return (ft_putnbr(va_arg(args, int)));
-	if (format == 'u')
+	else if (format == 'u')
 		return (ft_putnbr_u(va_arg(args, int)));
-	if (format == 'x')
+	else if (format == 'x')
 		return (ft_hexadecimal(va_arg(args, int), 0));
-	if (format == 'X')
+	else if (format == 'X')
 		return (ft_hexadecimal(va_arg(args, int), 1));
-	if (format == '%')
+	else if (format == '%')
 		return (ft_putchar('%'));
 	return (0);
 }
