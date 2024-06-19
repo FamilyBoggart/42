@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 13:49:50 by alerome2          #+#    #+#             */
-/*   Updated: 2024/05/29 15:56:48 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/06/19 12:43:48 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	*ft_memcpy(void *dest, const void *src, unsigned int n);
  * @param s2 
  * @return char* 
  */
-char	*ft_strjoin(const char *s1, const char *s2);
+char	*ft_strjoin(char *s1, char *s2);
 /**
  * @brief The function returns the character c`s position in s
  * 

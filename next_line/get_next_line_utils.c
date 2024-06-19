@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 10:56:52 by alerome2          #+#    #+#             */
-/*   Updated: 2024/05/29 18:54:47 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/06/19 12:43:27 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,29 +55,30 @@ char	*ft_strchr(const char *s, int c)
 		return ((void *)0);
 }
 
-char	*ft_strjoin(const char *s1, const char *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*aux;
-	int		size;
 	int		i;
 	int		j;
 
 	i = 0;
-	j = 0;
-	size = ft_strlen(s1) + ft_strlen(s2) + 1;
-	aux = (char *)malloc(size);
+	if (!s1)
+	{
+		s1 = malloc(sizeof (char));
+		s1[0] = 0;
+	}
+	if (!s1 || !s2)
+		return (NULL);
+	aux = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!aux)
 		return (NULL);
-	while (s1[i] != '\0')
-	{
-		aux[i] = s1[i];
-		i++;
-	}
-	while (s2[j] != '\0')
-	{
-		aux[i + j] = s2[j];
-		j++;
-	}
-	aux[i + j] = '\0';
+	j = 0;
+	while (s1[j])
+		aux[i++] = s1[j++];
+	j = 0;
+	while (s2[j])
+		aux[i++] = s2[j++];
+	aux[ft_strlen(s1) + ft_strlen(s2)] = 0;
+	free(s1);
 	return (aux);
 }

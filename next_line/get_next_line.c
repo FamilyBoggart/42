@@ -6,12 +6,36 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 13:47:22 by alerome2          #+#    #+#             */
-/*   Updated: 2024/06/19 11:07:30 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/06/19 12:44:28 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h>
+
+static char	*reader(int fd, char *buff)
+{
+	int		br;
+	char	*aux;
+
+	aux = malloc ((BUFFER_SIZE + 1) * sizeof(char));
+	if (!aux)
+	{
+		free(aux);
+		free(buff);
+		return (NULL);
+	}
+	br = 1;
+	while (!ft_strchr(aux, '\n') && br != 0)
+	{
+		if (br == -1)
+			return (NULL);
+		br = read(fd, aux, BUFFER_SIZE);
+		aux[br] = '\0';
+		buff = ft_strjoin(buff, aux);
+	}
+	return (buff);
+}
 
 /**
  * @brief Get the next line object
@@ -21,24 +45,12 @@
  */
 char	*get_next_line(int fd)
 {
-	char	*str;
-	int		br;
+	static char	*buff;
 
-	str = malloc (BUFFER_SIZE * sizeof(char));
-	if (!str)
-		return (NULL);
-	br = read(fd, str, BUFFER_SIZE);
-	printf("br: %d", br);
-	if (br == -1)
-		return (NULL);
-	printf("%s", str);
-	while (br != 0)
-	{
-		br = read(fd, str, BUFFER_SIZE);
-		printf("%s", str);
-	}
-	free(str);
-	return (str);
+	buff = reader(fd, buff);
+	printf("%s", buff);
+	free(buff);
+	return (buff);
 }
 // PSEUDOCODE
 /*
