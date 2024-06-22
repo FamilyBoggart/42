@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 12:14:02 by alerome2          #+#    #+#             */
-/*   Updated: 2024/05/23 15:28:16 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/06/22 11:18:22 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,17 @@ int	ft_putnbr(int number)
 	int		n;
 
 	n = 0;
+	if (number == -2147483648)
+	{
+		write(1, "-2147483648", 11);
+		return (11);
+	}
 	str = ft_itoa(number);
 	if (number <= 0)
 	{
 		n++;
 		number = -number;
-	}		
+	}
 	while (number > 0)
 	{
 		n++;
