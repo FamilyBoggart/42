@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_putptr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/17 12:14:25 by alerome2          #+#    #+#             */
-/*   Updated: 2024/05/23 15:26:15 by alerome2         ###   ########.fr       */
+/*   Created: 2024/05/23 12:02:37 by alerome2          #+#    #+#             */
+/*   Updated: 2024/06/22 21:27:46 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../inc/ft_printf.h"
 
-int	ft_putchar(char c)
+int	ft_putptr(size_t ptr)
 {
-	write(1, &c, 1);
-	return (1);
+	int	n;
+
+	if (!ptr)
+		return (ft_putstr("(nil)"));
+	ft_putstr("0x");
+	n = ft_hexadecimal_u(ptr, 0);
+	return (n + 2);
 }

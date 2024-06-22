@@ -6,11 +6,11 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 21:05:05 by alerome2          #+#    #+#             */
-/*   Updated: 2024/06/22 21:14:08 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/06/22 21:28:11 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "./inc/ft_printf.h"
 #include <stdio.h>
 
 int main(void)

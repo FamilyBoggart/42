@@ -2,6 +2,8 @@ NAME = libftprintf.a
 CFLAGS = -Wall -Wextra -Werror
 COMPILER = clang $(CFLAGS)
 LIBRARY = ar src $(NAME)
+
+PRINTF_OBJS= obj
 PRINTF_NAMES =	ft_printf.o\
 				ft_putchar.o\
 				ft_putnbr.o\
@@ -13,16 +15,18 @@ PRINTF_NAMES =	ft_printf.o\
 
 all : $(NAME)
 
-%.o : %.c
-	$(COMPILER) -c $< -o $@
+%.o : src/%.c
+	@mkdir -p $(PRINTF_OBJS)
+	@$(COMPILER) -c $< -o $@
 
 $(NAME) : $(PRINTF_NAMES) 
-	$(LIBRARY) $(PRINTF_NAMES)
+	@$(LIBRARY) $(PRINTF_NAMES)
+	@mv $(PRINTF_NAMES) obj
 
 re : fclean all
 clean :
-	@rm -f $(PRINTF_NAMES)
+	@rm -rf $(PRINTF_NAMES) $(PRINTF_OBJS)
 fclean :
-	@rm -f $(PRINTF_NAMES) $(NAME)
+	@rm -rf $(PRINTF_NAMES) $(NAME) $(PRINTF_OBJS)
 
 .PHONY = re clean fclean all

@@ -6,11 +6,11 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 12:15:04 by alerome2          #+#    #+#             */
-/*   Updated: 2024/05/24 12:13:30 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/06/22 21:27:11 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../inc/ft_printf.h"
 #include <stdio.h>
 
 int	clasify(va_list args, char format)

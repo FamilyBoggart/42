@@ -6,11 +6,11 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 12:14:02 by alerome2          #+#    #+#             */
-/*   Updated: 2024/06/22 11:18:22 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/06/22 21:27:36 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../inc/ft_printf.h"
 
 int	n_size(int n)
 {
