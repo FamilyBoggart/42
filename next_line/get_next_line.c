@@ -6,12 +6,43 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 13:47:22 by alerome2          #+#    #+#             */
-/*   Updated: 2024/06/19 12:44:28 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/06/26 11:02:16 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h>
+
+char 	*cut_line(char *buff, int len)
+{
+	char	*line;
+	int		i;
+
+	i = 0;
+	line = malloc((len + 1) * sizeof(char));
+	if (!line)
+	{
+		free(line);
+		free(buff);
+		return (NULL);
+	}
+	while (i < len)
+	{
+		line[i] = buff[i];
+		i++;
+	}
+	line[i] = '\n';
+	return (line);
+}
+int divide_line(char *buff)
+{
+	int i;
+
+	i = 0;
+	while (buff[i] != '\n' && buff[i] != '\0')
+		i++;
+	return (i);
+}
 
 static char	*reader(int fd, char *buff)
 {
@@ -46,9 +77,12 @@ static char	*reader(int fd, char *buff)
 char	*get_next_line(int fd)
 {
 	static char	*buff;
+	char*		line;
+	char*		aux;
 
 	buff = reader(fd, buff);
-	printf("%s", buff);
+	line = cut_line(buff, divide_line(buff));
+	printf("%s", line);
 	free(buff);
 	return (buff);
 }

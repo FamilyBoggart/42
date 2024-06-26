@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 13:49:50 by alerome2          #+#    #+#             */
-/*   Updated: 2024/06/19 12:43:48 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/06/26 11:07:25 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # define BUFFER_SIZE 42
 
+char	*ft_substr(const char *s, unsigned int start, size_t len);
 char	*get_next_line(int fd);
 /**
  * @brief  memcpy copies the string src in the string dest with n characters
