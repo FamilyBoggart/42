@@ -6,12 +6,11 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 13:47:22 by alerome2          #+#    #+#             */
-/*   Updated: 2024/06/26 11:02:16 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/07/11 11:45:16 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
 char 	*cut_line(char *buff, int len)
 {
@@ -67,6 +66,17 @@ static char	*reader(int fd, char *buff)
 	}
 	return (buff);
 }
+char	*new_line(char *buff)
+{
+	int		i;
+	char	*aux;
+
+	i = 0;
+	while (buff[i] != '\n' && buff[i] != '\0')
+		i++;
+	aux = ft_substr(buff, i + 1, ft_strlen(buff) - i);
+	return (aux);
+}
 
 /**
  * @brief Get the next line object
@@ -78,28 +88,10 @@ char	*get_next_line(int fd)
 {
 	static char	*buff;
 	char*		line;
-	char*		aux;
+	//char*		aux;
 
 	buff = reader(fd, buff);
 	line = cut_line(buff, divide_line(buff));
-	printf("%s", line);
-	free(buff);
-	return (buff);
+	buff = new_line(buff);
+	return (line);
 }
-// PSEUDOCODE
-/*
-	1. EL ARCHIVO SE ABRE EN MAIN, EL FILE DESCRIPTOR SE LE PASA COMO ARGUMENTO
-	A NUESTRO GET_NEXT_LINE
-	
-	2. GNL TIENE QUE LEER EL ARCHIVO, ASI QUE HAY QUE HACER COMPROBACIONES DE
-	ERRORES
-
-	3. EL ARCHIVO DEBE LEERSE LINEA POR LINEA, ES DECIR, DEBEMOS USAR UN ARRAY
-	EN DONDE INTRODUCIR LOS DATOS ENCONTRADOS HASTA QUE ENCONTREMOS UN \n 
-
-	4. USAREMOS UNA FUNCION READER PARA LEER UN ARCHIVO HASTA ENCONTRAR \n o \0
-	
-	5. CUANDO ENCONTRAMOS UN \n LANZAMOS TODO EL BUFFER LEIDO A NUESTRA VARIABLE
-	ESTATICA EXTERNA
-	
-*/
