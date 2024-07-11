@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 10:56:52 by alerome2          #+#    #+#             */
-/*   Updated: 2024/07/11 11:06:15 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/07/11 15:34:06 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,16 +70,13 @@ void	*ft_memcpy(void *dest, const void *src, unsigned int n)
 
 char	*ft_strchr(const char *s, int c)
 {
-	while (*s != '\0')
-	{
-		if (*s == (char)c)
-			return ((char *)s);
+	if(!s)
+		return (NULL);
+	while (*s != '\0' && *s != (char)c)
 		s++;
-	}
 	if (*s == (char)c)
 		return ((char *)s);
-	else
-		return ((void *)0);
+	return ((void *)0);
 }
 
 char	*ft_strjoin(char *s1, char *s2)

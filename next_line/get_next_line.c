@@ -6,17 +6,21 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 13:47:22 by alerome2          #+#    #+#             */
-/*   Updated: 2024/07/11 11:45:16 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/07/11 15:42:13 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char 	*cut_line(char *buff, int len)
+char 	*cut_line(char *buff)
 {
 	char	*line;
 	int		i;
+	int	len;
 
+	len = 0;
+	while (buff[len] != '\n' && buff[len] != '\0')
+		len++;
 	i = 0;
 	line = malloc((len + 1) * sizeof(char));
 	if (!line)
@@ -25,22 +29,13 @@ char 	*cut_line(char *buff, int len)
 		free(buff);
 		return (NULL);
 	}
-	while (i < len)
+	while (i <= len)
 	{
 		line[i] = buff[i];
 		i++;
 	}
-	line[i] = '\n';
+	line[i] = '\0';
 	return (line);
-}
-int divide_line(char *buff)
-{
-	int i;
-
-	i = 0;
-	while (buff[i] != '\n' && buff[i] != '\0')
-		i++;
-	return (i);
 }
 
 static char	*reader(int fd, char *buff)
@@ -58,12 +53,13 @@ static char	*reader(int fd, char *buff)
 	br = 1;
 	while (!ft_strchr(aux, '\n') && br != 0)
 	{
-		if (br == -1)
-			return (NULL);
 		br = read(fd, aux, BUFFER_SIZE);
+		if(br <= 0)
+			return (NULL);
 		aux[br] = '\0';
 		buff = ft_strjoin(buff, aux);
 	}
+	free(aux);
 	return (buff);
 }
 char	*new_line(char *buff)
@@ -78,20 +74,17 @@ char	*new_line(char *buff)
 	return (aux);
 }
 
-/**
- * @brief Get the next line object
- * 
- * @param fd 
- * @return char* 
- */
 char	*get_next_line(int fd)
 {
 	static char	*buff;
 	char*		line;
-	//char*		aux;
 
+	if(fd < 0 && BUFFER_SIZE < 0)
+		return (NULL);
 	buff = reader(fd, buff);
-	line = cut_line(buff, divide_line(buff));
+	if(!buff)
+		return (NULL);
+	line = cut_line(buff);
 	buff = new_line(buff);
 	return (line);
 }
