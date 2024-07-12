@@ -51,10 +51,13 @@ static char	*reader(int fd, char *buff)
 		return (NULL);
 	}
 	br = 1;
-	while (!ft_strchr(aux, '\n') && br != 0)
+	while (!ft_strchr(buff, '\n') && br != 0)
 	{
 		br = read(fd, aux, BUFFER_SIZE);
 		if(br <= 0)
+			if(buff != "")
+				retrun (buff);
+			else
 			return (NULL);
 		aux[br] = '\0';
 		buff = ft_strjoin(buff, aux);
@@ -65,12 +68,26 @@ static char	*reader(int fd, char *buff)
 char	*new_line(char *buff)
 {
 	int		i;
+	int		lj;
 	char	*aux;
 
 	i = 0;
+	j = 0;
 	while (buff[i] != '\n' && buff[i] != '\0')
 		i++;
-	aux = ft_substr(buff, i + 1, ft_strlen(buff) - i);
+	if(!buff[i])
+	{
+		free(buff);
+		return (NULL);
+	}
+	aux = malloc(ft_strlen(buff) - i + 1);
+	if(!aux)
+		return (NULL);
+	i++;
+	while(buff[i])
+		aux[j++] = buff[i++];
+	aux[j] = '\0';
+	free(buff);
 	return (aux);
 }
 

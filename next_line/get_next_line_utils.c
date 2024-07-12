@@ -22,52 +22,6 @@ int	ft_strlen(const char *s)
 	return (i);
 }
 
-char	*ft_substr(const char *s, unsigned int start, size_t len)
-{
-	char	*aux;
-	size_t	i;
-	size_t	slen;
-
-	i = 0;
-	slen = ft_strlen(s);
-	if (start >= slen)
-	{
-		aux = malloc(1);
-		if (!aux)
-			return (NULL);
-		aux[0] = '\0';
-		return (aux);
-	}
-	if (len > (size_t)ft_strlen(&s[start]))
-		len = ft_strlen(&s[start]);
-	aux = malloc(len + 1);
-	if (!aux)
-		return (NULL);
-	while (i < len && s[start] != '\0')
-		aux[i++] = s[start++];
-	aux[i] = '\0';
-	return (aux);
-}
-
-void	*ft_memcpy(void *dest, const void *src, unsigned int n)
-{
-	char			*aux_src;
-	char			*aux_dest;
-	unsigned int	i;
-
-	aux_src = (char *)src;
-	aux_dest = (char *)dest;
-	i = 0;
-	if (!dest && !src && n != 0)
-		return (aux_dest);
-	while (i < n)
-	{
-		aux_dest[i] = aux_src[i];
-		i++;
-	}
-	return (aux_dest);
-}
-
 char	*ft_strchr(const char *s, int c)
 {
 	if(!s)
