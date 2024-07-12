@@ -20,7 +20,6 @@
 char	*ft_substr(const char *s, unsigned int start, size_t len);
 char	*get_next_line(int fd);
 
-void	*ft_memcpy(void *dest, const void *src, unsigned int n);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strchr(const char *s, int c);
 int		ft_strlen(const char *s);

@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 13:47:22 by alerome2          #+#    #+#             */
-/*   Updated: 2024/07/11 15:42:13 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/07/12 18:54:51 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,30 @@
 
 char 	*cut_line(char *buff)
 {
-	char	*line;
 	int		i;
-	int	len;
+	char	*aux;
 
-	len = 0;
-	while (buff[len] != '\n' && buff[len] != '\0')
-		len++;
 	i = 0;
-	line = malloc((len + 1) * sizeof(char));
-	if (!line)
-	{
-		free(line);
-		free(buff);
+	if (!*buff)
 		return (NULL);
-	}
-	while (i <= len)
+	while (buff[i] && buff[i] != '\n')
+		i++;
+	aux = malloc(i + 2);
+	if (!aux)
+		return (NULL);
+	i = 0;
+	while (buff[i] && buff[i] != '\n')
 	{
-		line[i] = buff[i];
+		aux[i] = buff[i];
 		i++;
 	}
-	line[i] = '\0';
-	return (line);
+	if (buff[i] == '\n')
+	{
+		aux[i] = buff[i];
+		i++;
+	}
+	aux[i] = 0;
+	return (aux);
 }
 
 static char	*reader(int fd, char *buff)
@@ -45,20 +47,17 @@ static char	*reader(int fd, char *buff)
 
 	aux = malloc ((BUFFER_SIZE + 1) * sizeof(char));
 	if (!aux)
-	{
-		free(aux);
-		free(buff);
 		return (NULL);
-	}
 	br = 1;
 	while (!ft_strchr(buff, '\n') && br != 0)
 	{
 		br = read(fd, aux, BUFFER_SIZE);
-		if(br <= 0)
-			if(buff != "")
-				retrun (buff);
-			else
+		if(br == -1)
+		{
+			free(aux);
+			free(buff);
 			return (NULL);
+		}
 		aux[br] = '\0';
 		buff = ft_strjoin(buff, aux);
 	}
@@ -68,7 +67,7 @@ static char	*reader(int fd, char *buff)
 char	*new_line(char *buff)
 {
 	int		i;
-	int		lj;
+	int     j;
 	char	*aux;
 
 	i = 0;
@@ -76,17 +75,17 @@ char	*new_line(char *buff)
 	while (buff[i] != '\n' && buff[i] != '\0')
 		i++;
 	if(!buff[i])
-	{
-		free(buff);
-		return (NULL);
+	{  
+	    free(buff);
+	    return (NULL);
 	}
 	aux = malloc(ft_strlen(buff) - i + 1);
-	if(!aux)
+	if (!aux)
 		return (NULL);
 	i++;
-	while(buff[i])
+	while (buff[i])
 		aux[j++] = buff[i++];
-	aux[j] = '\0';
+	aux[j] = 0;
 	free(buff);
 	return (aux);
 }
