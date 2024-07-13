@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 10:56:52 by alerome2          #+#    #+#             */
-/*   Updated: 2024/07/11 15:34:06 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/07/13 12:10:27 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 
 char	*ft_strchr(const char *s, int c)
 {
-	if(!s)
+	if (!s)
 		return (NULL);
 	while (*s != '\0' && *s != (char)c)
 		s++;

@@ -6,13 +6,13 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 13:47:22 by alerome2          #+#    #+#             */
-/*   Updated: 2024/07/13 11:40:40 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/07/13 12:08:52 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char 	*cut_line(char *buff)
+char	*cut_line(char *buff)
 {
 	int		i;
 	char	*aux;
@@ -52,7 +52,7 @@ static char	*reader(int fd, char *buff)
 	while (!ft_strchr(buff, '\n') && br != 0)
 	{
 		br = read(fd, aux, BUFFER_SIZE);
-		if(br == -1)
+		if (br == -1)
 		{
 			free(aux);
 			free(buff);
@@ -64,20 +64,21 @@ static char	*reader(int fd, char *buff)
 	free(aux);
 	return (buff);
 }
+
 char	*new_line(char *buff)
 {
 	int		i;
-	int     j;
+	int		j;
 	char	*aux;
 
 	i = 0;
 	j = 0;
 	while (buff[i] != '\n' && buff[i] != '\0')
 		i++;
-	if(!buff[i])
-	{  
-	    free(buff);
-	    return (NULL);
+	if (!buff[i])
+	{
+		free(buff);
+		return (NULL);
 	}
 	aux = malloc(ft_strlen(buff) - i + 1);
 	if (!aux)
@@ -93,12 +94,12 @@ char	*new_line(char *buff)
 char	*get_next_line(int fd)
 {
 	static char	*buff[4096];
-	char*		line;
+	char		*line;
 
-	if(fd < 0 && BUFFER_SIZE < 0)
+	if (fd < 0 && BUFFER_SIZE < 0)
 		return (NULL);
 	buff[fd] = reader(fd, buff[fd]);
-	if(!buff[fd])
+	if (!buff[fd])
 		return (NULL);
 	line = cut_line(buff[fd]);
 	buff[fd] = new_line(buff[fd]);

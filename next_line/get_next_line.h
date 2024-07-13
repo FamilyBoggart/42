@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 13:49:50 by alerome2          #+#    #+#             */
-/*   Updated: 2024/07/12 19:09:13 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/07/13 12:11:37 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 # include <fcntl.h>
 # include <stdlib.h>
 
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 42
-#endif
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
 char	*ft_substr(const char *s, unsigned int start, size_t len);
 char	*get_next_line(int fd);
