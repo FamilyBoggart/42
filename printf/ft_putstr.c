@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 12:13:31 by alerome2          #+#    #+#             */
-/*   Updated: 2024/06/22 21:15:36 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/07/16 14:17:06 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 int	ft_putstr(char *str)
 {
 	int	n;
-	if(!str)
-		return(ft_putstr("(null)"));
+
+	if (!str)
+		return (ft_putstr("(null)"));
 	n = 0;
 	while (str[n] != '\0')
 		n += ft_putchar(str[n]);
