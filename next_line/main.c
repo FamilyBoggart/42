@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/17 12:13:31 by alerome2          #+#    #+#             */
-/*   Updated: 2024/07/16 14:19:29 by alerome2         ###   ########.fr       */
+/*   Created: 2024/06/26 10:28:24 by alerome2          #+#    #+#             */
+/*   Updated: 2024/07/13 12:13:26 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+//valgrind --leak-check=full ./a.out;
+#include "get_next_line.h"
+#include <stdio.h>
 
-int	ft_putstr(char *str)
+int	main(void)
 {
-	int	n;
+	int		fd;
+	char	*line;
+	int		cont;
 
-	if (!str)
-		return (ft_putstr("(null)"));
-	n = 0;
-	if (!str)
-		return (ft_putstr("(null)"));
-	while (str[n] != '\0')
-		n += ft_putchar(str[n]);
-	return (n);
+	line = NULL;
+	cont = 0;
+	fd = open("test.txt", O_RDONLY);
+	line = get_next_line(fd);
+	while ((line))
+	{
+		printf("%d: %s", cont++, line);
+		free(line);
+		line = get_next_line(fd);
+	}
+	free(line);
+	return (0);
 }
