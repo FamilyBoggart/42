@@ -2,7 +2,7 @@ CFLAGS = -Wall -Wextra -Werror
 NAME = libft.a
 COMPILER= cc $(CFLAGS)
 LIBRARY= ar src $(NAME)
-OBJS = $(LIBFT_OBJS) $(PRINTF_OBJS)
+OBJS = $(LIBFT_OBJS) $(PRINTF_OBJS) $(GNL_OBJS)
 #Libft
 LIBFT_OBJS = $(LIBFT_NAMES:.c=.o)
 LIBFT_SOURCE = ./src/libft/
@@ -61,24 +61,21 @@ PRINTF_NAMES =	ft_printf.c\
 PRINTF_OBJS = $(PRINTF_NAMES:.c=.o)
 PRINTF_SOURCE = ./src/printf/
 
-
+#GNL
+GNL_NAMES = get_next_line.c\
+			get_next_line_utils.c\
+			get_next_line_bonus.c\
+			get_next_line_utils_bonus.c
+GNL_OBJS = $(GNL_NAMES:.c=.o)
+GNL_SOURCE = ./src/next_line/
 #Crear la libreria
 
 
 #Funtions
 all: $(NAME)
 
-bonus:  $(LISTS)
-	@ar src $(NAME) $(LISTS)
-
-
-# Obtener los archivos .o 
-%.o : %.c
-	@cc $(CFLAGS) -c $< -o $@
-
-
 clean: 
-	@rm -rf obj
+	@rm -rf obj *.o
 fclean :
 	@rm -rf obj  $(NAME)
 re : fclean all
@@ -93,7 +90,10 @@ $(LIBFT_OBJS) : $(addprefix $(LIBFT_SOURCE), $(LIBFT_NAMES))
 $(PRINTF_OBJS) : $(addprefix $(PRINTF_SOURCE), $(PRINTF_NAMES))
 	@$(COMPILER) -c $(addprefix $(PRINTF_SOURCE), $(PRINTF_NAMES))
 
-$(NAME) : $(LIBFT_OBJS) $(PRINTF_OBJS)
+$(GNL_OBJS) : $(addprefix $(GNL_SOURCE), $(GNL_NAMES))
+	@$(COMPILER) -c $(addprefix $(GNL_SOURCE), $(GNL_NAMES))
+
+$(NAME) : $(OBJS)
 	@$(LIBRARY) $(OBJS)
 	@mkdir obj
 	@mv $(OBJS) obj
