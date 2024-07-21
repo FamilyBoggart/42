@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 11:27:19 by alerome2          #+#    #+#             */
-/*   Updated: 2024/07/20 16:33:16 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/07/21 14:25:21 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,38 @@
 // 2. CADA NODO DE LA LISTA CONTIENE UN VALOR Y UN PUNTERO A LOS NODOS ADYACENTES
 // 3. LOS NODOS TOP Y BOTTOM SE APUNTARÁN CIRCULARMENTE
 // 4. EL ATRIBUTO IS_TOP Y IS_BOTTOM SE USAN PARA INDICAR QUE SON TOP Y BOTTOM
-#include "push_swap.h";
+#include "push_swap.h"
 
-void push_swap(int *numbers)
+int	swap(int *stack, int len)
 {
-	while(*numbers)
-		ft_printf("%d", *numbers++);
-}
-int swap(int a[],int b[], int both){return (0);}
-int push (){return (0);}
-int rotate(){return (0);}
-int rev_rotate(){return (0);}
+	int	aux;
 
+	aux = 0;
+	if (len >= 2)
+	{
+		aux = stack[0];
+		*stack = stack[1];
+		stack++;
+		*stack = aux;
+		return (1);
+	}
+	return (aux);
+}
+
+void	push_swap(int *numbers, int len)
+{
+	swap(numbers, len);
+	while (*numbers)
+		ft_printf("%d\n", *numbers++);
+	ft_printf("-\na\n\n");
+}
+
+int	push(void)
+{
+	return (0);
+}
+
+int	rotate(void)
+{
+	return (0);
+}
