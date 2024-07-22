@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 11:27:19 by alerome2          #+#    #+#             */
-/*   Updated: 2024/07/22 12:20:02 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/07/22 13:36:49 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,22 @@ int	rotate(int *stack, int len)
 	return (0);
 }
 
+int	rev_rotate(int *stack, int len)
+{
+	int	last;
+	int	aux;
+
+	last = stack[len - 1];
+	while (len--)
+	{
+		aux = *stack;
+		*stack = last;
+		last = aux;
+		stack++;
+	}
+	return (1);
+}
+
 void	push_swap(int *numbers, int len)
 {
 	int	i;
@@ -57,6 +73,11 @@ void	push_swap(int *numbers, int len)
 		ft_printf("%d\n", numbers[i++]);
 	ft_printf("--ROTATE--\n");
 	rotate(numbers, len);
+	i = 0;
+	while (i < len)
+		ft_printf("%d\n", numbers[i++]);
+	ft_printf("--REV ROTATE--\n");
+	rev_rotate(numbers, len);
 	i = 0;
 	while (i < len)
 		ft_printf("%d\n", numbers[i++]);
