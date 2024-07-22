@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 11:31:29 by alerome2          #+#    #+#             */
-/*   Updated: 2024/07/21 14:14:44 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/07/21 14:58:03 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	stacks(int *numbers, int init_len)
 	stack_a = numbers;
 	while (*stack_a)
 		ft_printf("%d\n", *stack_a++);
-	ft_printf("-\na\n\n");
 	push_swap(numbers, init_len);
 }
 

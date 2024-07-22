@@ -6,15 +6,10 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 11:27:19 by alerome2          #+#    #+#             */
-/*   Updated: 2024/07/21 14:25:21 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/07/22 12:20:02 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//PSEUDOCODE
-// 1. NECESITAMOS PASAR UNA LISTA DE ARGUMENTOS DADOS A UNA LISTA ENLAZADA
-// 2. CADA NODO DE LA LISTA CONTIENE UN VALOR Y UN PUNTERO A LOS NODOS ADYACENTES
-// 3. LOS NODOS TOP Y BOTTOM SE APUNTARÁN CIRCULARMENTE
-// 4. EL ATRIBUTO IS_TOP Y IS_BOTTOM SE USAN PARA INDICAR QUE SON TOP Y BOTTOM
 #include "push_swap.h"
 
 int	swap(int *stack, int len)
@@ -33,20 +28,41 @@ int	swap(int *stack, int len)
 	return (aux);
 }
 
-void	push_swap(int *numbers, int len)
+int	rotate(int *stack, int len)
 {
-	swap(numbers, len);
-	while (*numbers)
-		ft_printf("%d\n", *numbers++);
-	ft_printf("-\na\n\n");
-}
+	int	last;
+	int	aux;
 
-int	push(void)
-{
+	last = stack[0];
+	while (*stack)
+		stack++;
+	while (len--)
+	{
+		stack--;
+		aux = *stack;
+		*stack = last;
+		last = aux;
+	}
 	return (0);
 }
 
-int	rotate(void)
+void	push_swap(int *numbers, int len)
+{
+	int	i;
+
+	i = 0;
+	ft_printf("--SWAP--\n");
+	swap(numbers, len);
+	while (i < len)
+		ft_printf("%d\n", numbers[i++]);
+	ft_printf("--ROTATE--\n");
+	rotate(numbers, len);
+	i = 0;
+	while (i < len)
+		ft_printf("%d\n", numbers[i++]);
+}
+
+int	push(void)
 {
 	return (0);
 }
