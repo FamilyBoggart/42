@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 11:31:29 by alerome2          #+#    #+#             */
-/*   Updated: 2024/07/21 14:58:03 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/07/23 20:03:23 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,43 @@ void	stacks(int *numbers, int init_len)
 	stack_a = numbers;
 	while (*stack_a)
 		ft_printf("%d\n", *stack_a++);
-	push_swap(numbers, init_len);
+}
+
+int	find_min(int *stack)
+{
+	int	min;
+	int	i;
+	int	start;
+
+	i = 0;
+	min = 2147483647;
+	while (*stack)
+	{
+		if (*stack < min)
+		{
+			min = *stack;
+			start = i;
+		}
+		stack++;
+		i++;
+	}
+	ft_printf("min number: %d\nPosition: %d\n", min, start);
+	return (start);
+}
+
+void	sort_alg(int *stack, int len)
+{
+	int	start;
+	int	*stack_a;
+	int	distance;
+
+	stack_a = stack;
+	start = find_min(stack_a);
+	if (len - start >= start)
+		distance = start;
+	else
+		distance = len - start;
+	ft_printf("Distacia hasta extremo : %d", distance);
 }
 
 int	main(int argc, char *argv[])
@@ -41,6 +77,9 @@ int	main(int argc, char *argv[])
 		i++;
 	}
 	array[i - 1] = '\0';
-	stacks(array, i - 1);
+	if (checker(array))
+		ft_printf("El array esta ordenado");
+	else
+		ft_printf("El array no esta ordenado");
 	return (0);
 }

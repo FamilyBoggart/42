@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 11:28:33 by alerome2          #+#    #+#             */
-/*   Updated: 2024/07/21 14:21:06 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/07/23 19:47:38 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,5 @@ typedef struct s_stack
 	int				is_bottom;
 }	t_stack;
 
-void	push_swap(int *numbers, int len);
+int		checker(int *numbers);
+int		swap(int *stack, int len);
