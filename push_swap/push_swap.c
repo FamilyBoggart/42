@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 11:27:19 by alerome2          #+#    #+#             */
-/*   Updated: 2024/07/23 19:35:48 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/07/23 20:57:58 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ int	checker(int *stack)
 {
 	int	i;
 
+	if (!stack)
+		return (1);
 	i = 1;
 	while (stack[i])
 	{
@@ -76,7 +78,13 @@ int	checker(int *stack)
 	return (1);
 }
 
-int	push(void)
+int	push(int *stack_a, int *stack_b, int option)
 {
-	return (0);
+	int	a;
+	int	b;
+
+	a = *stack_a;
+	b = *stack_b;
+	ft_printf("OPcion: %d, a = %d, b = %d", option, a, b);
+	return (1);
 }
