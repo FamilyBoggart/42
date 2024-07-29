@@ -1,0 +1,6 @@
+Esto es un archivo de prueba
+De varias lineas
+Podemos leerlo pero tambien podemos contar las palabras que existen en cada linea
+
+Hay lineas vacias tambien, por que no
+Y eso, buenas tardes.
