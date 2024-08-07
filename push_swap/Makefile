@@ -3,7 +3,7 @@ COMPILER= cc $(CFLAGS)
 NAME = push_swap
 OBJS = $(PUSH_SWAP_OBJS)
 PUSH_SWAP_OBJS = $(PUSH_SWAP_NAMES: .c=.o)
-LIBRARY = libft.a
+LIBRARY = ./libft/libft.a
 PUSH_SWAP_NAMES = main.c\
 				push_swap.c
 
@@ -11,12 +11,12 @@ PUSH_SWAP_NAMES = main.c\
 
 #Rules
 all : $(NAME)
-	cd libft
 
 clean : 
-	rm $(PUSH_SWAP_OBJS)
+	rm *.o 
 
-fclean : clean
+fclean :
+	rm -rf *.o libft/libft.a libft/obj $(NAME)
 
 re : fclean all
 
@@ -24,4 +24,5 @@ re : fclean all
 $(PUSH_SWAP_OBJS) : $(PUSH_SWAP_NAMES)
 	$(COMPILER) -c $(PUSH_SWAP_NAMES)
 $(NAME) : $(OBJS)
-	$(COMPILER) $(ON)
+	$(MAKE) -C libft re
+	$(COMPILER) $(OBJS) $(LIBRARY) -o $(NAME)
