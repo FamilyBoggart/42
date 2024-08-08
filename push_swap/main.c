@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 11:31:29 by alerome2          #+#    #+#             */
-/*   Updated: 2024/07/23 21:00:22 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/08/08 16:01:51 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,26 +19,36 @@
 // 5. Movemos todos los valores de stack b a stack a
 #include "push_swap.h"
 
-int	array_len(int *stack)
+t_list	*create_stack(int *array)
 {
-	int	len;
+	t_list	*stack_a;
+	t_list	*wagon;
+	t_stack	*pointer;
 
-	len = 0;
-	while (stack[len])
-		len++;
-	return (len - 1);
+	stack_a = NULL;
+	while(*array)
+	{
+		t_stack	number;
+		wagon = malloc(sizeof(t_list));
+		pointer =malloc(sizeof(t_stack));
+		if(!wagon || !pointer)
+		{
+			free(wagon);
+			free(pointer);
+			free(array);
+			return (NULL);
+		}
+		number.value = *array;
+		*pointer = number;
+		wagon->content=pointer;
+		wagon->next = NULL;
+		ft_lstadd_back(&stack_a, wagon);
+		array++;
+	}
+	return (stack_a);
 }
 
-void	stacks(int *numbers, int init_len)
-{
-	int	*stack_a;
-
-	stack_a = ft_calloc(1, init_len);
-	stack_a = numbers;
-	while (*stack_a)
-		ft_printf("%d\n", *stack_a++);
-}
-
+/*
 int	find_min(int *stack)
 {
 	int	min;
@@ -88,16 +98,37 @@ int	sort_alg(int *stack)
 	push(stack_a, stack_b, 1);
 	return (distance);
 }
+*/
+void show_stack(t_list *stack) 
+{
+	while(stack)
+	{
+		ft_printf("%d\n", ((t_stack *)stack->content)->value);
+		stack = stack->next;
+	}
+}
 
+void free_stack(t_list *stack)
+{
+	t_list	*temp;
+
+	while(stack)
+	{
+		temp = stack;
+		stack = stack->next;
+		free(temp->content);
+		free(temp);
+	}
+}
 int	main(int argc, char *argv[])
 {
 	int	*array;
 	int	i;
-	int	movements;
-
-	movements = 0;
+	t_list	*stack_a;
+	t_list	*stack_b;
+	
 	i = 1;
-	array = malloc(argc * sizeof(int));
+	array = malloc((argc - 1) * sizeof(int));
 	if (argc < 2 || !array)
 	{
 		ft_printf("Error");
@@ -108,8 +139,10 @@ int	main(int argc, char *argv[])
 		array[i - 1] = ft_atoi(argv[i]);
 		i++;
 	}
-	array[i - 1] = '\0';
-	movements += sort_alg(array);
-	ft_printf("El array se ha movido %d movimientos", movements);
-	return (movements);
+	stack_a =create_stack(array);
+	stack_b = NULL;
+	show_stack(stack_a);
+	ft_printf("\n-\na\n");
+	free_stack(stack_a);
+	free(array);
 }

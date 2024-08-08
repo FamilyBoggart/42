@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 11:28:33 by alerome2          #+#    #+#             */
-/*   Updated: 2024/07/23 20:56:55 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/08/08 13:24:37 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,7 @@
 
 typedef struct s_stack
 {
-	int				value;
-	struct s_stack	*top;
-	struct s_stack	*back;
-	int				is_top;
-	int				is_bottom;
+	int					value;
 }	t_stack;
 
 int		checker(int *numbers);

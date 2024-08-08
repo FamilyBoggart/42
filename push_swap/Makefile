@@ -16,7 +16,7 @@ clean :
 	rm *.o 
 
 fclean :
-	rm -rf *.o libft/libft.a libft/obj $(NAME)
+	rm -rf *.o libft/libft.a libft/obj obj $(NAME)
 
 re : fclean all
 
@@ -26,3 +26,5 @@ $(PUSH_SWAP_OBJS) : $(PUSH_SWAP_NAMES)
 $(NAME) : $(OBJS)
 	$(MAKE) -C libft re
 	$(COMPILER) $(OBJS) $(LIBRARY) -o $(NAME)
+	mkdir obj
+	mv *.o obj
