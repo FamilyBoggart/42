@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 11:28:33 by alerome2          #+#    #+#             */
-/*   Updated: 2024/09/09 17:51:06 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/09/09 21:23:06 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,8 @@ typedef struct s_stack
 	int					pos;
 }	t_stack;
 
-int		find_min(t_list *stack, int prev_min);
-void	find_pos(t_list *stack);
-void 	show_pos(t_list *stack);
+int		find_min(t_list *stack, int prev_min, char *type);
+
 void	sort_3(t_list **stack);
 void	sort_2(t_list **stack);
 void	show(t_list *stack_a, t_list *stack_b);
@@ -39,7 +38,12 @@ void	push_a(t_list **stack_a, t_list **stack_b);
 void	rotate(t_list **stack);
 void	rev_rotate(t_list **stack);
 int		array_len(int *stack);
-void	set_weight(t_list *stack_a, t_list *stack_b);
+// Positions
+void	find_pos(t_list *stack);
+int		find_next_pos(t_list *stack, int pos, int size);
+void 	show_pos(t_list *stack);
+// Weight
+void 	weight(t_list *stack_a, t_list *stack_b);
 //Instructions
 void	exec_swap(t_list **stack, int option);
 void	exec_push(t_list **stack_a, t_list **stack_b, int option);

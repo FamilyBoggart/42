@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 10:08:11 by alerome2          #+#    #+#             */
-/*   Updated: 2024/09/09 17:51:17 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/09/09 21:26:10 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ void	show(t_list *stack_a, t_list *stack_b)
 	ft_printf("\nStack a\n--------\n");
 	while (stack_a)
 	{
-		ft_printf("%d: pos: %d\n", ((t_stack *)stack_a->content)->value, ((t_stack *)stack_a->content)->pos);
+		ft_printf("%d: pos: %d\tweight: %d\n", ((t_stack *)stack_a->content)->value, ((t_stack *)stack_a->content)->pos, ((t_stack *)stack_a->content)->weight);
 		stack_a = stack_a->next;	
 	}
 	ft_printf("Stack b\n--------\n");
 	while (stack_b)
 	{
-		ft_printf("%d: pos: %d\n", ((t_stack *)stack_b->content)->value, ((t_stack *)stack_b->content)->pos);
+		ft_printf("%d: pos: %d\tweight: %d\n", ((t_stack *)stack_b->content)->value, ((t_stack *)stack_b->content)->pos, ((t_stack *)stack_b->content)->weight);
 		stack_b = stack_b->next;	
 	}
 }
@@ -70,7 +70,7 @@ void	sort(t_list *stack_a, t_list *stack_b)
 	else if(ft_lstsize(stack_a) == 2)
 		sort_2(&stack_a);
 	
-	set_weight(stack_a, stack_b);
+	weight(stack_a, stack_b);
 	show(stack_a, stack_b);
 }
 

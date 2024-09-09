@@ -9,6 +9,7 @@ PUSH_SWAP_NAMES = main.c\
 				sort_alg.c\
 				weight_number.c\
 				text_instructions.c\
+				movements_calc.c\
 
 
 

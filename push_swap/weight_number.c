@@ -6,13 +6,13 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 13:03:14 by alerome2          #+#    #+#             */
-/*   Updated: 2024/09/09 17:53:22 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/09/09 21:22:59 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int find_min(t_list *stack, int prev_min)
+int find_min(t_list *stack, int prev_min, char *type)
 {
 	t_list	*temp;
 	int		min;
@@ -25,7 +25,10 @@ int find_min(t_list *stack, int prev_min)
 		min = MAX_INT;
 		while (temp)
 		{
-			number = ((t_stack *)temp->content)->value;
+			if(ft_strncmp(type, "value", 5) == 0)
+				number = ((t_stack *)temp->content)->value;
+			else if(ft_strncmp(type, "weight", 6) == 0)
+				number = ((t_stack *)temp->content)->weight;
 			if (number < min && (number > prev_min || number == MIN_INT))
 				min = number;	
 			temp = temp->next;
@@ -44,7 +47,7 @@ void find_pos(t_list *stack)
 	int		min;
 
 	size = ft_lstsize(stack);
-	min = find_min(stack,MIN_INT);
+	min = find_min(stack,MIN_INT, "value");
 	pos = 1;
 	while(size--)
 	{
@@ -56,16 +59,16 @@ void find_pos(t_list *stack)
 				((t_stack *)temp->content)->pos = pos;
 				pos++;
 				if (min == MIN_INT)
-					min = find_min(stack,min) + 1;
+					min = find_min(stack,min, "value") + 1;
 				else
-					min = find_min(stack,min);
+					min = find_min(stack,min, "value");
 			}
 			temp = temp->next;
 		}
 	}
 }
 
-int find_prev_pos(t_list *stack, int pos)
+int find_next_pos(t_list *stack, int pos, int size)
 {
 	t_list	*temp;
 	int		prev_pos;
@@ -73,7 +76,7 @@ int find_prev_pos(t_list *stack, int pos)
 
 	aux = pos;
 	prev_pos = 0;
-	while(aux--)
+	while(aux++<size)
 	{
 		temp = stack;
 		while(temp)
@@ -88,17 +91,10 @@ int find_prev_pos(t_list *stack, int pos)
 		if(prev_pos != 0)
 			break;
 	}
+	if(pos == size)
+		prev_pos = 1;
 	return (prev_pos);
 }
 
-void	set_weight(t_list *stack_a, t_list *stack_b)
-{
-	int			actualpos;
-	int			prevpos;
 
-	actualpos = ((t_stack *)stack_b->content)->pos;
-	prevpos = find_prev_pos(stack_a,actualpos);
-	ft_printf("actualpos: %d\n",actualpos);
-	ft_printf("prevpos: %d\n",prevpos);
-}
 
