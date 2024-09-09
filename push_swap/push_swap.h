@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 11:28:33 by alerome2          #+#    #+#             */
-/*   Updated: 2024/08/08 13:24:37 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/09/09 11:29:09 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,11 @@ typedef struct s_stack
 	int					value;
 }	t_stack;
 
+void	sort(t_list *stack_a, t_list *stack_b);
 int		checker(int *numbers);
-int		swap(int *stack, int len);
-int		push(int *stack_a, int *stack_b, int option);
-int		rotate(int *stack, int len);
-int		rev_rotate(int *stack, int len);
+void	swap(t_list *stack);
+void	push_b(t_list **stack_a, t_list **stack_b);
+void	push_a(t_list **stack_a, t_list **stack_b);
+void	rotate(t_list **stack);
+void	rev_rotate(t_list **stack);
 int		array_len(int *stack);

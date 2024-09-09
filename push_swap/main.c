@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 11:31:29 by alerome2          #+#    #+#             */
-/*   Updated: 2024/08/08 16:01:51 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/09/09 11:27:09 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ t_list	*create_stack(int *array)
 	t_list	*stack_a;
 	t_list	*wagon;
 	t_stack	*pointer;
+	t_stack	number;
 
 	stack_a = NULL;
-	while(*array)
+	while (*array)
 	{
-		t_stack	number;
 		wagon = malloc(sizeof(t_list));
-		pointer =malloc(sizeof(t_stack));
-		if(!wagon || !pointer)
+		pointer = malloc(sizeof(t_stack));
+		if (!wagon || !pointer)
 		{
 			free(wagon);
 			free(pointer);
@@ -40,7 +40,7 @@ t_list	*create_stack(int *array)
 		}
 		number.value = *array;
 		*pointer = number;
-		wagon->content=pointer;
+		wagon->content = pointer;
 		wagon->next = NULL;
 		ft_lstadd_back(&stack_a, wagon);
 		array++;
@@ -99,20 +99,20 @@ int	sort_alg(int *stack)
 	return (distance);
 }
 */
-void show_stack(t_list *stack) 
+void	show_stack(t_list *stack)
 {
-	while(stack)
+	while (stack)
 	{
-		ft_printf("%d\n", ((t_stack *)stack->content)->value);
+		ft_printf("%d", ((t_stack *)stack->content)->value);
 		stack = stack->next;
 	}
 }
 
-void free_stack(t_list *stack)
+void	free_stack(t_list *stack)
 {
 	t_list	*temp;
 
-	while(stack)
+	while (stack)
 	{
 		temp = stack;
 		stack = stack->next;
@@ -120,17 +120,19 @@ void free_stack(t_list *stack)
 		free(temp);
 	}
 }
+
 int	main(int argc, char *argv[])
 {
-	int	*array;
-	int	i;
+	int		*array;
+	int		i;
 	t_list	*stack_a;
 	t_list	*stack_b;
-	
+
 	i = 1;
 	array = malloc((argc - 1) * sizeof(int));
 	if (argc < 2 || !array)
 	{
+		free(array);
 		ft_printf("Error");
 		return (0);
 	}
@@ -139,10 +141,9 @@ int	main(int argc, char *argv[])
 		array[i - 1] = ft_atoi(argv[i]);
 		i++;
 	}
-	stack_a =create_stack(array);
+	stack_a = create_stack(array);
 	stack_b = NULL;
-	show_stack(stack_a);
-	ft_printf("\n-\na\n");
+	sort(stack_a, stack_b);
 	free_stack(stack_a);
 	free(array);
 }
