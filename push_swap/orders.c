@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   orders.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 11:27:19 by alerome2          #+#    #+#             */
-/*   Updated: 2024/09/09 11:28:31 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/09/09 12:31:50 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_list *stack)
+void	swap(t_list **stack)
 {
-	t_stack	*aux;
+	t_list	*aux;
+	t_list	*first;
+	t_list	*second;
 
-	aux = (t_stack *)(stack->content);
-	stack->content = stack->next->content;
-	stack->next->content = aux;
+	if (!*stack || !(*stack)->next)
+		return;
+	aux = *stack;
+	first = aux;
+	second = aux->next;
+	aux = second->next;
+	*stack = second;
+	(*stack)->next = first;
+	first->next = aux;
 }
 
 void	rotate(t_list **stack)

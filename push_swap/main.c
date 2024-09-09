@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 11:31:29 by alerome2          #+#    #+#             */
-/*   Updated: 2024/09/09 11:27:09 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/09/09 12:45:32 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,66 +46,6 @@ t_list	*create_stack(int *array)
 		array++;
 	}
 	return (stack_a);
-}
-
-/*
-int	find_min(int *stack)
-{
-	int	min;
-	int	i;
-	int	start;
-
-	i = 0;
-	min = 2147483647;
-	while (*stack)
-	{
-		if (*stack < min)
-		{
-			min = *stack;
-			start = i;
-		}
-		stack++;
-		i++;
-	}
-	ft_printf("min number: %d\nPosition: %d\n", min, start);
-	return (start);
-}
-
-int	sort_alg(int *stack)
-{
-	int	len;
-	int	start;
-	int	*stack_a;
-	int	*stack_b;
-	int	distance;
-
-	distance = 0;
-	stack_a = stack;
-	stack_b = (void *)0;
-	if (!checker(stack))
-	{
-		len = array_len(stack_a);
-		start = find_min(stack_a);
-		if (start == 0)
-			distance += push(stack_a, stack_b, 0);
-		else if (start == 1)
-			distance += swap(stack_a, len);
-		else if (start <= (len / 2) + 1)
-			distance += rotate(stack_a, len);
-		else
-			distance += rev_rotate(stack_a, len);
-	}
-	push(stack_a, stack_b, 1);
-	return (distance);
-}
-*/
-void	show_stack(t_list *stack)
-{
-	while (stack)
-	{
-		ft_printf("%d", ((t_stack *)stack->content)->value);
-		stack = stack->next;
-	}
 }
 
 void	free_stack(t_list *stack)
