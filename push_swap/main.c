@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 11:31:29 by alerome2          #+#    #+#             */
-/*   Updated: 2024/09/09 12:45:32 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/09/09 13:56:40 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,9 @@ int	main(int argc, char *argv[])
 	}
 	stack_a = create_stack(array);
 	stack_b = NULL;
+	
+	show_pos(stack_a);
+	
 	sort(stack_a, stack_b);
 	free_stack(stack_a);
 	free(array);

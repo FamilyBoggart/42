@@ -6,7 +6,8 @@ PUSH_SWAP_OBJS = $(PUSH_SWAP_NAMES: .c=.o)
 LIBRARY = ./libft/libft.a
 PUSH_SWAP_NAMES = main.c\
 				orders.c\
-				sort_alg.c
+				sort_alg.c\
+				weight_number.c
 
 
 
