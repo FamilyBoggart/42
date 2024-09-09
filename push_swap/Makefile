@@ -7,7 +7,8 @@ LIBRARY = ./libft/libft.a
 PUSH_SWAP_NAMES = main.c\
 				orders.c\
 				sort_alg.c\
-				weight_number.c
+				weight_number.c\
+				text_instructions.c\
 
 
 

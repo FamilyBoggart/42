@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 13:03:14 by alerome2          #+#    #+#             */
-/*   Updated: 2024/09/09 14:08:54 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/09/09 17:53:22 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,40 @@ void find_pos(t_list *stack)
 	}
 }
 
-void show_pos(t_list *stack)
+int find_prev_pos(t_list *stack, int pos)
 {
-	find_pos(stack);
-	while (stack)
+	t_list	*temp;
+	int		prev_pos;
+	int		aux;
+
+	aux = pos;
+	prev_pos = 0;
+	while(aux--)
 	{
-		ft_printf("NUmber: %d, pos: %d\n", ((t_stack *)stack->content)->value, ((t_stack *)stack->content)->pos);
-		stack = stack->next;
+		temp = stack;
+		while(temp)
+		{
+			if (((t_stack *)temp->content)->pos == aux)
+			{
+				prev_pos = ((t_stack *)temp->content)->pos;
+				break;
+			}
+			temp = temp->next;
+		}
+		if(prev_pos != 0)
+			break;
 	}
+	return (prev_pos);
+}
+
+void	set_weight(t_list *stack_a, t_list *stack_b)
+{
+	int			actualpos;
+	int			prevpos;
+
+	actualpos = ((t_stack *)stack_b->content)->pos;
+	prevpos = find_prev_pos(stack_a,actualpos);
+	ft_printf("actualpos: %d\n",actualpos);
+	ft_printf("prevpos: %d\n",prevpos);
 }
 
