@@ -6,24 +6,25 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 18:34:33 by alerome2          #+#    #+#             */
-/*   Updated: 2024/09/09 21:24:22 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/09/10 12:00:13 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int upper(t_list *stack, int cont)
+int up_down(t_list *stack, int cont)
 {
-	if (cont != 0)
-	{
-		if (cont > ft_lstsize(stack) / 2)
-			return (ft_lstsize(stack) - cont);
-		else
-			return (cont);
-	}
-	else
+	int		size;
+
+	size = ft_lstsize(stack);
+	if (cont == 0)
 		return (0);
-	}
+	else if (cont >= (size / 2) + 1)
+		cont = (size / 2) + 1 - cont + 1; //Hacia abajo
+	else
+		cont = cont; //Hacia arriba
+	return (cont);
+}
 
 int count_movements_a(t_list *stack_a, int nextpos)
 {
@@ -36,7 +37,7 @@ int count_movements_a(t_list *stack_a, int nextpos)
 	{
 		if (((t_stack *)temp->content)->pos == nextpos)
 		{
-			return (upper(stack_a, cont));
+			return (up_down(stack_a, cont));
 		}
 		cont++;
 		temp = temp->next;
@@ -59,6 +60,7 @@ void weight(t_list *stack_a, t_list *stack_b)
 		actualpos = ((t_stack *)temp->content)->pos;
 		nextpos = find_next_pos(stack_a, actualpos, size);
 		weight = count_movements_a(stack_a, nextpos);
+		ft_printf("pos: %d nextpos: %d\n", actualpos, nextpos);
 		((t_stack *)temp->content)->weight = weight;
 		temp = temp->next;
 	}

@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 13:03:14 by alerome2          #+#    #+#             */
-/*   Updated: 2024/09/09 21:22:59 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/09/10 11:58:57 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,30 @@ void find_pos(t_list *stack)
 	}
 }
 
+int find_max_pos(t_list *stack)
+{
+	t_list	*temp;
+	int		max;
+
+	temp = stack;
+	max = 0;
+	while(temp)
+	{
+		if (((t_stack *)temp->content)->pos > max)
+			max = ((t_stack *)temp->content)->pos;
+		temp = temp->next;
+	}
+	return (max);
+}
+
 int find_next_pos(t_list *stack, int pos, int size)
 {
 	t_list	*temp;
 	int		prev_pos;
 	int		aux;
+	int		max;
 
+	max = find_max_pos(stack);
 	aux = pos;
 	prev_pos = 0;
 	while(aux++<size)
@@ -91,8 +109,8 @@ int find_next_pos(t_list *stack, int pos, int size)
 		if(prev_pos != 0)
 			break;
 	}
-	if(pos == size)
-		prev_pos = 1;
+	if(pos > max)
+		prev_pos = ((t_stack *)stack->content)->pos;
 	return (prev_pos);
 }
 
