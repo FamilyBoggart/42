@@ -10,6 +10,7 @@ PUSH_SWAP_NAMES = main.c\
 				weight_number.c\
 				text_instructions.c\
 				movements_calc.c\
+				pusher.c
 
 
 

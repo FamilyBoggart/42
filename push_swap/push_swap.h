@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 11:28:33 by alerome2          #+#    #+#             */
-/*   Updated: 2024/09/10 18:48:34 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/09/11 13:49:42 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,6 @@ typedef struct s_stack
 }	t_stack;
 
 int		find_min(t_list *stack, int prev_min, char *type);
-
-void	sort_3(t_list **stack);
-void	sort_2(t_list **stack);
 void	show(t_list *stack_a, t_list *stack_b);
 void	sort(t_list *stack_a, t_list *stack_b);
 int		checker(int *numbers);
@@ -45,8 +42,9 @@ int		find_next_pos(t_list *stack, int pos, int size);
 void 	show_pos(t_list *stack);
 // Weight
 void 	weight(t_list *stack_a, t_list *stack_b);
+void	push_from_b(t_list **stack_a, t_list **stack_b,t_list *t);
 //Instructions
 void	exec_swap(t_list **stack, int option);
 void	exec_push(t_list **stack_a, t_list **stack_b, int option);
-void	exec_rotate(t_list **stack, int option);
-void	exec_rev_rotate(t_list **stack, int option);
+void	exec_rotate(t_list **stack_a,t_list **stack_b, int option);
+void	exec_rev_rotate(t_list **stack_a, t_list **stack_b, int option);

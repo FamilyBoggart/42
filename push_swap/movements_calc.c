@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 18:34:33 by alerome2          #+#    #+#             */
-/*   Updated: 2024/09/11 12:23:05 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/09/11 12:47:58 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,30 @@ void	up_down_a(t_list *stack, int cont, t_list **temp)
 	}
 }
 
+void	total_weight(t_list	**temp)
+{
+	int		mov_a;
+	int		weight_a;
+	int		mov_b;
+	int		weight_b;
+
+	weight_a = ((t_stack *)(*temp)->content)->moves[0];
+	mov_a = ((t_stack *)(*temp)->content)->moves[1];
+	weight_b = ((t_stack *)(*temp)->content)->moves[2];
+	mov_b = ((t_stack *)(*temp)->content)->moves[3];
+	if(mov_a == mov_b)
+	{
+		if(weight_a > weight_b)
+			((t_stack *)(*temp)->content)->weight = weight_a;
+		else
+			((t_stack *)(*temp)->content)->weight = weight_b;
+
+	}
+	else
+	{
+		((t_stack *)(*temp)->content)->weight = weight_a + weight_b;
+	}
+}
 void	count_movements(t_list *stack, t_list **t, int pos, int opt)
 {
 	t_list	*temp;
@@ -76,9 +100,6 @@ void	weight(t_list *stack_a, t_list *stack_b)
 	t_list	*temp;
 
 	temp = stack_b;
-	ft_printf("Pre movement\n");
-	show(stack_a, stack_b);
-	ft_printf("\nPost movement\n");
 	size = ft_lstsize(stack_a) + ft_lstsize(stack_b);
 	while (temp)
 	{
@@ -87,6 +108,7 @@ void	weight(t_list *stack_a, t_list *stack_b)
 		ft_printf("pos: %d nextpos: %d\n", actualpos, nextpos);
 		count_movements(stack_a, &temp, nextpos, 1);
 		count_movements(stack_b, &temp, actualpos, 2);
+		total_weight(&temp);
 		temp = temp->next;
 	}
 }

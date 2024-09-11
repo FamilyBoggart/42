@@ -14,6 +14,7 @@ Text_instructions debe modificarse o bien para admitir 2 stacks o bien separar l
 Crear funcion para calcular pesos de cada uno de los numeros
 Crear funcion para encontrar el minimo peso del stack b
 En funcion al metodo anterior, crear la funcion para colocar el nodo b que menos pese en el stack a
+Solucionar el problema del 33 (no funciona cada 6 valores)
 
 
 
