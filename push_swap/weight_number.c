@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 13:03:14 by alerome2          #+#    #+#             */
-/*   Updated: 2024/09/11 10:30:21 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/09/11 17:48:58 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,4 @@ int find_next_pos(t_list *stack, int pos, int size)
 		prev_pos = ((t_stack *)stack->content)->pos;
 	return (prev_pos);
 }
-
-
 

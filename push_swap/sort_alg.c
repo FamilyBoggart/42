@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 10:08:11 by alerome2          #+#    #+#             */
-/*   Updated: 2024/09/11 13:57:37 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/09/11 17:50:38 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ t_list	*execute(t_list *stack_b)
 	{
 		if (((t_stack *)temp->content)->weight == min_weight)
 		{
-			ft_printf("pushing %d\n", ((t_stack *)temp->content)->value);
+			//ft_printf("pushing %d\n", ((t_stack *)temp->content)->value);
 			break ;
 		}
 		temp = temp->next;
@@ -71,18 +71,46 @@ t_list	*execute(t_list *stack_b)
 	return (temp);
 }
 
+void final_move(t_list **stack_a)
+{
+	int		min;
+	t_list	*temp;
+	int		size;
+	
+	size = ft_lstsize(*stack_a);
+	temp = *stack_a;
+	min = find_min(*stack_a, MIN_INT, "value");
+	while(temp)
+	{
+		if (((t_stack *)temp->content)->value == min)
+			break ;
+		temp = temp->next;
+	}
+	if (size / 2 > ((t_stack *)temp->content)->pos)
+	{
+		while(((t_stack *)(*stack_a)->content)->value != min)
+			exec_rotate(stack_a, NULL, 1);
+	}
+	else
+	{
+		while(((t_stack *)(*stack_a)->content)->value != min)
+			exec_rev_rotate(stack_a, NULL, 1);
+	}
+}
+
 void	sort(t_list *stack_a, t_list *stack_b)
 {
 	while (ft_lstsize(stack_a)> 3)
 		exec_push(&stack_a, &stack_b,1);
-	if(ft_lstsize(stack_a) == 3)
+	if (ft_lstsize(stack_a) == 3)
 		sort_3(&stack_a, &stack_b);
-	else if(ft_lstsize(stack_a) == 2)
+	else if (ft_lstsize(stack_a) == 2)
 		sort_2(&stack_a);
-	
-	weight(stack_a, stack_b);
-	show(stack_a, stack_b);
-	push_from_b(&stack_a, &stack_b,execute(stack_b));
+	while (stack_b)
+	{
+		weight(stack_a, stack_b);
+		push_from_b(&stack_a, &stack_b, execute(stack_b));
+	}
+	final_move(&stack_a);
 	show(stack_a, stack_b);
 }
-

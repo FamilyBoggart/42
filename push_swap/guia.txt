@@ -5,6 +5,10 @@ El programa es capaz de realizar ordenaciones imprimiendo la instruccion que rea
 El algoritmo vacia el stack a hasta tener 3 numeros y te los ordena
 El numero ahora posee la propiedad de posicion ideal, comenzando por el 1
 Cada elemento del stack B reconoce la posicion a la que debe ir, contando los movimientos y la direccion
+El stack b se calcula
+
+
+EL ALGORITMO FUNCIONA
 
 
 

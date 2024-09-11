@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 18:34:33 by alerome2          #+#    #+#             */
-/*   Updated: 2024/09/11 12:47:58 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/09/11 17:46:26 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void	weight(t_list *stack_a, t_list *stack_b)
 	{
 		actualpos = ((t_stack *)temp->content)->pos;
 		nextpos = find_next_pos(stack_a, actualpos, size);
-		ft_printf("pos: %d nextpos: %d\n", actualpos, nextpos);
+		//ft_printf("pos: %d nextpos: %d\n", actualpos, nextpos);
 		count_movements(stack_a, &temp, nextpos, 1);
 		count_movements(stack_b, &temp, actualpos, 2);
 		total_weight(&temp);
