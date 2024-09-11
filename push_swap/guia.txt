@@ -4,6 +4,7 @@ las ordenes funcionan con stacks (swap(), rotate(), rev_rotate(), push_a(), push
 El programa es capaz de realizar ordenaciones imprimiendo la instruccion que realiza
 El algoritmo vacia el stack a hasta tener 3 numeros y te los ordena
 El numero ahora posee la propiedad de posicion ideal, comenzando por el 1
+Cada elemento del stack B reconoce la posicion a la que debe ir, contando los movimientos y la direccion
 
 
 
@@ -22,3 +23,4 @@ ALGORITMO
 1. Calcula las posiciones ideales de cada numero dentro de la lista enlazada
 2. Envia todo salvo 3 numeros al stack_B
 3. Ordena los 3 numeros del stack_A
+4. El programa calcula para cada elemento del stack B el numero y direccion de los movimientos para enviar al A (sin contar B)

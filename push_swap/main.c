@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 11:31:29 by alerome2          #+#    #+#             */
-/*   Updated: 2024/09/11 10:59:26 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/09/11 12:03:45 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,17 @@ void	free_stack(t_list *stack)
 	}
 }
 
+void	set_default_moves(t_list *stack)
+{
+	t_list	*temp;
+
+	temp = stack;
+	while (temp)
+	{
+		((t_stack *)temp->content)->moves = calloc(4, sizeof(int));
+		temp = temp->next;
+	}
+}
 
 int	main(int argc, char *argv[])
 {
@@ -84,9 +95,8 @@ int	main(int argc, char *argv[])
 	}
 	stack_a = create_stack(array);
 	stack_b = NULL;
-	
 	find_pos(stack_a);
-	
+	set_default_moves(stack_a);
 	sort(stack_a, stack_b);
 	free_stack(stack_a);
 	free(array);
