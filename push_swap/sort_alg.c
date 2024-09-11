@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 10:08:11 by alerome2          #+#    #+#             */
-/*   Updated: 2024/09/10 11:59:53 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/09/11 11:19:34 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ void	show(t_list *stack_a, t_list *stack_b)
 	ft_printf("\nStack a\n--------\n");
 	while (stack_a)
 	{
-		ft_printf("%d:\tpos: %d\tweight: %d\n", ((t_stack *)stack_a->content)->value, ((t_stack *)stack_a->content)->pos, ((t_stack *)stack_a->content)->weight);
+		ft_printf("%d:\tpos: %d\tweight_a: %d\tdirection: %d\tweight_b: %d\tdirection: %d\n", ((t_stack *)stack_a->content)->value, ((t_stack *)stack_a->content)->pos, ((t_stack *)stack_a->content)->moves[0], ((t_stack *)stack_a->content)->moves[1], ((t_stack *)stack_a->content)->moves[2], ((t_stack *)stack_a->content)->moves[3]);
 		stack_a = stack_a->next;	
 	}
 	ft_printf("Stack b\n--------\n");
 	while (stack_b)
 	{
-		ft_printf("%d:\tpos: %d\tweight: %d\n", ((t_stack *)stack_b->content)->value, ((t_stack *)stack_b->content)->pos, ((t_stack *)stack_b->content)->weight);
+		ft_printf("%d:\tpos: %d\tweight_a: %d\tdirection: %d\tweight_b: %d\tdirection: %d\n", ((t_stack *)stack_b->content)->value, ((t_stack *)stack_b->content)->pos, ((t_stack *)stack_b->content)->moves[0], ((t_stack *)stack_b->content)->moves[1], ((t_stack *)stack_b->content)->moves[2], ((t_stack *)stack_b->content)->moves[3]);
 		stack_b = stack_b->next;	
 	}
 }

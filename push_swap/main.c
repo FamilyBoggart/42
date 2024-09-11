@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 11:31:29 by alerome2          #+#    #+#             */
-/*   Updated: 2024/09/09 14:20:52 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/09/11 10:59:26 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	free_stack(t_list *stack)
 		free(temp);
 	}
 }
+
 
 int	main(int argc, char *argv[])
 {

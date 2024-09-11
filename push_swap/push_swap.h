@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 11:28:33 by alerome2          #+#    #+#             */
-/*   Updated: 2024/09/10 11:56:27 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/09/10 18:48:34 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_stack
 	int					value;
 	int					weight;
 	int					pos;
+	int					*moves;
 }	t_stack;
 
 int		find_min(t_list *stack, int prev_min, char *type);

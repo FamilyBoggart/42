@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 13:03:14 by alerome2          #+#    #+#             */
-/*   Updated: 2024/09/10 11:58:57 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/09/11 10:30:21 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int find_min(t_list *stack, int prev_min, char *type)
 			if(ft_strncmp(type, "value", 5) == 0)
 				number = ((t_stack *)temp->content)->value;
 			else if(ft_strncmp(type, "weight", 6) == 0)
-				number = ((t_stack *)temp->content)->weight;
+				number = ((t_stack *)temp->content)->moves[0];
 			if (number < min && (number > prev_min || number == MIN_INT))
 				min = number;	
 			temp = temp->next;
