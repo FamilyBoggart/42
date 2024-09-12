@@ -10,24 +10,22 @@ PUSH_SWAP_NAMES = main.c\
 				weight_number.c\
 				text_instructions.c\
 				movements_calc.c\
-				pusher.c
+				pusher.c\
+				error_check.c
 
 #Rules
 all : $(NAME)
 
 clean : 
-	rm *.o 
+	rm -rf obj
 
-fclean :
-	rm -rf *.o libft/libft.a libft/obj obj $(NAME)
+fclean : clean
+	@rm -f $(NAME)
+	@make -C libft fclean
 
 re : fclean all
 
+$(NAME) : $(PUSH_SWAP_NAMES)
+	@make -C libft re
+	@$(COMPILER) $(PUSH_SWAP_NAMES) $(LIBRARY) -o $(NAME)
 
-$(PUSH_SWAP_OBJS) : $(PUSH_SWAP_NAMES)
-	$(COMPILER) -c $(PUSH_SWAP_NAMES)
-$(NAME) : $(OBJS)
-	$(MAKE) -C libft re
-	$(COMPILER) $(OBJS) $(LIBRARY) -o $(NAME)
-	mkdir obj
-	mv *.o obj

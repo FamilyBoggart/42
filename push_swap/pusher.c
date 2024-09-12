@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 13:48:54 by alerome2          #+#    #+#             */
-/*   Updated: 2024/09/12 10:47:27 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/09/12 14:02:12 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,17 @@ void	execute_move(t_list **stack_a, t_list **stack_b, int opt)
 	if (opt == 1)
 		exec_push(stack_a, stack_b, 2);
 	else if (opt == 2)
-		exec_rotate(stack_a, stack_b, 2);
-	else if (opt == 3)
 		exec_rev_rotate(stack_a, stack_b, 2);
+	else if (opt == 3)
+		exec_rotate(stack_a, stack_b, 2);
 	else if (opt == 4)
 		exec_rev_rotate(stack_a, stack_b, 1);
 	else if (opt == 5)
 		exec_rotate(stack_a, stack_b, 1);
 	else if (opt == 6)
-		exec_rotate(stack_a, stack_b, 3);
-	else if (opt == 7)
 		exec_rev_rotate(stack_a, stack_b, 3);
+	else if (opt == 7)
+		exec_rotate(stack_a, stack_b, 3);
 }
 
 void	push_from_b(t_list **stack_a, t_list **stack_b, t_list *t)
