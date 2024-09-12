@@ -6,17 +6,28 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 11:31:29 by alerome2          #+#    #+#             */
-/*   Updated: 2024/09/11 17:48:50 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/09/12 11:19:36 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// BUCLE (ARRAY NO ORDENADO)
-// 1. Calculas tamaño de array
-// 2. Encuentras la posicion del valor minimo
-// 3. Calculas el camino mas corto para moverlo a la posicion 0
-// 4. Mueves el minimo al stack_b
-// FIN BUCLE (ARRAY NO EXISTENTE)
-// 5. Movemos todos los valores de stack b a stack a
+/*
+void	show(t_list *stack_a, t_list *stack_b)
+{
+	ft_printf("\nStack a\n--------\n");
+	while (stack_a)
+	{
+		ft_printf("%d:\tpos: %d\tweight_a: %d\tdirection: %d\tweight_b: %d\tdirection: %d\ttotal_weight: %d\n", ((t_stack *)stack_a->content)->value, ((t_stack *)stack_a->content)->pos, ((t_stack *)stack_a->content)->moves[0], ((t_stack *)stack_a->content)->moves[1], ((t_stack *)stack_a->content)->moves[2], ((t_stack *)stack_a->content)->moves[3], ((t_stack *)stack_a->content)->weight);
+		stack_a = stack_a->next;	
+	}
+	ft_printf("Stack b\n--------\n");
+	while (stack_b)
+	{
+		ft_printf("%d:\tpos: %d\tweight_a: %d\tdirection: %d\tweight_b: %d\tdirection: %d\ttotal_weight: %d\n", ((t_stack *)stack_b->content)->value, ((t_stack *)stack_b->content)->pos, ((t_stack *)stack_b->content)->moves[0], ((t_stack *)stack_b->content)->moves[1], ((t_stack *)stack_b->content)->moves[2], ((t_stack *)stack_b->content)->moves[3], ((t_stack *)stack_b->content)->weight);
+		stack_b = stack_b->next;	
+	}
+}
+*/
+
 #include "push_swap.h"
 
 t_list	*create_stack(int *array)
@@ -100,20 +111,4 @@ int	main(int argc, char *argv[])
 	sort(stack_a, stack_b);
 	free_stack(stack_a);
 	free(array);
-}
-
-void	show(t_list *stack_a, t_list *stack_b)
-{
-	ft_printf("\nStack a\n--------\n");
-	while (stack_a)
-	{
-		ft_printf("%d:\tpos: %d\tweight_a: %d\tdirection: %d\tweight_b: %d\tdirection: %d\ttotal_weight: %d\n", ((t_stack *)stack_a->content)->value, ((t_stack *)stack_a->content)->pos, ((t_stack *)stack_a->content)->moves[0], ((t_stack *)stack_a->content)->moves[1], ((t_stack *)stack_a->content)->moves[2], ((t_stack *)stack_a->content)->moves[3], ((t_stack *)stack_a->content)->weight);
-		stack_a = stack_a->next;	
-	}
-	ft_printf("Stack b\n--------\n");
-	while (stack_b)
-	{
-		ft_printf("%d:\tpos: %d\tweight_a: %d\tdirection: %d\tweight_b: %d\tdirection: %d\ttotal_weight: %d\n", ((t_stack *)stack_b->content)->value, ((t_stack *)stack_b->content)->pos, ((t_stack *)stack_b->content)->moves[0], ((t_stack *)stack_b->content)->moves[1], ((t_stack *)stack_b->content)->moves[2], ((t_stack *)stack_b->content)->moves[3], ((t_stack *)stack_b->content)->weight);
-		stack_b = stack_b->next;	
-	}
 }

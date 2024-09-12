@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 18:34:33 by alerome2          #+#    #+#             */
-/*   Updated: 2024/09/11 17:46:26 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/09/12 10:48:26 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,19 +57,19 @@ void	total_weight(t_list	**temp)
 	mov_a = ((t_stack *)(*temp)->content)->moves[1];
 	weight_b = ((t_stack *)(*temp)->content)->moves[2];
 	mov_b = ((t_stack *)(*temp)->content)->moves[3];
-	if(mov_a == mov_b)
+	if (mov_a == mov_b)
 	{
-		if(weight_a > weight_b)
+		if (weight_a > weight_b)
 			((t_stack *)(*temp)->content)->weight = weight_a;
 		else
 			((t_stack *)(*temp)->content)->weight = weight_b;
-
 	}
 	else
 	{
 		((t_stack *)(*temp)->content)->weight = weight_a + weight_b;
 	}
 }
+
 void	count_movements(t_list *stack, t_list **t, int pos, int opt)
 {
 	t_list	*temp;
@@ -105,7 +105,6 @@ void	weight(t_list *stack_a, t_list *stack_b)
 	{
 		actualpos = ((t_stack *)temp->content)->pos;
 		nextpos = find_next_pos(stack_a, actualpos, size);
-		//ft_printf("pos: %d nextpos: %d\n", actualpos, nextpos);
 		count_movements(stack_a, &temp, nextpos, 1);
 		count_movements(stack_b, &temp, actualpos, 2);
 		total_weight(&temp);

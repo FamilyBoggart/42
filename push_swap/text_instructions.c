@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 11:54:48 by alerome2          #+#    #+#             */
-/*   Updated: 2024/09/11 17:50:57 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/09/12 10:49:41 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	exec_swap(t_list **stack, int option)
 {
-	if(option == 1)
+	if (option == 1)
 	{
 		swap(stack);
 		ft_printf("sa\n");
@@ -28,12 +28,12 @@ void	exec_swap(t_list **stack, int option)
 	{
 		swap(stack);
 		ft_printf("ss\n");
-	}	
+	}
 }
 
 void	exec_push(t_list **stack_a, t_list **stack_b, int option)
 {
-	if(option == 1)
+	if (option == 1)
 	{
 		push_b(stack_a, stack_b);
 		ft_printf("pb\n");
@@ -47,7 +47,7 @@ void	exec_push(t_list **stack_a, t_list **stack_b, int option)
 
 void	exec_rotate(t_list **stack_a, t_list **stack_b, int option)
 {
-	if(option == 1)
+	if (option == 1)
 	{
 		rotate(stack_a);
 		ft_printf("ra\n");
@@ -65,9 +65,9 @@ void	exec_rotate(t_list **stack_a, t_list **stack_b, int option)
 	}
 }
 
-void	exec_rev_rotate(t_list **stack_a,t_list **stack_b, int option)
+void	exec_rev_rotate(t_list **stack_a, t_list **stack_b, int option)
 {
-	if(option == 1)
+	if (option == 1)
 	{
 		rev_rotate(stack_a);
 		ft_printf("rra\n");

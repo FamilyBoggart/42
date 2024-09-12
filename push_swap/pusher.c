@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 13:48:54 by alerome2          #+#    #+#             */
-/*   Updated: 2024/09/11 17:37:16 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/09/12 10:47:27 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,40 +33,39 @@ int	weight_zero(int weight_a, int weight_b, int mov_a, int mov_b)
 	return (0);
 }
 
-int by_mov(int mov_a, int mov_b)
+int	by_mov(int mov_a, int mov_b)
 {
-	if(mov_a == mov_b && mov_a == 1)
-		return(6);
-	else if(mov_a == mov_b && mov_a == 2)
-		return(7);
-	else if(mov_a == 1)
-		return(4);
-	else if(mov_a == 2)
-		return(5);
+	if (mov_a == mov_b && mov_a == 1)
+		return (6);
+	else if (mov_a == mov_b && mov_a == 2)
+		return (7);
+	else if (mov_a == 1)
+		return (4);
+	else if (mov_a == 2)
+		return (5);
 	else
-		return(0);
-	
+		return (0);
 }
 
-void execute_move(t_list **stack_a, t_list **stack_b, int opt)
+void	execute_move(t_list **stack_a, t_list **stack_b, int opt)
 {
-	if(opt == 1)
+	if (opt == 1)
 		exec_push(stack_a, stack_b, 2);
-	else if(opt == 2)
+	else if (opt == 2)
 		exec_rotate(stack_a, stack_b, 2);
-	else if(opt == 3)
+	else if (opt == 3)
 		exec_rev_rotate(stack_a, stack_b, 2);
-	else if(opt == 4)
+	else if (opt == 4)
 		exec_rev_rotate(stack_a, stack_b, 1);
-	else if(opt == 5)
+	else if (opt == 5)
 		exec_rotate(stack_a, stack_b, 1);
-	else if(opt == 6)
+	else if (opt == 6)
 		exec_rotate(stack_a, stack_b, 3);
-	else if(opt == 7)
+	else if (opt == 7)
 		exec_rev_rotate(stack_a, stack_b, 3);
 }
 
-void	push_from_b(t_list **stack_a, t_list **stack_b,t_list *t)
+void	push_from_b(t_list **stack_a, t_list **stack_b, t_list *t)
 {
 	int	weight_a;
 	int	weight_b;
@@ -81,5 +80,5 @@ void	push_from_b(t_list **stack_a, t_list **stack_b,t_list *t)
 	opt = weight_zero(weight_a, weight_b, mov_a, mov_b);
 	if (opt == 0)
 		opt = by_mov(mov_a, mov_b);
-	execute_move(stack_a, stack_b, opt);	
+	execute_move(stack_a, stack_b, opt);
 }

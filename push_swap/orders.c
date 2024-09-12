@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 11:27:19 by alerome2          #+#    #+#             */
-/*   Updated: 2024/09/09 12:31:50 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/09/12 11:07:01 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	swap(t_list **stack)
 	t_list	*second;
 
 	if (!*stack || !(*stack)->next)
-		return;
+		return ;
 	aux = *stack;
 	first = aux;
 	second = aux->next;
@@ -33,22 +33,22 @@ void	rotate(t_list **stack)
 {
 	t_list	*last;
 	t_list	*aux;
-	
+
 	last = ft_lstlast(*stack);
 	aux = *stack;
-	while(aux->next != last)
+	while (aux->next != last)
 		aux = aux->next;
 	last->next = *stack;
 	aux->next = NULL;
-	if(!aux->next)
-	*stack = last;
+	if (!aux->next)
+		*stack = last;
 }
 
 void	rev_rotate(t_list **stack)
 {
 	t_list	*first;
 	t_list	*aux;
-	
+
 	aux = *stack;
 	first = (*stack)->next;
 	*stack = ft_lstlast(*stack);
@@ -62,7 +62,7 @@ void	push_b(t_list **stack_a, t_list **stack_b)
 	t_list	*aux;
 
 	if (!*stack_a)
-		return;
+		return ;
 	aux = *stack_a;
 	*stack_a = (*stack_a)->next;
 	ft_lstadd_front(stack_b, aux);
@@ -73,7 +73,7 @@ void	push_a(t_list **stack_a, t_list **stack_b)
 	t_list	*aux;
 
 	if (!*stack_b)
-		return;
+		return ;
 	aux = *stack_b;
 	*stack_b = (*stack_b)->next;
 	ft_lstadd_front(stack_a, aux);
