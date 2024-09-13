@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 11:28:33 by alerome2          #+#    #+#             */
-/*   Updated: 2024/09/12 14:58:43 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/09/13 14:25:35 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		check(char **str, int *array);
 int		error_duplicated(int *array);
 // Algorithms
 void	show(t_list *stack_a, t_list *stack_b);
-void	sort(t_list *stack_a, t_list *stack_b);
+void	sort(t_list *stack_a);
 // Positions
 int		find_min(t_list *stack, int prev_min, char *type);
 void	find_pos(t_list *stack);

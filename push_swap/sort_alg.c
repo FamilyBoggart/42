@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 10:08:11 by alerome2          #+#    #+#             */
-/*   Updated: 2024/09/12 14:39:07 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/09/13 14:31:18 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,14 +103,24 @@ void	final_move(t_list **stack_a)
 	}
 }
 
-void	sort(t_list *stack_a, t_list *stack_b)
+void	sort(t_list *stack_a)
 {
+	t_list	*stack_b;
+	int		v1;
+	int		v2;
+
+	stack_b = NULL;
 	while (ft_lstsize(stack_a) > 3)
 		exec_push(&stack_a, &stack_b, 1);
 	if (ft_lstsize(stack_a) == 3)
 		sort_3(&stack_a, &stack_b);
 	else if (ft_lstsize(stack_a) == 2)
-		sort_2(&stack_a);
+	{
+		v1 = ((t_stack *)stack_a->content)->value;
+		v2 = ((t_stack *)stack_a->next->content)->value;
+		if (v1 > v2)
+			exec_swap(&stack_a, 1);
+	}
 	while (stack_b)
 	{
 		weight(stack_a, stack_b);

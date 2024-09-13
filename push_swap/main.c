@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 11:31:29 by alerome2          #+#    #+#             */
-/*   Updated: 2024/09/12 15:08:20 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/09/13 14:26:42 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	show(t_list *a, t_list *sb)
 	}
 }
 
-t_list	*create_stack(int *array)
+t_list	*create_stack(int *array, int size)
 {
 	t_list	*stack_a;
 	t_list	*wagon;
@@ -49,7 +49,7 @@ t_list	*create_stack(int *array)
 	t_stack	number;
 
 	stack_a = NULL;
-	while (*array)
+	while (size--)
 	{
 		wagon = malloc(sizeof(t_list));
 		pointer = malloc(sizeof(t_stack));
@@ -100,7 +100,6 @@ int	main(int argc, char *argv[])
 	int		*array;
 	int		i;
 	t_list	*stack_a;
-	t_list	*stack_b;
 
 	i = 1;
 	array = malloc((argc) * sizeof(int));
@@ -113,11 +112,10 @@ int	main(int argc, char *argv[])
 	}
 	if (error_duplicated(array))
 		return (0);
-	stack_a = create_stack(array);
-	stack_b = NULL;
+	stack_a = create_stack(array, argc - 1);
 	find_pos(stack_a);
 	set_default_moves(stack_a);
-	sort(stack_a, stack_b);
+	sort(stack_a);
 	free_stack(stack_a);
 	free(array);
 }
