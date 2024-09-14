@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 11:28:33 by alerome2          #+#    #+#             */
-/*   Updated: 2024/09/14 13:09:47 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/09/14 13:19:40 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ long int	ft_atol(const char *str);
 int			ft_arraylen(char **split);
 char		**refill_split(char **split);
 //Errors
-int			*check(char **str, int *argc);
+int			*check(char **str, int *argc, int *aux);
 int			error_duplicated(int *array, int size);
 // Algorithms
 void		show(t_list *stack_a, t_list *stack_b);

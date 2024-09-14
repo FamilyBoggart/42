@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 11:54:48 by alerome2          #+#    #+#             */
-/*   Updated: 2024/09/12 13:50:35 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/09/14 13:25:39 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,18 @@ void	exec_rotate(t_list **stack_a, t_list **stack_b, int option)
 	if (option == 1)
 	{
 		rotate(stack_a);
-		ft_printf("ra\n");
+		ft_printf("rra\n");
 	}
 	if (option == 2)
 	{
 		rotate(stack_b);
-		ft_printf("rb\n");
+		ft_printf("rrb\n");
 	}
 	if (option == 3)
 	{
 		rotate(stack_a);
 		rotate(stack_b);
-		ft_printf("rr\n");
+		ft_printf("rrr\n");
 	}
 }
 
@@ -70,17 +70,17 @@ void	exec_rev_rotate(t_list **stack_a, t_list **stack_b, int option)
 	if (option == 1)
 	{
 		rev_rotate(stack_a);
-		ft_printf("rra\n");
+		ft_printf("ra\n");
 	}
 	if (option == 2)
 	{
 		rev_rotate(stack_b);
-		ft_printf("rrb\n");
+		ft_printf("rb\n");
 	}
 	if (option == 3)
 	{
 		rev_rotate(stack_a);
 		rev_rotate(stack_b);
-		ft_printf("rrr\n");
+		ft_printf("rr\n");
 	}
 }

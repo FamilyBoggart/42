@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 14:13:59 by alerome2          #+#    #+#             */
-/*   Updated: 2024/09/14 13:09:20 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/09/14 13:18:16 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	*fillarray(char **str, int size)
 	int	*array;
 	int	i;
 
-	ft_printf("Size: %d\n", size);
 	if (size == 0)
 		array = malloc(sizeof(int) * 1);
 	else
@@ -31,7 +30,6 @@ int	*fillarray(char **str, int size)
 	while (i < size)
 	{
 		array[i] = ft_atoi(str[i]);
-		//ft_printf("%d: %d\n",i,array[i]);
 		i++;
 	}
 	return (array);
@@ -55,7 +53,6 @@ int	error_duplicated(int *array, int size)
 		{
 			if (array[i] == array[j])
 			{
-				ft_printf("ERROR DE DUPLICIDAD (58)\n"); //Debug
 				free(array);
 				return (1);
 			}
@@ -76,10 +73,7 @@ int	more_than_int(char **number)
 	{
 		n = ft_atol(number[i]);
 		if (n > MAX_INT || n < MIN_INT)
-		{
-			ft_printf("NUMERO NO ENTERO (80)\n"); //Debug
 			return (1);
-		}
 		i++;
 	}
 	return (0);
@@ -99,10 +93,7 @@ int	error_not_number(char **split)
 		{
 			c = split[i][j];
 			if (!ft_isdigit(c) && c != '-' && c != '+')
-			{
-				ft_printf("NO ES UN NUMERO (103)\n");
 				return (1);
-			}
 			j++;
 		}
 		i++;
@@ -110,7 +101,7 @@ int	error_not_number(char **split)
 	return (0);
 }
 
-int	*check(char **str, int *argc)
+int	*check(char **str, int *argc, int *aux)
 {
 	int	*array;
 	int	size;
@@ -121,6 +112,7 @@ int	*check(char **str, int *argc)
 		str = ft_split(str[0], ' ');
 		size = ft_arraylen(str);
 		(*argc) = size;
+		(*aux) = 1;
 	}
 	if (error_not_number(str) || more_than_int(str))
 		return (NULL);

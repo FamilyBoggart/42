@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 11:31:29 by alerome2          #+#    #+#             */
-/*   Updated: 2024/09/14 13:10:26 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/09/14 13:19:20 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,20 +99,24 @@ int	main(int argc, char *argv[])
 {
 	int		*array;
 	int		i;
+	int		aux;
 	t_list	*stack_a;
 
+	aux = 0;
 	i = 1;
 	if (argc == 1)
 		return (0);
-	array = check(argv + 1, &argc);
+	array = check(argv + 1, &argc, &aux);
 	if (!array)
 	{
 		free(array);
 		ft_printf("Error\n");
 		return (0);
 	}
-	stack_a = create_stack(array, argc);
-	show(stack_a, NULL);
+	if(aux == 0)
+		stack_a = create_stack(array, argc - 1);
+	else
+		stack_a = create_stack(array, argc);
 	find_pos(stack_a);
 	set_default_moves(stack_a);
 	sort(stack_a);
