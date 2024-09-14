@@ -11,8 +11,8 @@ PUSH_SWAP_NAMES = main.c\
 				text_instructions.c\
 				movements_calc.c\
 				pusher.c\
-				error_check.c
-
+				error_check.c\
+				utils.c
 #Rules
 all : $(NAME)
 

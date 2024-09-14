@@ -6,56 +6,57 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 14:13:59 by alerome2          #+#    #+#             */
-/*   Updated: 2024/09/12 15:08:09 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/09/14 13:09:20 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-long int	ft_atol(const char *str)
+int	*fillarray(char **str, int size)
 {
-	int			neg;
-	int			i;
-	long int	number;
+	int	*array;
+	int	i;
 
-	i = 0;
-	neg = 0;
-	number = 0;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
-		i++;
-	if (str[i] == '-')
-	{
-		neg = 1;
-		i++;
-	}
-	else if (str[i] == '+')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		number = number * 10 + (str[i] - '0');
-		i++;
-	}
-	if (neg == 1)
-		return (-number);
+	ft_printf("Size: %d\n", size);
+	if (size == 0)
+		array = malloc(sizeof(int) * 1);
 	else
-		return (number);
+		array = malloc(sizeof(int) * size);
+	if (!array)
+	{
+		free(array);
+		return (NULL);
+	}
+	i = 0;
+	while (i < size)
+	{
+		array[i] = ft_atoi(str[i]);
+		//ft_printf("%d: %d\n",i,array[i]);
+		i++;
+	}
+	return (array);
 }
 
-int	error_duplicated(int *array)
+int	error_duplicated(int *array, int size)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (array[i])
+	if (!array)
+	{
+		free(array);
+		return (1);
+	}
+	while (i < size)
 	{
 		j = i + 1;
-		while (array[j])
+		while (j < size)
 		{
 			if (array[i] == array[j])
 			{
+				ft_printf("ERROR DE DUPLICIDAD (58)\n"); //Debug
 				free(array);
-				ft_printf("Error\n");
 				return (1);
 			}
 			j++;
@@ -65,31 +66,18 @@ int	error_duplicated(int *array)
 	return (0);
 }
 
-int	more_than_int(char *number)
+int	more_than_int(char **number)
 {
 	long int	n;
-
-	n = ft_atol(number);
-	if (n > MAX_INT || n < MIN_INT)
-	{
-		ft_printf("Error\n");
-		return (1);
-	}
-	return (0);
-}
-
-int	error_not_number(char *str)
-{
-	int	i;
+	int			i;
 
 	i = 0;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	while (str[i])
+	while (number[i])
 	{
-		if (!ft_isdigit(str[i]))
+		n = ft_atol(number[i]);
+		if (n > MAX_INT || n < MIN_INT)
 		{
-			ft_printf("Error\n");
+			ft_printf("NUMERO NO ENTERO (80)\n"); //Debug
 			return (1);
 		}
 		i++;
@@ -97,24 +85,49 @@ int	error_not_number(char *str)
 	return (0);
 }
 
-int	check(char **str, int *array)
+int	error_not_number(char **split)
 {
-	int	i;
+	int		i;
+	int		j;
+	char	c;
 
-	if (!array)
+	i = 0;
+	while (split[i])
 	{
-		free(array);
-		return (1);
-	}
-	i = 1;
-	while (str[i])
-	{
-		if (error_not_number(str[i]) || more_than_int(str[i]))
+		j = 0;
+		while (split[i][j])
 		{
-			free(array);
-			return (1);
+			c = split[i][j];
+			if (!ft_isdigit(c) && c != '-' && c != '+')
+			{
+				ft_printf("NO ES UN NUMERO (103)\n");
+				return (1);
+			}
+			j++;
 		}
 		i++;
 	}
 	return (0);
+}
+
+int	*check(char **str, int *argc)
+{
+	int	*array;
+	int	size;
+
+	size = (*argc) - 1;
+	if (size == 1)
+	{
+		str = ft_split(str[0], ' ');
+		size = ft_arraylen(str);
+		(*argc) = size;
+	}
+	if (error_not_number(str) || more_than_int(str))
+		return (NULL);
+	array = fillarray(str, size);
+	if (!array)
+		return (NULL);
+	if (error_duplicated(array, size))
+		return (NULL);
+	return (array);
 }
