@@ -6,21 +6,11 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 10:56:52 by alerome2          #+#    #+#             */
-/*   Updated: 2024/07/20 16:32:16 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/09/16 13:20:31 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/get_next_line/get_next_line_bonus.h"
-
-int	ft_strlen(const char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
 
 char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
@@ -47,17 +37,6 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 		aux[i++] = s[start++];
 	aux[i] = '\0';
 	return (aux);
-}
-
-char	*ft_strchr(const char *s, int c)
-{
-	if (!s)
-		return (NULL);
-	while (*s != '\0' && *s != (char)c)
-		s++;
-	if (*s == (char)c)
-		return ((char *)s);
-	return (0);
 }
 
 char	*ft_strjoin_g(char *s1, char *s2)

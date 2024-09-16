@@ -6,21 +6,11 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 10:56:52 by alerome2          #+#    #+#             */
-/*   Updated: 2024/07/20 16:31:09 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/09/16 13:40:33 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/get_next_line/get_next_line.h"
-
-int	ft_strlen(const char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
 
 char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
