@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 11:28:33 by alerome2          #+#    #+#             */
-/*   Updated: 2024/09/14 13:19:40 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/09/20 13:21:32 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,19 @@ typedef struct s_stack
 	int					*moves;
 }	t_stack;
 
+//Main
+
+void		set_default_moves(t_list *stack);
+void		free_stack(t_list *stack);
+t_list		*create_stack(int *array, int size);
+void		show(t_list *stack_a, t_list *stack_b);
+
+
 //Utils
 long int	ft_atol(const char *str);
 int			ft_arraylen(char **split);
 char		**refill_split(char **split);
+t_list		*create_stack(int *array, int size);
 //Errors
 int			*check(char **str, int *argc, int *aux);
 int			error_duplicated(int *array, int size);
@@ -54,3 +63,7 @@ void		push_b(t_list **stack_a, t_list **stack_b);
 void		push_a(t_list **stack_a, t_list **stack_b);
 void		rotate(t_list **stack);
 void		rev_rotate(t_list **stack);
+
+//Checker bonus
+void		read_instructions(t_list **stack_a, t_list **stack_b, char *inst);
+
