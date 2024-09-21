@@ -22,12 +22,12 @@ all : $(NAME)
 
 bonus : $(PUSH_SWAP_NAMES) $(PUSH_SWAP_BONUS)
 	make -C libft re
-	$(COMPILER) $(PUSH_SWAP_NAMES) $(PUSH_SWAP_BONUS) $(LIBRARY) -o checker_bonus
+	$(COMPILER) $(PUSH_SWAP_NAMES) $(PUSH_SWAP_BONUS) $(LIBRARY) -o checker
 clean : 
 	rm -rf obj
 
 fclean : clean
-	@rm -f $(NAME)
+	@rm -f $(NAME) checker
 	@make -C libft fclean
 
 re : fclean all

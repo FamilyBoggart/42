@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 11:31:29 by alerome2          #+#    #+#             */
-/*   Updated: 2024/09/20 12:56:07 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/09/21 12:29:25 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_list	*create_stack(int *array, int size)
 	{
 		wagon = malloc(sizeof(t_list));
 		pointer = malloc(sizeof(t_stack));
-		if (!wagon || !pointer)
+		if (!wagon || !pointer || !array)
 		{
 			free(wagon);
 			free(pointer);
@@ -94,4 +94,3 @@ void	set_default_moves(t_list *stack)
 		temp = temp->next;
 	}
 }
-
