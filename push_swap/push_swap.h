@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 11:28:33 by alerome2          #+#    #+#             */
-/*   Updated: 2024/09/20 13:21:32 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/09/21 12:46:56 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,5 @@ void		rev_rotate(t_list **stack);
 
 //Checker bonus
 void		read_instructions(t_list **stack_a, t_list **stack_b, char *inst);
+int			closefile(int fd, char *line);
 

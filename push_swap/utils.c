@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 09:53:56 by alerome2          #+#    #+#             */
-/*   Updated: 2024/09/14 10:24:46 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/09/21 12:46:25 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,11 @@ char	**refill_split(char **split)
 	}
 	newsplit[i] = NULL;
 	return (newsplit);
+}
+
+int	closefile(int fd, char*line)
+{
+	free(line);
+	close(fd);
+	return (0);
 }
