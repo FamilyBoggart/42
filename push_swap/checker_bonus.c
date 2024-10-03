@@ -6,25 +6,24 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 10:42:04 by alerome2          #+#    #+#             */
-/*   Updated: 2024/09/21 17:16:13 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/10/03 16:33:18 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "push_swap.h"
 
-char 	*create_instruction(char **arg, int argc)
+void	create_instruction(char **arg, int argc)
 {
 	char	*str;
-	int	i;
+	int		i;
 
 	i = 0;
 	str = "./push_swap ";
-	if(argc == 2)
+	if (argc == 2)
 		str = ft_strjoin(str, arg[i]);
 	else
 	{
-		while(arg[i])
+		while (arg[i])
 		{
 			str = ft_strjoin(str, (const char *)arg[i]);
 			str = ft_strjoin(str, " ");
@@ -32,15 +31,15 @@ char 	*create_instruction(char **arg, int argc)
 		}
 	}
 	str = ft_strjoin(str, " > result.txt");
-	return (str);
+	system(str);
+	free(str);
 }
 
-void finalcheck(t_list *stack)
+void	finalcheck(t_list *stack)
 {
 	int	aux;
 	int	boolean;
 
-	
 	boolean = 1;
 	aux = ((t_stack *)stack->content)->value;
 	stack = stack->next;
@@ -57,45 +56,47 @@ void finalcheck(t_list *stack)
 		ft_printf("KO\n");
 }
 
+t_list	*first_stack(int argc, char *argv[])
+{
+	int		*array;
+	int		aux;
+	t_list	*stack_a;
+
+	aux = 0;
+	array = check(argv, &argc, &aux);
+	if (aux == 0)
+		stack_a = create_stack(array, argc - 1);
+	else
+		stack_a = create_stack(array, argc);
+	free(array);
+	return (stack_a);
+}
 
 int	main(int argc, char *argv[])
 {
 	int		fd;
 	char	*line;
-	int		*array;
-	int		aux;
 	t_list	*stack_a;
 	t_list	*stack_b;
 
-	if (argc < 2)
-		return(0);
-	system((const char *)create_instruction(++argv,argc));
-	aux = 0;
+	create_instruction(++argv, argc);
 	fd = open("result.txt", O_RDONLY);
 	line = get_next_line(fd);
-	
-	array = check(argv, &argc, &aux);
-	if(aux == 0)
-		stack_a = create_stack(array, argc - 1);
-	else
-		stack_a = create_stack(array, argc);
-
-
-	if(!ft_strncmp(line, "Error\n", 6))
+	stack_a = first_stack(argc, argv);
+	if (!ft_strncmp(line, "Error\n", 6))
 	{
 		ft_printf(line);
-		return(closefile(fd,line));
+		free_stack(stack_a);
+		return (closefile(fd, line));
 	}
-	
 	stack_b = NULL;
-	while(line)
+	while (line)
 	{
-		ft_printf("%s",line);
 		read_instructions(&stack_a, &stack_b, line);
 		free(line);
 		line = get_next_line(fd);
-	}gvgkkjgg
-	
+	}
 	finalcheck(stack_a);
+	free_stack(stack_a);
 	return (closefile(fd, line));
 }

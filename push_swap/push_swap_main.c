@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_main.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alerome2 <alerome2@sutdent.42malaga.com>   +#+  +:+       +#+        */
+/*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 12:49:23 by alerome2          #+#    #+#             */
-/*   Updated: 2024/09/20 12:58:04 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/10/03 13:18:23 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 int	main(int argc, char *argv[])
 {
-	int	*array;
-	int	aux;
+	int		*array;
+	int		aux;
 	t_list	*stack_a;
 
 	aux = 0;
 	if (argc == 1)
 		return (0);
 	array = check(argv + 1, &argc, &aux);
-	if(!array)
+	if (!array)
 	{
 		free(array);
 		ft_printf("Error\n");
@@ -37,5 +37,4 @@ int	main(int argc, char *argv[])
 	sort(stack_a);
 	free_stack(stack_a);
 	free(array);
-		
 }
