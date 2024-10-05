@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 11:28:33 by alerome2          #+#    #+#             */
-/*   Updated: 2024/10/03 13:17:30 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/10/05 09:32:26 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ long int	ft_atol(const char *str);
 int			ft_arraylen(char **split);
 char		**refill_split(char **split);
 t_list		*create_stack(int *array, int size);
+void		free_stack(t_list *stack);
+void		free_all(t_list *obj_a, t_stack *obj_b);
 //Errors
 int			*check(char **str, int *argc, int *aux);
 int			error_duplicated(int *array, int size);

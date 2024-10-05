@@ -6,38 +6,43 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 11:31:29 by alerome2          #+#    #+#             */
-/*   Updated: 2024/09/21 12:29:25 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/10/05 09:43:34 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	show(t_list *a, t_list *sb)
+t_list	*create_node(int value)
 {
-	ft_printf("\nStack a\n--------\n");
-	while (a)
+	t_list	*wagon;
+	t_stack	*pointer;
+
+	wagon = malloc(sizeof(t_list));
+	pointer = malloc(sizeof(t_stack));
+	if (!wagon || !pointer)
 	{
-		ft_printf("%d:\tpos: %d\tweight_a: %d\tdirection: %d\tweight_b: %d\t"
-			"direction: %d\ttotal_weight: %d\n",
-			((t_stack *)a->content)->value, ((t_stack *)a->content)->pos,
-			((t_stack *)a->content)->moves[0],
-			((t_stack *)a->content)->moves[1],
-			((t_stack *)a->content)->moves[2],
-			((t_stack *)a->content)->moves[3], ((t_stack *)a->content)->weight);
-		a = a->next;
+		if (wagon)
+			free(wagon);
+		if (pointer)
+			free(pointer);
+		return (NULL);
 	}
-	ft_printf("Stack b\n--------\n");
-	while (sb)
+	pointer->value = value;
+	wagon->content = pointer;
+	wagon->next = NULL;
+	return (wagon);
+}
+
+void	free_all(t_list *obj_a, t_stack *obj_b)
+{
+	free_stack (obj_a);
+	if (obj_b)
 	{
-		ft_printf("%d:\tpos: %d\tweight_a: %d\tdirection: %d\tweight_b: %d\t"
-			"direction: %d\ttotal_weight: %d\n",
-			((t_stack *)sb->content)->value, ((t_stack *)sb->content)->pos,
-			((t_stack *)sb->content)->moves[0],
-			((t_stack *)sb->content)->moves[1],
-			((t_stack *)sb->content)->moves[2],
-			((t_stack *)sb->content)->moves[3],
-			((t_stack *)sb->content)->weight);
-		sb = sb->next;
+		if (obj_b->moves)
+		{
+			free(obj_b->moves);
+		}
+		free(obj_b);
 	}
 }
 
@@ -45,25 +50,16 @@ t_list	*create_stack(int *array, int size)
 {
 	t_list	*stack_a;
 	t_list	*wagon;
-	t_stack	*pointer;
-	t_stack	number;
 
 	stack_a = NULL;
 	while (size--)
 	{
-		wagon = malloc(sizeof(t_list));
-		pointer = malloc(sizeof(t_stack));
-		if (!wagon || !pointer || !array)
+		wagon = create_node(*array);
+		if (!wagon)
 		{
-			free(wagon);
-			free(pointer);
-			free(array);
+			free_stack(stack_a);
 			return (NULL);
 		}
-		number.value = *array;
-		*pointer = number;
-		wagon->content = pointer;
-		wagon->next = NULL;
 		ft_lstadd_back(&stack_a, wagon);
 		array++;
 	}
@@ -78,6 +74,7 @@ void	free_stack(t_list *stack)
 	{
 		temp = stack;
 		stack = stack->next;
+		free(((t_stack *)temp->content)->moves);
 		free(temp->content);
 		free(temp);
 	}
@@ -93,4 +90,5 @@ void	set_default_moves(t_list *stack)
 		((t_stack *)temp->content)->moves = calloc(4, sizeof(int));
 		temp = temp->next;
 	}
+	free(temp);
 }

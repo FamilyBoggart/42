@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 09:53:56 by alerome2          #+#    #+#             */
-/*   Updated: 2024/10/03 14:06:19 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/10/05 09:44:34 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,33 @@ int	closefile(int fd, char*line)
 	free(line);
 	close(fd);
 	return (0);
+}
+
+void	show(t_list *a, t_list *sb)
+{
+	ft_printf("\nStack a\n--------\n");
+	while (a)
+	{
+		ft_printf("%d:\tpos: %d\tweight_a: %d\tdirection: %d\tweight_b: %d\t"
+			"direction: %d\ttotal_weight: %d\n",
+			((t_stack *)a->content)->value, ((t_stack *)a->content)->pos,
+			((t_stack *)a->content)->moves[0],
+			((t_stack *)a->content)->moves[1],
+			((t_stack *)a->content)->moves[2],
+			((t_stack *)a->content)->moves[3], ((t_stack *)a->content)->weight);
+		a = a->next;
+	}
+	ft_printf("Stack b\n--------\n");
+	while (sb)
+	{
+		ft_printf("%d:\tpos: %d\tweight_a: %d\tdirection: %d\tweight_b: %d\t"
+			"direction: %d\ttotal_weight: %d\n",
+			((t_stack *)sb->content)->value, ((t_stack *)sb->content)->pos,
+			((t_stack *)sb->content)->moves[0],
+			((t_stack *)sb->content)->moves[1],
+			((t_stack *)sb->content)->moves[2],
+			((t_stack *)sb->content)->moves[3],
+			((t_stack *)sb->content)->weight);
+		sb = sb->next;
+	}
 }
