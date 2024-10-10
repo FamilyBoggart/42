@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 16:44:52 by alerome2          #+#    #+#             */
-/*   Updated: 2024/05/15 10:22:04 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/10/10 11:38:21 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ char			*ft_strnstr(const char *big, const char *little, size_t len);
 // Devuelve una subcadena dentro del string
 char			*ft_substr(const char *s, unsigned int start, size_t len);
 // Concatena las strings s1 y s2 mediante malloc
-char			*ft_strjoin(const char *s1, const char *s2);
+char			*ft_strjoin(char *s1, char *s2, int free_s1);
 // Elimina de la cadena s1, los caracteres del string set
 char			*ft_strtrim(const char *s1, const char *set);
 /*

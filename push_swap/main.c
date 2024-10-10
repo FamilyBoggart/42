@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 11:31:29 by alerome2          #+#    #+#             */
-/*   Updated: 2024/10/05 09:43:34 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/10/05 13:28:27 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,20 @@
 t_list	*create_node(int value)
 {
 	t_list	*wagon;
-	t_stack	*pointer;
 
 	wagon = malloc(sizeof(t_list));
-	pointer = malloc(sizeof(t_stack));
-	if (!wagon || !pointer)
+	if (!wagon)
+		return (NULL);
+	wagon->content = malloc(sizeof(t_stack));
+	if (!wagon->content)
 	{
-		if (wagon)
-			free(wagon);
-		if (pointer)
-			free(pointer);
+		free(wagon);
 		return (NULL);
 	}
-	pointer->value = value;
-	wagon->content = pointer;
+	((t_stack *)wagon->content)->value = value;
+	((t_stack *)wagon->content)->weight = 0;
+	((t_stack *)wagon->content)->pos = 0;
+	((t_stack *)wagon->content)->moves = NULL;
 	wagon->next = NULL;
 	return (wagon);
 }
@@ -87,8 +87,7 @@ void	set_default_moves(t_list *stack)
 	temp = stack;
 	while (temp)
 	{
-		((t_stack *)temp->content)->moves = calloc(4, sizeof(int));
+		((t_stack *)temp->content)->moves = malloc(4 * sizeof(int));
 		temp = temp->next;
 	}
-	free(temp);
 }

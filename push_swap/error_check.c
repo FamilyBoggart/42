@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 14:13:59 by alerome2          #+#    #+#             */
-/*   Updated: 2024/09/14 13:18:16 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/10/05 13:33:28 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,7 @@ int	*fillarray(char **str, int size)
 	int	*array;
 	int	i;
 
-	if (size == 0)
-		array = malloc(sizeof(int) * 1);
-	else
-		array = malloc(sizeof(int) * size);
+	array = malloc(sizeof(int) * size);
 	if (!array)
 	{
 		free(array);

@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 10:08:11 by alerome2          #+#    #+#             */
-/*   Updated: 2024/09/13 14:31:18 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/10/05 13:16:54 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,5 +126,6 @@ void	sort(t_list *stack_a)
 		weight(stack_a, stack_b);
 		push_from_b(&stack_a, &stack_b, execute(stack_b));
 	}
+	free_stack(stack_b);
 	final_move(&stack_a);
 }

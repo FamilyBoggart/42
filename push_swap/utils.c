@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 09:53:56 by alerome2          #+#    #+#             */
-/*   Updated: 2024/10/05 09:44:34 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/10/05 11:41:29 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,22 +49,6 @@ int	ft_arraylen(char **split)
 	while (split[i])
 		i++;
 	return (i);
-}
-
-char	**refill_split(char **split)
-{
-	int		i;
-	char	**newsplit;
-
-	i = 1;
-	newsplit = malloc(sizeof(char *) * ft_arraylen(split));
-	while (split[i])
-	{
-		newsplit[i - 1] = split[i];
-		i++;
-	}
-	newsplit[i] = NULL;
-	return (newsplit);
 }
 
 int	closefile(int fd, char*line)

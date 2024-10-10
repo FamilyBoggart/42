@@ -6,13 +6,13 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 17:35:31 by alerome2          #+#    #+#             */
-/*   Updated: 2024/07/18 20:07:31 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/10/10 11:39:47 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/libft/libft.h"
 
-char	*ft_strjoin(const char *s1, const char *s2)
+char	*ft_strjoin(char *s1, char *s2, int free_s1)
 {
 	char	*aux;
 	int		size;
@@ -36,6 +36,8 @@ char	*ft_strjoin(const char *s1, const char *s2)
 		j++;
 	}
 	aux[i + j] = '\0';
+	if (free_s1)
+		free(s1);
 	return (aux);
 }
 /*

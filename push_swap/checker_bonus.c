@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 10:42:04 by alerome2          #+#    #+#             */
-/*   Updated: 2024/10/03 16:33:18 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/10/10 11:51:46 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,19 @@ void	create_instruction(char **arg, int argc)
 	int		i;
 
 	i = 0;
-	str = "./push_swap ";
+	str = "";
 	if (argc == 2)
-		str = ft_strjoin(str, arg[i]);
+		str = ft_strjoin("./push swap", arg[i], 0);
 	else
 	{
 		while (arg[i])
 		{
-			str = ft_strjoin(str, (const char *)arg[i]);
-			str = ft_strjoin(str, " ");
+			str = ft_strjoin(str, arg[i], 1);
+			str = ft_strjoin(str, " ", 1);
 			i++;
 		}
 	}
-	str = ft_strjoin(str, " > result.txt");
+	str = ft_strjoin(str, " > result.txt", 1);
 	system(str);
 	free(str);
 }
