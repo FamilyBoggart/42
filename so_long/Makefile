@@ -1,6 +1,6 @@
 MLXFLAGS = -Iinclude -ldl -lglfw -pthread -lm
 NAME = so_long
-SO_LONG_SRC = main.c
+SO_LONG_SRC = main.c game_logic/map.c
 MLX_LIBRARY = MLX42/build/libmlx42.a
 COMPILER = clang $(CFLAGS)
 CFLAGS = -Wall -Wextra -Werror
