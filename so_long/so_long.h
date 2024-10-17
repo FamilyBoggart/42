@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:48:19 by alerome2          #+#    #+#             */
-/*   Updated: 2024/10/11 10:51:19 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/10/17 14:11:58 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,3 +20,4 @@ struct s_player
 	int	alive;
 };
 
+static mlx_image_t	*g_player;
