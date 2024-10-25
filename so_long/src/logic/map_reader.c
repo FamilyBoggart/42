@@ -6,11 +6,11 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 11:42:56 by alerome2          #+#    #+#             */
-/*   Updated: 2024/10/25 18:44:18 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/10/25 19:04:45 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../../inc/so_long.h"
 
 int	check_ber(char *arg)
 {
@@ -79,16 +79,18 @@ void	create_map(char *arg, void *mlx, t_textures *textures)
 {
 	char	**map;
 
-	if (!check_ber(arg))
-		return (NULL);
-	map = parse_map(arg);
-	if (!map)
-		return (NULL);
-	if (check_map(map))
-		show_map(map);
+	map = NULL;
+	if (check_ber(arg))
+		map = parse_map(arg);
+	if (map)
+	{
+		if (check_map(map))
+			show_map(map);
+		else
+			ft_printf("(map reader) Mapa no valido\n");
+	}
 	else
-		ft_printf("(map reader) Mapa no valido\n");
-	//render_map(mlx, map, textures);
+		ft_printf("(map reader) Error al leer el archivo\n");
+	render_map(map, mlx, textures);
 	free_map(map);
-	return (NULL);// return (map) when finished
 }

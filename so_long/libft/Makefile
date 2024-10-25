@@ -63,9 +63,7 @@ PRINTF_SOURCE = ./src/printf/
 
 #GNL
 GNL_NAMES = get_next_line.c\
-			get_next_line_utils.c\
-			get_next_line_bonus.c\
-			get_next_line_utils_bonus.c
+			get_next_line_utils.c
 GNL_OBJS = $(GNL_NAMES:.c=.o)
 GNL_SOURCE = ./src/next_line/
 #Crear la libreria

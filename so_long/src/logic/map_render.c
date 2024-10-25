@@ -1,45 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   map_render.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 19:43:33 by alerome2          #+#    #+#             */
-/*   Updated: 2024/10/25 17:58:56 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/10/25 19:59:29 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../../inc/so_long.h"
 
-char	**generate_map(void)
+
+void	render_images(void *mlx, t_textures *texture, char *img, t_coords cont)
 {
-	t_counter	t;
-	char		**map;
-
-	map = malloc(sizeof(char *) * (HEIGHT / TS));
-	if (!map)
-		return (NULL);
-	t.i = 0;
-	t.k = 0;
-	while (t.i < HEIGHT)
-	{
-		map[t.k] = malloc(sizeof(char) * WIDTH / TS);
-		t.j = 0;
-		t.size = 0;
-		while (t.j < WIDTH)
-		{
-			if (t.j != 0 && t.j != WIDTH - TS && t.i != 0 && t.i != HEIGHT - TS)
-				map[t.k][t.size++] = '0';
-			else
-				map[t.k][t.size++] = '1';
-			t.j = t.j + TS;
-		}
-		t.k++;
-		t.i = t.i + TS;
-	}
-	return (map);
+	//.....................................................
 }
+*/
 
 void	show_map(char **map)
 {
@@ -83,29 +61,22 @@ int	rows(char **map)
 	return (i);
 }
 
-void	render_map(void *mlx, t_textures *texture, char **map)
+void	render_map(char **map, void *mlx, t_textures *texture)
 {
-	int	i;
-	int	j;
+	t_coords	counter;
 
-	i = 0;
-	while (map[i][j])
+	counter.x = 0;
+	while (map[counter.x])
 	{
-		j = 0;
-		while (map[i][j])
+		counter.y = 0;
+		while (map[counter.x][counter.y])
 		{
-			if (map[i][j] == '1')
-			{
-				texture->wall = mlx_load_png("./includes/Wall.png");
-				mlx_image_to_window(mlx, texture->wall, j * 100, i * 100);
-			}
+			if (map[counter.x][counter.y] == '1')
+				render_images(mlx, texture, "Wall.png", counter);
 			else
-			{
-				texture->floor = mlx_load_png("./includes/Floor.png");
-				mlx_image_to_window(mlx, texture->floor, j * 100, i * 100);
-			}
-			j++;
+				render_images(mlx, texture, "Floor.png", counter);
+			counter.y++;
 		}
-		i++;
+		counter.x++;
 	}
 }

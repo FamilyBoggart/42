@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:48:19 by alerome2          #+#    #+#             */
-/*   Updated: 2024/10/25 18:40:39 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/10/25 19:58:09 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,11 @@
 #define HEIGHT 1000
 #define TS 100
 
-typedef struct s_tile
+typedef struct s_counter
 {
 	int	x;
 	int	y;
-	int	key_collected;
-	int	alive;
-}	t_tile;
+}	t_coords;
 
 typedef struct s_textures
 {
@@ -56,7 +54,7 @@ int		check_map(char **arg);
 int		only_one_player_and_exit(char **map);
 
 //Render
-void	render_map(void *mlx, t_textures *textures, char **map);
+void	render_map(char **map, void *mlx, t_textures *textures);
 
 //Movements
 void	key_movements(void *param);
