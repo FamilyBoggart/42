@@ -1,16 +1,17 @@
 MLXFLAGS = -Iinclude -ldl -lglfw -pthread -lm
 NAME = so_long
-SO_LONG_SRC = main.c\
-	game_logic/map.c\
-	movements.c
+SO_LONG_SRC = src/logic/main.c\
+	src/logic/movements.c
 MLX_LIBRARY = MLX42/build/libmlx42.a
 COMPILER = clang $(CFLAGS)
 CFLAGS = -Wall -Wextra -Werror
+LIBFT = libft/libft.a
 
 all : $(NAME)
 
-$(NAME) : 
-	$(COMPILER) $(SO_LONG_SRC) $(MLX_LIBRARY) $(MLXFLAGS) -o $(NAME)
+$(NAME) :
+	make -C libft re
+	$(COMPILER) $(SO_LONG_SRC) $(MLX_LIBRARY) $(LIBFT) $(MLXFLAGS) -o $(NAME)
 
 fclean :
 	rm -f $(NAME)

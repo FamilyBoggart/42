@@ -1,15 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   movements.c                                        :+:      :+:    :+:   */
+/*   ft_putptr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/10 15:59:26 by alerome2          #+#    #+#             */
-/*   Updated: 2024/10/10 16:00:14 by alerome2         ###   ########.fr       */
+/*   Created: 2024/05/23 12:02:37 by alerome2          #+#    #+#             */
+/*   Updated: 2024/07/17 12:17:46 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../../inc/printf/ft_printf.h"
 
-int 
+int	ft_putptr(size_t ptr)
+{
+	int	n;
+
+	if (!ptr)
+		return (ft_putstr("(nil)"));
+	ft_putstr("0x");
+	n = ft_hexadecimal_u(ptr, 0);
+	return (n + 2);
+}

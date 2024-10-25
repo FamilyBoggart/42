@@ -1,45 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_reader.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/18 11:42:56 by alerome2          #+#    #+#             */
-/*   Updated: 2024/10/18 11:52:24 by alerome2         ###   ########.fr       */
+/*   Created: 2024/05/01 18:58:19 by alerome2          #+#    #+#             */
+/*   Updated: 2024/07/18 20:07:31 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../../inc/libft/libft.h"
 
-int	check_ber(char *arg)
+void	ft_putnbr_fd(int n, int fd)
 {
 	char	*aux;
 
-	aux = arg;
-	while (*aux)
-		aux++;
-	while (arg < aux)
+	if (n == -2147483648)
 	{
-		if (*aux == '.')
-		{
-			if (*(aux - 1) == 'r' && *(aux - 2) == 'e' && *(aux - 3) == 'b')
-				return (1);
-		}
-		aux--;
+		write(fd, "-2147483648", 11);
+		return ;
 	}
+	aux = ft_itoa(n);
+	if (!aux)
+	{
+		free(aux);
+		return ;
+	}
+	if (fd && aux)
+		write(fd, aux, ft_strlen(aux));
+	free(aux);
+}
+/*
+int main(void)
+{
+	int i = -295;
+	int fd = 1;
+	ft_putnbr_fd(i,fd);
 	return (0);
 }
-
-char	**generate_map(char *arg)
-{
-	char	**map;
-
-	map = NULL;
-	if (!check_ber(arg))
-		return (NULL);
-	map = read_map(arg);
-	if (!map || !check_map(map))
-		return (NULL);
-	return (map);
-}
+*/
