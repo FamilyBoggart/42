@@ -6,11 +6,11 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 14:47:03 by alerome2          #+#    #+#             */
-/*   Updated: 2024/10/24 14:51:23 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/10/29 11:09:25 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../../inc/so_long.h"
 
 int	only_one_player_and_exit(char **map)
 {

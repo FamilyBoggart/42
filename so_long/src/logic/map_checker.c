@@ -6,11 +6,11 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 14:37:38 by alerome2          #+#    #+#             */
-/*   Updated: 2024/10/25 13:43:02 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/10/29 11:09:13 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../../inc/so_long.h"
 
 int	check_chars(char **map)
 {

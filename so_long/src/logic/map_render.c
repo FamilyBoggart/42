@@ -6,18 +6,47 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 19:43:33 by alerome2          #+#    #+#             */
-/*   Updated: 2024/10/25 19:59:29 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/10/29 11:42:55 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/so_long.h"
 
 
-void	render_images(void *mlx, t_textures *texture, char *img, t_coords cont)
+void	render_images(void *mlx, t_textures *texture, char *path, t_coords cont)
 {
-	//.....................................................
+	mlx_image_t	*img;
+	
+	ft_printf("(render_images) Content:\n");
+	ft_printf("(render_images) x: %d, y: %d\nMlx: %p\nTexture: %p\nPath: %s\n", cont.x, cont.y, mlx, texture, path);
+	if (!ft_strncmp(path, "Wall.png", 8))
+		img = mlx_texture_to_image(mlx, texture->wall);
+	if (!ft_strncmp(path, "Floor.png", 9))
+		img = mlx_texture_to_image(mlx, texture->floor);
+	if (!ft_strncmp(path, "Exit.png", 8))
+		img = mlx_texture_to_image(mlx, texture->exit);
+	if (!ft_strncmp(path, "Player.png", 10))
+		img = mlx_texture_to_image(mlx, texture->p);
+	if (!ft_strncmp(path, "c_libft.png", 11))
+		img = mlx_texture_to_image(mlx, texture->c_libft);
+	mlx_image_to_window(mlx, img, cont.x * TS, cont.y * TS);
 }
-*/
+
+void init_textures(t_textures *texture)
+{
+	char *path;
+
+	path = "/home/usuario/Desktop/42/so_long/inc/Images/";
+	texture->wall = mlx_load_png(ft_strjoin(path, "Wall.png"));
+	texture->floor = mlx_load_png(ft_strjoin(path, "Floor.png"));
+	texture->exit = mlx_load_png(ft_strjoin(path, "Exit.png"));
+	texture->p = mlx_load_png(ft_strjoin(path, "Player.png"));
+	texture->c_libft = mlx_load_png(ft_strjoin(path, "c_libft.png"));
+	texture->c_printf = mlx_load_png(ft_strjoin(path, "c_printf.png"));
+	texture->c_gnl = mlx_load_png(ft_strjoin(path, "c_gnl.png"));
+	texture->c_b2br = mlx_load_png(ft_strjoin(path, "c_b2br.png"));
+	texture->c_locked = mlx_load_png(ft_strjoin(path, "c_locked.png"));
+}
 
 void	show_map(char **map)
 {
@@ -65,12 +94,15 @@ void	render_map(char **map, void *mlx, t_textures *texture)
 {
 	t_coords	counter;
 
+	ft_printf("(map_render) Renderizando mapa\n");
+	init_textures(texture);
 	counter.x = 0;
-	while (map[counter.x])
+	while (map[counter.y])
 	{
-		counter.y = 0;
+		counter.x = 0;
 		while (map[counter.x][counter.y])
 		{
+			ft_printf("(map_render) x: %d, y: %d. Char: %c\n", counter.x, counter.y, map[counter.x][counter.y]);
 			if (map[counter.x][counter.y] == '1')
 				render_images(mlx, texture, "Wall.png", counter);
 			else

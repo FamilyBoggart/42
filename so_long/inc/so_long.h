@@ -6,11 +6,11 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:48:19 by alerome2          #+#    #+#             */
-/*   Updated: 2024/10/25 19:58:09 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/10/29 11:45:11 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "/home/alerome2/Desktop/42/so_long/MLX42/include/MLX42/MLX42_Int.h"
+#include "../MLX42/include/MLX42/MLX42_Int.h"
 #include "../libft/inc/libft/libft.h"
 #include "../libft/inc/get_next_line/get_next_line.h"
 #include "../libft/inc/printf/ft_printf.h"
@@ -30,14 +30,15 @@ typedef struct s_textures
 	mlx_texture_t	*wall;
 	mlx_texture_t	*floor;
 	mlx_texture_t	*exit;
-	mlx_texture_t	*player;
+	mlx_texture_t	*p;
 	mlx_texture_t	*c_libft;
 	mlx_texture_t	*c_printf;
 	mlx_texture_t	*c_gnl;
+	mlx_texture_t	*c_b2br;
 	mlx_texture_t	*c_locked;
 }	t_textures;
 
-static mlx_image_t	*g_player;
+static mlx_image_t	*g_player; //static
 
 //Map functions
 char	**generate_map(void);

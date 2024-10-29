@@ -3,7 +3,9 @@ NAME = so_long
 SO_LONG_SRC = src/logic/main.c\
 	src/logic/movements.c\
 	src/logic/map_reader.c\
-	src/logic/map_render.c
+	src/logic/map_render.c\
+	src/logic/map_checker.c\
+	src/logic/map_checker_2.c
 	
 MLX_LIBRARY = MLX42/build/libmlx42.a
 COMPILER = clang $(CFLAGS)
