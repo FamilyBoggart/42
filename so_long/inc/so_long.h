@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:48:19 by alerome2          #+#    #+#             */
-/*   Updated: 2024/10/29 12:43:32 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/10/29 19:06:00 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 #include "../libft/inc/get_next_line/get_next_line.h"
 #include "../libft/inc/printf/ft_printf.h"
 
-#define WIDTH 2000
-#define HEIGHT 1000
 #define TS 100
 
 typedef struct s_counter

@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 19:43:33 by alerome2          #+#    #+#             */
-/*   Updated: 2024/10/29 11:42:55 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/10/29 19:10:17 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	render_images(void *mlx, t_textures *texture, char *path, t_coords cont)
 		img = mlx_texture_to_image(mlx, texture->p);
 	if (!ft_strncmp(path, "c_libft.png", 11))
 		img = mlx_texture_to_image(mlx, texture->c_libft);
-	mlx_image_to_window(mlx, img, cont.x * TS, cont.y * TS);
+	mlx_image_to_window(mlx, img, cont.y * TS, cont.x * TS);
 }
 
 void init_textures(t_textures *texture)
@@ -96,10 +96,11 @@ void	render_map(char **map, void *mlx, t_textures *texture)
 
 	ft_printf("(map_render) Renderizando mapa\n");
 	init_textures(texture);
+	ft_printf("(map_render) Texturas inicializadas\n");
 	counter.x = 0;
-	while (map[counter.y])
+	while (map[counter.x])
 	{
-		counter.x = 0;
+		counter.y = 0;
 		while (map[counter.x][counter.y])
 		{
 			ft_printf("(map_render) x: %d, y: %d. Char: %c\n", counter.x, counter.y, map[counter.x][counter.y]);

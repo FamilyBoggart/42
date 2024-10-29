@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:59:26 by alerome2          #+#    #+#             */
-/*   Updated: 2024/10/25 18:42:17 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/10/29 18:38:31 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void move_keyhook(mlx_key_data_t keydata, void* param)
 
 	// If we RELEASE the 'K' key, print "World".
 	if (keydata.key == MLX_KEY_K && keydata.action == MLX_RELEASE)
-		puts("World");
+		puts("World");Barcelona
 
 	// If we HOLD the 'L' key, print "!".
 	if (keydata.key == MLX_KEY_L && keydata.action == MLX_REPEAT)
