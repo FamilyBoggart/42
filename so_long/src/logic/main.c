@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 13:19:00 by alerome2          #+#    #+#             */
-/*   Updated: 2024/10/29 11:10:47 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/10/29 12:58:17 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	main(int argc, char *argv[])
 {
 	void		*mlx;
 	t_textures	*textures;
+	t_coords	map;
 
 	textures = malloc(sizeof(t_textures));
 	if (argc != 2)
@@ -32,8 +33,15 @@ int	main(int argc, char *argv[])
 		printf("Usage: %s <map.ber>\n", argv[0]);
 		return (EXIT_FAILURE);
 	}
-	mlx = mlx_init(WIDTH, HEIGHT, "Alerome2's game", true);
-	create_map(argv[1], mlx, textures);
+	map = create_map(argv[1]);
+	if (!map.map || map.x == 0 || map.y == 0)
+	{
+		printf("Error\n");
+		return (0);
+	}
+	mlx = mlx_init(map.y * TS, map.x * TS, "Alerome2's game", true);
+	//render_map(map.map, mlx, textures);
+	free(map.map);
 	/*
 	//g_player = mlx_texture_to_image(mlx, texture);
 	if (!mlx | ! g_player)
@@ -44,7 +52,6 @@ int	main(int argc, char *argv[])
 	mlx_image_to_window(mlx, g_player, 0, 0);
 	*/
 	//mlx_loop_hook(mlx, key_movements, mlx);// Por ahora funciona
-	ft_printf("(main.c) Mapa creado\n");
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
 	free(textures);

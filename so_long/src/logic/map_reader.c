@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 11:42:56 by alerome2          #+#    #+#             */
-/*   Updated: 2024/10/29 10:53:38 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/10/29 12:55:40 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,44 +53,50 @@ int	count_lines_map(char *arg)
 	return (i);
 }
 
-char	**parse_map(char *arg)
+t_coords parse_map(char *arg)
 {
 	int		lines;
 	int		fd;
 	int		i;
-	char	**map;
+	t_coords map;
 
 	lines = count_lines_map(arg);
+	map.y = lines;
+	map.map = NULL;
 	if (lines == 0)
-		return (NULL);
+		return (map);
 	fd = open(arg, O_RDONLY);
-	map = (char **)malloc(sizeof(char *) * (lines + 1));
+	map.map = (char **)malloc(sizeof(char *) * (lines + 1));
 	i = 0;
 	while (i < lines)
 	{
-		map[i] = get_next_line(fd);
+		map.map[i] = get_next_line(fd);
 		i++;
 	}
-	map[i] = NULL;
+	map.map[i] = NULL;
 	return (map);
 }
 
-void	create_map(char *arg, void *mlx, t_textures *textures)
+t_coords	create_map(char *arg)
 {
-	char	**map;
-
-	map = NULL;
+	t_coords map;
+	
+	map.map = NULL;
 	if (check_ber(arg))
 		map = parse_map(arg);
-	if (map)
+	if (map.map)
 	{
-		if (check_map(map))
-			show_map(map);
+		if (check_map(&map))
+			show_map(map.map);
 		else
-			ft_printf("(map reader) Mapa no valido\n");
+		{
+			free_map(map.map);
+			map.x = 0;
+			map.y = 0;
+			return(map);
+		}
 	}
 	else
 		ft_printf("(map reader) Error al leer el archivo\n");
-	render_map(map, mlx, textures);
-	free_map(map);
+	return (map);
 }

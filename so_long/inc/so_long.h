@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:48:19 by alerome2          #+#    #+#             */
-/*   Updated: 2024/10/29 11:45:11 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/10/29 12:43:32 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_counter
 {
 	int	x;
 	int	y;
+	char **map;
 }	t_coords;
 
 typedef struct s_textures
@@ -41,17 +42,17 @@ typedef struct s_textures
 static mlx_image_t	*g_player; //static
 
 //Map functions
-char	**generate_map(void);
-void	show_map(char **map);
-void	free_map(char **map);
-void	create_map(char *arg, void *mlx, t_textures *textures);
-int		rows(char **map);
+char		**generate_map(void);
+void		show_map(char **map);
+void		free_map(char **map);
+t_coords	create_map(char *arg);
+int			rows(char **map);
 
 //Errors
 int		check_chars(char **map);
-int		check_rectangular(char **map);
+int		check_rectangular(t_coords *map);
 int		check_borders(char **map);
-int		check_map(char **arg);
+int		check_map(t_coords *map);
 int		only_one_player_and_exit(char **map);
 
 //Render
