@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:59:26 by alerome2          #+#    #+#             */
-/*   Updated: 2024/10/29 18:38:31 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/10/31 14:16:17 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,13 @@ void	key_movements(void *param)
 	mlx = param;
 	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(mlx);
-	/*
-	else if (mlx_is_key_down(mlx, MLX_KEY_UP))
-		g_player->instances[0].y -= 20;
+	if (mlx_is_key_down(mlx, MLX_KEY_UP))
+			g_player->instances[0].y -= TS;
 	else if (mlx_is_key_down(mlx, MLX_KEY_DOWN))
-		g_player->instances[0].y += 20;
+			g_player->instances[0].y += TS;
 	else if (mlx_is_key_down(mlx, MLX_KEY_LEFT))
-		g_player->instances[0].x -= 20;
+			g_player->instances[0].x -= TS;
 	else if (mlx_is_key_down(mlx, MLX_KEY_RIGHT))
-		g_player->instances[0].x += 20;
-	*/	
+			g_player->instances[0].x += TS;
+	
 }

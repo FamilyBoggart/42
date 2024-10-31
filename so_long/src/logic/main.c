@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 13:19:00 by alerome2          #+#    #+#             */
-/*   Updated: 2024/10/29 18:40:29 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/10/31 14:17:11 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	main(int argc, char *argv[])
 	}
 	mlx_image_to_window(mlx, g_player, 0, 0);
 	*/
-	mlx_loop_hook(mlx, key_movements, mlx);// Por ahora funciona
+	//mlx_loop_hook(mlx, key_movements, mlx);// Por ahora funciona
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
 	free(textures);
