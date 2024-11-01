@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:48:19 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/01 11:56:21 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/01 14:58:13 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,3 +59,4 @@ mlx_image_t	*render_map(char **map, void *mlx, t_textures *textures);
 
 //Movements
 void key_callback(mlx_key_data_t keydata, void *param);
+void move_if_possible(t_coords *player, int option);

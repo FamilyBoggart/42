@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 13:19:00 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/01 12:00:41 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/01 13:59:59 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	main(int argc, char *argv[])
 	*/
 	//mlx_loop_hook(mlx, showdimensions, NULL);
 	//mlx_loop_hook(mlx, key_movements, mlx);// No funciona
-	mlx_key_hook(mlx, key_callback, map->player);
+	mlx_key_hook(mlx, key_callback, map);
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
 	free(textures);

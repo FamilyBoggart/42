@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 19:43:33 by alerome2          #+#    #+#             */
-/*   Updated: 2024/10/29 19:22:50 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/10/31 15:27:41 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,33 @@ void	render_images(void *mlx, t_textures *texture, char *path, t_coords cont)
 {
 	mlx_image_t	*img;
 	
-	ft_printf("(render_images) Content:\n");
-	ft_printf("(render_images) x: %d, y: %d\nMlx: %p\nTexture: %p\nPath: %s\n", cont.x, cont.y, mlx, texture, path);
-	if (!ft_strncmp(path, "Wall.png", 8))
-		img = mlx_texture_to_image(mlx, texture->wall);
-	if (!ft_strncmp(path, "Floor.png", 9))
-		img = mlx_texture_to_image(mlx, texture->floor);
-	if (!ft_strncmp(path, "Exit.png", 8))
-		img = mlx_texture_to_image(mlx, texture->exit);
-	if (!ft_strncmp(path, "Player.png", 10))
-		img = mlx_texture_to_image(mlx, texture->p);
-	if (!ft_strncmp(path, "c_libft.png", 11))
-		img = mlx_texture_to_image(mlx, texture->c_libft);
+	if (ft_strncmp(path, "Player.png", 10))
+	{
+		if (!ft_strncmp(path, "Wall.png", 8))
+			img = mlx_texture_to_image(mlx, texture->wall);
+		if (!ft_strncmp(path, "Floor.png", 9))
+			img = mlx_texture_to_image(mlx, texture->floor);
+		if (!ft_strncmp(path, "Exit.png", 8))
+			img = mlx_texture_to_image(mlx, texture->exit);
+		if (!ft_strncmp(path, "c_libft.png", 11))
+			img = mlx_texture_to_image(mlx, texture->c_libft);
+		mlx_image_to_window(mlx, img, cont.y * TS, cont.x * TS);
+	}	
+	else 
+	{
+		g_player = mlx_texture_to_image(mlx, texture->p);
+		mlx_image_to_window(mlx, g_player, cont.y * TS, cont.x * TS);
+	}
+
+}
+
+mlx_image_t *render_player(void *mlx, t_textures *texture, t_coords cont)
+{
+	mlx_image_t	*img;
+
+	img = mlx_texture_to_image(mlx, texture->p);
 	mlx_image_to_window(mlx, img, cont.y * TS, cont.x * TS);
+	return (img);
 }
 
 void init_textures(t_textures *texture)
@@ -47,10 +61,10 @@ void init_textures(t_textures *texture)
 	texture->c_b2br = mlx_load_png(ft_strjoin(path, "c_b2br.png"));
 	texture->c_locked = mlx_load_png(ft_strjoin(path, "c_locked.png"));
 }
-
+/*
 void	show_map(char **map)
 {
-	int	i;
+	int	i;	t_player	player;
 	int	j;
 
 	i = 0;
@@ -66,6 +80,7 @@ void	show_map(char **map)
 	}
 	write(1, "\n", 1);
 }
+*/
 
 void	free_map(char **map)
 {
@@ -90,9 +105,11 @@ int	rows(char **map)
 	return (i);
 }
 
-void	render_map(char **map, void *mlx, t_textures *texture)
+
+mlx_image_t	*render_map(char **map, void *mlx, t_textures *texture)
 {
 	t_coords	counter;
+	mlx_image_t	*player;
 
 	init_textures(texture);
 	counter.x = 0;
@@ -101,7 +118,6 @@ void	render_map(char **map, void *mlx, t_textures *texture)
 		counter.y = 0;
 		while (map[counter.x][counter.y])
 		{
-			ft_printf("(map_render) x: %d, y: %d. Char: %c\n", counter.x, counter.y, map[counter.x][counter.y]);
 			if (map[counter.x][counter.y] != '1')
 				render_images(mlx, texture, "Floor.png", counter);
 			if (map[counter.x][counter.y] == '1')
@@ -109,11 +125,12 @@ void	render_map(char **map, void *mlx, t_textures *texture)
 			if (map[counter.x][counter.y] == 'E')
 				render_images(mlx, texture, "Exit.png", counter);
 			if (map[counter.x][counter.y] == 'P')
-				render_images(mlx, texture, "Player.png", counter);
+				player = render_player(mlx, texture, counter);
 			if (map[counter.x][counter.y] == 'C')
 				render_images(mlx, texture, "c_libft.png", counter);
 			counter.y++;
 		}
 		counter.x++;
 	}
+	return (player);
 }
