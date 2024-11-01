@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 13:19:00 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/01 13:59:59 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/01 16:26:34 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,9 @@ int	main(int argc, char *argv[])
 		printf("Error\n");
 		return (0);
 	}
-	ft_printf("(main.c) Mapx Size: x = %d, y = %d\n", map->x * TS, map->y * TS);
-	mlx = mlx_init(map->y * TS, map->x * TS, "Alerome2's game", true);
+	count_colectibles(map);
+	ft_printf("(main.c) Map Size: x = %d, y = %d\nCollectibles in map: %d\n", map->x * TS, map->y * TS, map->total_collectibles); //Debug
+	mlx = mlx_init(map->y * TS, map->x * TS, "El camino de murciano", true);
 	map->player = render_map(map->map, mlx, textures);
 	/*
 	//g_player = mlx_texture_to_image(mlx, texture);
