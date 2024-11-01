@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 11:42:56 by alerome2          #+#    #+#             */
-/*   Updated: 2024/10/29 12:55:40 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/01 11:59:23 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,46 +53,49 @@ int	count_lines_map(char *arg)
 	return (i);
 }
 
-t_coords parse_map(char *arg)
+t_coords *parse_map(char *arg)
 {
 	int		lines;
 	int		fd;
 	int		i;
-	t_coords map;
+	t_coords *map;
 
+	map = malloc(sizeof(t_coords));
 	lines = count_lines_map(arg);
-	map.y = lines;
-	map.map = NULL;
+	map->y = lines;
+	map->map = NULL;
 	if (lines == 0)
 		return (map);
 	fd = open(arg, O_RDONLY);
-	map.map = (char **)malloc(sizeof(char *) * (lines + 1));
+	map->map = (char **)malloc(sizeof(char *) * (lines + 1));
 	i = 0;
 	while (i < lines)
 	{
-		map.map[i] = get_next_line(fd);
+		map->map[i] = get_next_line(fd);
 		i++;
 	}
-	map.map[i] = NULL;
+	map->map[i] = NULL;
 	return (map);
 }
 
-t_coords	create_map(char *arg)
+t_coords	*create_map(char *arg)
 {
-	t_coords map;
+	t_coords *map;
 	
-	map.map = NULL;
+	map = malloc(sizeof(t_coords));
+	map->map = NULL;
 	if (check_ber(arg))
 		map = parse_map(arg);
-	if (map.map)
+	if (map->map)
 	{
-		if (check_map(&map))
-			show_map(map.map);
+		if (check_map(map))
+			//show_map(map.map);
+			ft_printf("Map ok"); // Debug
 		else
 		{
-			free_map(map.map);
-			map.x = 0;
-			map.y = 0;
+			free_map(map->map);
+			map->x = 0;
+			map->y = 0;
 			return(map);
 		}
 	}

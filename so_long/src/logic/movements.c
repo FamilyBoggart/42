@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:59:26 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/01 11:32:12 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/01 11:52:10 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void key_callback(mlx_key_data_t keydata, void *param)
 	mlx_image_t	*player;
 
 	player = param;
-
-	ft_printf("Key action: %d\n", keydata.action);
+	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
+		exit(EXIT_SUCCESS);
 	if (keydata.key == MLX_KEY_UP && keydata.action == MLX_PRESS)
 		player->instances[0].y -= 1 * TS;
 	if (keydata.key == MLX_KEY_DOWN && keydata.action == MLX_PRESS)
@@ -43,4 +43,5 @@ void key_callback(mlx_key_data_t keydata, void *param)
 		player->instances[0].x -= 1 * TS;
 	if (keydata.key == MLX_KEY_RIGHT && keydata.action == MLX_PRESS)
 		player->instances[0].x += 1 * TS;
+	ft_printf("Player position: x = %d, y = %d\n", player->instances[0].x, player->instances[0].y);
 }
