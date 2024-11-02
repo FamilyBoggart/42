@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 13:19:00 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/01 16:26:34 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/02 12:33:06 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,16 @@ int	main(int argc, char *argv[])
 		return (EXIT_FAILURE);
 	}
 	map = create_map(argv[1]);
-	if (!map->map || map->x == 0 || map->y == 0)
+	if (!map->map)
 	{
 		printf("Error\n");
 		return (0);
 	}
 	count_colectibles(map);
-	ft_printf("(main.c) Map Size: x = %d, y = %d\nCollectibles in map: %d\n", map->x * TS, map->y * TS, map->total_collectibles); //Debug
-	mlx = mlx_init(map->y * TS, map->x * TS, "El camino de murciano", true);
-	map->player = render_map(map->map, mlx, textures);
+	ft_printf("(main.c) Collectibles in map: %d\n", map->total_collectibles); //Debug
+	ft_printf("(main.c) Map_lines = %d, Map_columns = %d\n", map->map_lines, map->map_columns); //Debug
+	mlx = mlx_init(map->map_columns * TS, map->map_lines * TS, "El camino de murciano", true);
+	map->player = render_map(map, mlx, textures);
 	/*
 	//g_player = mlx_texture_to_image(mlx, texture);
 	if (!mlx | ! g_player)

@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 11:42:56 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/01 11:59:23 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/02 12:25:33 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ t_coords *parse_map(char *arg)
 
 	map = malloc(sizeof(t_coords));
 	lines = count_lines_map(arg);
-	map->y = lines;
 	map->map = NULL;
 	if (lines == 0)
 		return (map);
@@ -89,13 +88,10 @@ t_coords	*create_map(char *arg)
 	if (map->map)
 	{
 		if (check_map(map))
-			//show_map(map.map);
-			ft_printf("Map ok"); // Debug
+			return (map);
 		else
 		{
 			free_map(map->map);
-			map->x = 0;
-			map->y = 0;
 			return(map);
 		}
 	}

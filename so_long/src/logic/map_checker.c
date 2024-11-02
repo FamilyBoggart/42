@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 14:37:38 by alerome2          #+#    #+#             */
-/*   Updated: 2024/10/29 12:45:59 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/02 12:24:43 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,38 +55,36 @@ int	check_rectangular(t_coords *map)
 			return (0);
 		i++;
 	}
-	map->y = j;
-	map->x = i;
 	return (1);
 }
 
-int	check_borders(char **map)
+int	check_borders(t_coords *m)
 {
 	int	i;
 	int	j;
-	int	len;
-	int	row;
 
 	i = 0;
-	len = ft_strlen(map[0]) - 2;
-	row = rows(map);
-	while (map[i])
+	m->map_columns = ft_strlen(m->map[0]) - 1;
+	m->map_lines = rows(m->map);
+	while (m->map[i])
 	{
 		j = 0;
-		while (map[i][j])
+		while (m->map[i][j])
 		{
-			if (map[i][j] == '\n' && map[i][j + 1] == 0)
+			if (m->map[i][j] == '\n' && m->map[i][j + 1] == 0)
 				j++;
-			else if (i == 0 || i == row - 1 || j == 0 || j == len)
+			else if (i == 0 || i == m->map_lines - 1 ||
+			j == 0 || j == m->map_columns - 1)
 			{
-				if (map[i][j] != '1')
+				if (m->map[i][j] != '1')
 					return (0);
 			}
 			j++;
 		}
 		i++;
 	}
-	return (1);
+	ft_printf("Map size: %d x %d\n", m->map_lines, m->map_columns); //Debug
+	return (1); 
 }
 
 int	check_map(t_coords *map)
@@ -101,7 +99,7 @@ int	check_map(t_coords *map)
 		ft_printf("(check_map)Error: Map is not rectangular\n");
 		return (0);
 	}
-	if (!check_borders(map->map))
+	if (!check_borders(map))
 	{
 		ft_printf("(check_map)Error: Borders are open\n");
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:48:19 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/01 17:07:46 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/02 12:32:56 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ typedef struct s_counter
 {
 	int	x;
 	int	y;
+	int map_lines;
+	int	map_columns;
 	int	total_collectibles;
 	int	collected;
 	char **map;
@@ -52,12 +54,12 @@ int			rows(char **map);
 //Errors
 int		check_chars(char **map);
 int		check_rectangular(t_coords *map);
-int		check_borders(char **map);
+int		check_borders(t_coords *map);
 int		check_map(t_coords *map);
 int		only_one_player_and_exit(char **map);
 
 //Render
-mlx_image_t	*render_map(char **map, void *mlx, t_textures *textures);
+mlx_image_t	*render_map(t_coords *map, void *mlx, t_textures *textures);
 
 //Movements
 void key_callback(mlx_key_data_t keydata, void *param);

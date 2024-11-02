@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 19:43:33 by alerome2          #+#    #+#             */
-/*   Updated: 2024/10/31 15:27:41 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/02 12:32:23 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,27 +106,27 @@ int	rows(char **map)
 }
 
 
-mlx_image_t	*render_map(char **map, void *mlx, t_textures *texture)
+mlx_image_t	*render_map(t_coords *m, void *mlx, t_textures *texture)
 {
 	t_coords	counter;
 	mlx_image_t	*player;
 
 	init_textures(texture);
 	counter.x = 0;
-	while (map[counter.x])
+	while (m->map[counter.x])
 	{
 		counter.y = 0;
-		while (map[counter.x][counter.y])
+		while (m->map[counter.x][counter.y])
 		{
-			if (map[counter.x][counter.y] != '1')
+			if (m->map[counter.x][counter.y] != '1')
 				render_images(mlx, texture, "Floor.png", counter);
-			if (map[counter.x][counter.y] == '1')
+			if (m->map[counter.x][counter.y] == '1')
 				render_images(mlx, texture, "Wall.png", counter);
-			if (map[counter.x][counter.y] == 'E')
+			if (m->map[counter.x][counter.y] == 'E')
 				render_images(mlx, texture, "Exit.png", counter);
-			if (map[counter.x][counter.y] == 'P')
+			if (m->map[counter.x][counter.y] == 'P')
 				player = render_player(mlx, texture, counter);
-			if (map[counter.x][counter.y] == 'C')
+			if (m->map[counter.x][counter.y] == 'C')
 				render_images(mlx, texture, "c_libft.png", counter);
 			counter.y++;
 		}
