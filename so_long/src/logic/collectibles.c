@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 13:41:23 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/01 17:33:32 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/02 16:13:18 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,13 @@ void collect(t_coords *m)
 	int	y;
 	char **map;
 
+
 	map = m->map;
 	x = m->player->instances[0].x / TS;
 	y = m->player->instances[0].y / TS;
-	if (map[x][y] == 'C')
+	if (map[y][x] == 'C')
 	{
-		map[x][y] = '0';
+		map[y][x] = '0';
 		m->collected++;
 		ft_printf("\033[93m (collectibles.c) Collectibles: %d/%d\n\033[0m", m->collected, m->total_collectibles);
 	}

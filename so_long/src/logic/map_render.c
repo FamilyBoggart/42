@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 19:43:33 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/02 16:01:32 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/02 16:20:49 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ void	render_images(void *mlx, t_textures *texture, t_coords *m)
 {
 	mlx_image_t	*img;
 	
-
-	ft_printf("Map[%d][%d] = %c\n", m->x, m->y, m->map[m->y][m->x]);
 	if(m->map[m->y][m->x] == '1')
 		img = mlx_texture_to_image(mlx, texture->wall);
 	else
@@ -32,7 +30,6 @@ void	render_images(void *mlx, t_textures *texture, t_coords *m)
 	{
 		m->player = mlx_texture_to_image(mlx, texture->p);
 		mlx_image_to_window(mlx, m->player, m->x * TS, m->y * TS);
-		ft_printf("Player position: [%d,%d]\n", m->player->instances[0].x, m->player->instances[0].y);
 	}
 	else
 		mlx_image_to_window(mlx, img, m->x * TS, m->y * TS);
@@ -48,32 +45,8 @@ void init_textures(t_textures *texture)
 	texture->floor = mlx_load_png(ft_strjoin(path, "Floor.png"));
 	texture->exit = mlx_load_png(ft_strjoin(path, "Exit.png"));
 	texture->p = mlx_load_png(ft_strjoin(path, "Player.png"));
-	texture->c_libft = mlx_load_png(ft_strjoin(path, "c_libft.png"));
-	texture->c_printf = mlx_load_png(ft_strjoin(path, "c_printf.png"));
-	texture->c_gnl = mlx_load_png(ft_strjoin(path, "c_gnl.png"));
-	texture->c_b2br = mlx_load_png(ft_strjoin(path, "c_b2br.png"));
-	texture->c_locked = mlx_load_png(ft_strjoin(path, "c_locked.png"));
+	texture->c_libft = mlx_load_png(ft_strjoin(path, "collectible.png"));
 }
-/*
-void	show_map(char **map)
-{
-	int	i;	t_player	player;
-	int	j;
-
-	i = 0;
-	while (map[i])
-	{
-		j = 0;
-		while (map[i][j])
-		{
-			write(1, &map[i][j], 1);
-			j++;
-		}
-		i++;
-	}
-	write(1, "\n", 1);
-}
-*/
 
 void	free_map(char **map)
 {

@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:59:26 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/02 15:56:05 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/02 16:14:25 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,8 @@
 void key_callback(mlx_key_data_t keydata, void *param)
 {
 	t_coords	*map;
-	mlx_image_t	*player;
 
 	map = param;
-	player = map->player;
-	ft_printf("\033[91mActual player position: \033[0mx = %d, y = %d\n", player->instances[0].x, player->instances[0].y);
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		exit(EXIT_SUCCESS);
 	if (keydata.key == MLX_KEY_UP && keydata.action == MLX_PRESS)
@@ -32,8 +29,6 @@ void key_callback(mlx_key_data_t keydata, void *param)
 		move_if_possible(map, 4);
 	collect(map);
 	exit_map(map);
-	ft_printf("Player position: x = %d, y = %d\n", player->instances[0].x, player->instances[0].y);
-	ft_printf("Map char: %c\n", map->map[player->instances[0].x / TS][player->instances[0].y / TS]);
 }
 void show_map(char **map)
 {
@@ -61,7 +56,6 @@ void move_if_possible(t_coords *map, int option)
 	
 	x = map->player->instances[0].x / TS;
 	y = map->player->instances[0].y / TS;
-	ft_printf("(move_if_possible) Celda : %c\n", map->map[y][x]);
 	if (option == 1 && map->map[y - 1][x] != '1')
 		map->player->instances[0].y -= 1 * TS;
 	if (option == 2 && map->map[y + 1][x] != '1')
@@ -79,7 +73,7 @@ void exit_map(t_coords *map)
 
 	x = map->player->instances[0].x / TS;
 	y = map->player->instances[0].y / TS;
-	if (map->map[x][y] == 'E' && map->collected == map->total_collectibles)
+	if (map->map[y][x] == 'E' && map->collected == map->total_collectibles)
 	{
 		ft_printf("\033[91mYou win!\n\033[0m");
 		exit(EXIT_SUCCESS);
