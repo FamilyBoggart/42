@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 13:19:00 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/02 12:33:06 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/02 15:40:02 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,6 @@ static void	ft_error(void)
 }
 
 */
-void showdimensions(void *param)
-{
-	mlx_t	*mlx;
-
-	mlx = param;
-	ft_printf("Window size: x = %d, y = %d\n", mlx->width, mlx->height);
-}
 
 int	main(int argc, char *argv[])
 {
@@ -51,7 +44,7 @@ int	main(int argc, char *argv[])
 	ft_printf("(main.c) Collectibles in map: %d\n", map->total_collectibles); //Debug
 	ft_printf("(main.c) Map_lines = %d, Map_columns = %d\n", map->map_lines, map->map_columns); //Debug
 	mlx = mlx_init(map->map_columns * TS, map->map_lines * TS, "El camino de murciano", true);
-	map->player = render_map(map, mlx, textures);
+	render_map(map, mlx, textures);
 	/*
 	//g_player = mlx_texture_to_image(mlx, texture);
 	if (!mlx | ! g_player)
@@ -61,7 +54,6 @@ int	main(int argc, char *argv[])
 	}
 	mlx_image_to_window(mlx, g_player, 0, 0);
 	*/
-	//mlx_loop_hook(mlx, showdimensions, NULL);
 	//mlx_loop_hook(mlx, key_movements, mlx);// No funciona
 	mlx_key_hook(mlx, key_callback, map);
 	mlx_loop(mlx);

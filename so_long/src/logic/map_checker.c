@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 14:37:38 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/02 12:24:43 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/02 13:44:40 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ int	check_borders(t_coords *m)
 		}
 		i++;
 	}
-	ft_printf("Map size: %d x %d\n", m->map_lines, m->map_columns); //Debug
 	return (1); 
 }
 
