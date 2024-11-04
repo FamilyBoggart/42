@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 19:43:33 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/04 13:59:06 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/04 14:27:25 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,14 +97,30 @@ void init_player_exit(void *mlx, t_textures *t, t_images *img, t_coords *m)
 
 void init_textures(t_textures *texture)
 {
-	char *path;
-
-	path = "/home/usuario/Desktop/42/so_long/inc/Images/";
-	texture->wall = mlx_load_png(ft_strjoin(path, "Wall.png"));
-	texture->floor = mlx_load_png(ft_strjoin(path, "Floor.png"));
-	texture->exit = mlx_load_png(ft_strjoin(path, "Exit.png"));
-	texture->p = mlx_load_png(ft_strjoin(path, "Player.png"));
-	texture->collectible = mlx_load_png(ft_strjoin(path, "collectible.png"));
+    char *path;
+    char *full_path;
+	
+    path = "/home/usuario/Desktop/42/so_long/inc/Images/";
+	
+    full_path = ft_strjoin(path, "Wall.png");
+    texture->wall = mlx_load_png(full_path);
+    free(full_path);
+	
+    full_path = ft_strjoin(path, "Floor.png");
+    texture->floor = mlx_load_png(full_path);
+    free(full_path);
+	
+    full_path = ft_strjoin(path, "Exit.png");
+    texture->exit = mlx_load_png(full_path);
+    free(full_path);
+	
+    full_path = ft_strjoin(path, "Player.png");
+    texture->p = mlx_load_png(full_path);
+    free(full_path);
+	
+    full_path = ft_strjoin(path, "collectible.png");
+    texture->collectible = mlx_load_png(full_path);
+    free(full_path);
 }
 
 void	free_map(char **map)
