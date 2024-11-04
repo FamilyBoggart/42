@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 14:37:38 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/02 13:44:40 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/02 16:32:14 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,16 @@ int	check_rectangular(t_coords *map)
 		i++;
 	}
 	return (1);
+}
+
+int	rows(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+		i++;
+	return (i);
 }
 
 int	check_borders(t_coords *m)
