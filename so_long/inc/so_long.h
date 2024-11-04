@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:48:19 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/04 12:28:36 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/04 13:57:47 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,15 @@
 #include "../libft/inc/printf/ft_printf.h"
 
 #define TS 100
+
+typedef struct s_textures
+{
+	mlx_texture_t	*wall;
+	mlx_texture_t	*floor;
+	mlx_texture_t	*exit;
+	mlx_texture_t	*p;
+	mlx_texture_t	*collectible;
+}	t_textures;
 
 typedef struct s_images
 {
@@ -36,16 +45,9 @@ typedef struct s_counter
 	char **map;
 	mlx_image_t	*player;
 	t_images	*img_link;
+	t_textures	*textures;
 }	t_coords;
 
-typedef struct s_textures
-{
-	mlx_texture_t	*wall;
-	mlx_texture_t	*floor;
-	mlx_texture_t	*exit;
-	mlx_texture_t	*p;
-	mlx_texture_t	*collectible;
-}	t_textures;
 
 
 //Map functions
@@ -74,3 +76,6 @@ void move_if_possible(t_coords *player, int option);
 int count_colectibles(t_coords *map);
 void collect(t_coords *map);
 void exit_map(t_coords *map);
+
+//Memory
+void	free_all(t_coords *map);

@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:59:26 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/02 16:14:25 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/04 13:55:52 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,18 @@ void exit_map(t_coords *map)
 {
 	int x;
 	int y;
+	void *mlx;
 
+	mlx = map->img_link->mlx;
 	x = map->player->instances[0].x / TS;
 	y = map->player->instances[0].y / TS;
 	if (map->map[y][x] == 'E' && map->collected == map->total_collectibles)
 	{
 		ft_printf("\033[91mYou win!\n\033[0m");
+		free_all(map);
+		ft_printf("\033[91mAll images freed\n\033[0m");
+		mlx_terminate(mlx);
+		ft_printf("\033[91mmlx terminated\n\033[0m");
 		exit(EXIT_SUCCESS);
 	}
 }
