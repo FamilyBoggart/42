@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:59:26 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/04 14:25:06 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/04 17:48:33 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,18 @@
 void key_callback(mlx_key_data_t keydata, void *param)
 {
 	t_coords	*map;
+	void		*mlx;
 
 	map = param;
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
+	{
+		mlx = map->img_link->mlx;
+		free_all(map);
+		ft_printf("\033[91mAll images freed\n\033[0m");
+		mlx_terminate(mlx);
+		ft_printf("\033[91mmlx terminated\n\033[0m");
 		exit(EXIT_SUCCESS);
+	}
 	if (keydata.key == MLX_KEY_UP && keydata.action == MLX_PRESS)
 		move_if_possible(map, 1);
 	if (keydata.key == MLX_KEY_DOWN && keydata.action == MLX_PRESS)
@@ -57,13 +65,25 @@ void move_if_possible(t_coords *map, int option)
 	x = map->player->instances[0].x / TS;
 	y = map->player->instances[0].y / TS;
 	if (option == 1 && map->map[y - 1][x] != '1')
+	{
 		map->player->instances[0].y -= 1 * TS;
+		ft_printf("\033[93mMovements: %d\n\033[0m", ++map->movements);
+	}
 	if (option == 2 && map->map[y + 1][x] != '1')
+	{
 		map->player->instances[0].y += 1 * TS;
+		ft_printf("\033[93mMovements: %d\n\033[0m", ++map->movements);
+	}
 	if (option == 3 && map->map[y][x - 1] != '1')
+	{
 		map->player->instances[0].x -= 1 * TS;
+		ft_printf("\033[93mMovements: %d\n\033[0m", ++map->movements);
+	}
 	if (option == 4 && map->map[y][x + 1] != '1')
+	{
 		map->player->instances[0].x += 1 * TS;
+		ft_printf("\033[93mMovements: %d\n\033[0m", ++map->movements);
+	}
 }
 
 void exit_map(t_coords *map)

@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:48:19 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/04 13:57:47 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/04 17:39:11 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_counter
 	int	map_columns;
 	int	total_collectibles;
 	int	collected;
+	int	movements;
 	char **map;
 	mlx_image_t	*player;
 	t_images	*img_link;

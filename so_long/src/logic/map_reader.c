@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 11:42:56 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/04 17:21:39 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/04 17:49:08 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ t_coords *parse_map(char *arg)
 	t_coords *map;
 
 	map = malloc(sizeof(t_coords));
-	ft_printf("(map_reader) Debul line 1: Map: %p\n", map);
 	lines = count_lines_map(arg);
 	map->map = NULL;
 	if (lines == 0)

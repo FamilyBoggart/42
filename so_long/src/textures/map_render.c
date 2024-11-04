@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 19:43:33 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/04 14:27:25 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/04 17:49:38 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void	init_collectibles(void *mlx, t_textures *t, t_images *img, t_coords *m)
 	img->collectibles = malloc(sizeof(t_list));
 	img->collectibles->next = NULL;
 	m->y = 0;
-	ft_printf("(init_collectibles) Debug line 1\n");
 	while (m->y < m->map_lines)
 	{
 		m->x = 0;
@@ -56,10 +55,8 @@ void	init_collectibles(void *mlx, t_textures *t, t_images *img, t_coords *m)
 			{
 				aux = mlx_texture_to_image(mlx, t->collectible);
 				mlx_image_to_window(mlx, aux, m->x * TS, m->y * TS);
-				ft_printf("(init_collectibles) Debug line 2\n");
 				list = ft_lstnew(aux);
 				ft_lstadd_back(&img->collectibles, list);
-				ft_printf("(init_collectibles) Debug line 3\n");
 			}
 			m->x++;
 		}
@@ -156,5 +153,5 @@ void render_map(t_coords *m, void *mlx, t_textures *texture)
 	img->mlx = mlx;
 	m->img_link = img;
 	m->textures = texture;
-
+	m->movements = 0;
 }
