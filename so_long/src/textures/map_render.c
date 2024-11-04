@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 19:43:33 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/04 11:09:54 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/04 12:28:44 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,10 @@ void	init_render_map(void *mlx,t_textures *t, t_images *img, t_coords *m)
 void	init_collectibles(void *mlx, t_textures *t, t_images *img, t_coords *m)
 {
 	mlx_image_t	*aux;
-	int	i;
+	t_list		*list;
 	
-	img->collectibles = malloc(sizeof(mlx_image_t *) * m->total_collectibles);
+	img->collectibles = malloc(sizeof(t_list));
 	m->y = 0;
-	i = 0;
 	while (m->y < m->map_lines)
 	{
 		m->x = 0;
@@ -54,9 +53,9 @@ void	init_collectibles(void *mlx, t_textures *t, t_images *img, t_coords *m)
 			if(m->map[m->y][m->x] == 'C')
 			{
 				aux = mlx_texture_to_image(mlx, t->collectible);
-				img->collectibles[i] = aux;
-				i++;
 				mlx_image_to_window(mlx, aux, m->x * TS, m->y * TS);
+				list =ft_lstnew(aux);
+				ft_lstadd_back(&img->collectibles, list);
 			}
 			m->x++;
 		}
@@ -133,4 +132,6 @@ void render_map(t_coords *m, void *mlx, t_textures *texture)
 	init_render_map(mlx, texture, img, m);
 	init_collectibles(mlx, texture, img, m);
 	init_player_exit(mlx, texture, img, m);
+	img->mlx = mlx;
+	m->img_link = img;
 }

@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:48:19 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/02 16:41:51 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/04 12:28:36 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,14 @@
 #include "../libft/inc/printf/ft_printf.h"
 
 #define TS 100
+
+typedef struct s_images
+{
+	void		*mlx;
+	mlx_image_t	**map;
+	t_list		*collectibles;
+	mlx_image_t *exit;
+} t_images;
 
 typedef struct s_counter
 {
@@ -27,6 +35,7 @@ typedef struct s_counter
 	int	collected;
 	char **map;
 	mlx_image_t	*player;
+	t_images	*img_link;
 }	t_coords;
 
 typedef struct s_textures
@@ -38,12 +47,6 @@ typedef struct s_textures
 	mlx_texture_t	*collectible;
 }	t_textures;
 
-typedef struct s_images
-{
-	mlx_image_t	**map;
-	mlx_image_t	**collectibles;
-	mlx_image_t *exit;
-} t_images;
 
 //Map functions
 char		**generate_map(void);
@@ -61,6 +64,7 @@ int		only_one_player_and_exit(char **map);
 
 //Render
 void	render_map(t_coords *map, void *mlx, t_textures *textures);
+void	erase_collectible(t_coords *map);
 
 //Movements
 void key_callback(mlx_key_data_t keydata, void *param);
