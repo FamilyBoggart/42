@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 14:37:38 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/02 16:32:14 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/06 15:59:07 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,8 @@ int	check_borders(t_coords *m)
 		{
 			if (m->map[i][j] == '\n' && m->map[i][j + 1] == 0)
 				j++;
-			else if (i == 0 || i == m->map_lines - 1 ||
-			j == 0 || j == m->map_columns - 1)
+			else if (i == 0 || i == m->map_lines - 1
+				|| j == 0 || j == m->map_columns - 1)
 			{
 				if (m->map[i][j] != '1')
 					return (0);
@@ -93,7 +93,7 @@ int	check_borders(t_coords *m)
 		}
 		i++;
 	}
-	return (1); 
+	return (1);
 }
 
 int	check_map(t_coords *map)

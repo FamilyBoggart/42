@@ -6,13 +6,13 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:59:26 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/04 17:48:33 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/06 15:00:41 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/so_long.h"
 
-void key_callback(mlx_key_data_t keydata, void *param)
+void	key_callback(mlx_key_data_t keydata, void *param)
 {
 	t_coords	*map;
 	void		*mlx;
@@ -38,7 +38,8 @@ void key_callback(mlx_key_data_t keydata, void *param)
 	collect(map);
 	exit_map(map);
 }
-void show_map(char **map)
+
+void	show_map(char **map)
 {
 	int	i;
 	int	j;
@@ -57,11 +58,11 @@ void show_map(char **map)
 	write(1, "\n", 1);
 }
 
-void move_if_possible(t_coords *map, int option)
+void	move_if_possible(t_coords *map, int option)
 {
-	int x;
-	int y;
-	
+	int	x;
+	int	y;
+
 	x = map->player->instances[0].x / TS;
 	y = map->player->instances[0].y / TS;
 	if (option == 1 && map->map[y - 1][x] != '1')
@@ -86,11 +87,11 @@ void move_if_possible(t_coords *map, int option)
 	}
 }
 
-void exit_map(t_coords *map)
+void	exit_map(t_coords *map)
 {
-	int x;
-	int y;
-	void *mlx;
+	int		x;
+	int		y;
+	void	*mlx;
 
 	mlx = map->img_link->mlx;
 	x = map->player->instances[0].x / TS;

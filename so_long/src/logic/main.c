@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 13:19:00 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/04 17:46:36 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/06 15:01:57 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int argc, char *argv[])
 		return (0);
 	}
 	count_colectibles(map);
-	mlx = mlx_init(map->map_columns * TS, map->map_lines * TS, "El camino de murciano", true);
+	mlx = mlx_init(map->map_columns * TS, map->map_lines * TS, "So long", true);
 	render_map(map, mlx, textures);
 	mlx_key_hook(mlx, key_callback, map);
 	mlx_loop(mlx);

@@ -6,19 +6,18 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 13:41:23 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/04 12:13:31 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/06 15:03:31 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/so_long.h"
 
-
-int count_colectibles(t_coords *m)
+int	count_colectibles(t_coords *m)
 {
-	int	i;
-	int	j;
-	int	count;
-	char **map;
+	int		i;
+	int		j;
+	int		count;
+	char	**map;
 
 	map = m->map;
 	i = 0;
@@ -39,12 +38,11 @@ int count_colectibles(t_coords *m)
 	return (count);
 }
 
-void collect(t_coords *m)
+void	collect(t_coords *m)
 {
-	int	x;
-	int	y;
-	char **map;
-
+	int		x;
+	int		y;
+	char	**map;
 
 	map = m->map;
 	x = m->player->instances[0].x / TS;
@@ -54,6 +52,5 @@ void collect(t_coords *m)
 		erase_collectible(m);
 		map[y][x] = '0';
 		m->collected++;
-		ft_printf("\033[93m (collectibles.c) Collectibles: %d/%d\n\033[0m", m->collected, m->total_collectibles);
 	}
 }
