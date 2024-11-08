@@ -16,6 +16,10 @@ LIBFT = libft/libft.a
 
 all : $(NAME)
 
+debug: $(NAME)
+	make -C libft re
+	$(COMPILER) -fsanitize=address -g $(SO_LONG_SRC) $(MLX_LIBRARY) $(LIBFT) $(MLXFLAGS) -o $(NAME)
+
 $(NAME) :
 	make -C libft re
 	$(COMPILER) $(SO_LONG_SRC) $(MLX_LIBRARY) $(LIBFT) $(MLXFLAGS) -o $(NAME)
