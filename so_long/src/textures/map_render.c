@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 19:43:33 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/06 15:58:21 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/11 15:14:14 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ void	init_textures(t_textures *texture)
 	full_path = ft_strjoin(path, "collectible.png");
 	texture->collectible = mlx_load_png(full_path);
 	free(full_path);
+	ft_check_textures(texture);
 }
 
 void	render_map(t_coords *m, void *mlx, t_textures *texture)
@@ -121,11 +122,12 @@ void	render_map(t_coords *m, void *mlx, t_textures *texture)
 
 	img = malloc(sizeof(t_images));
 	init_textures(texture);
+	m->textures = texture;
 	init_render_map(mlx, texture, img, m);
 	init_collectibles(mlx, texture, img, m);
 	init_player_exit(mlx, texture, img, m);
+	ft_clean_textures(m->textures);
 	img->mlx = mlx;
 	m->img_link = img;
-	m->textures = texture;
 	m->movements = 0;
 }

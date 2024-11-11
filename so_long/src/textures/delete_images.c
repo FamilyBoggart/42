@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:18:41 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/11 14:55:11 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/11 15:05:23 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,17 +86,11 @@ void	free_all(t_coords *map)
 	img = map->img_link;
 	mlx = map->img_link->mlx;
 	free_collectibles(img->collectibles, map->img_link->mlx);
-	free(map->img_link-)
+	mlx_delete_image(img->mlx, img->exit);
 	free_map_images(img->map, img->mlx);
 	free(img->map);
 	free(img);
 	mlx_delete_image(mlx, map->player);
 	free_map(map->map);
-	mlx_delete_texture(map->textures->wall);
-	mlx_delete_texture(map->textures->floor);
-	mlx_delete_texture(map->textures->exit);
-	mlx_delete_texture(map->textures->p);
-	mlx_delete_texture(map->textures->collectible);
-	free(map->textures);
 	free(map);
 }

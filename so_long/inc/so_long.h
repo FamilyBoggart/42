@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:48:19 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/08 15:37:27 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/11 15:14:47 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,3 +85,7 @@ void		exit_map(t_coords *map);
 
 //Memory
 void		free_all(t_coords *map);
+
+//Textures
+void		ft_check_textures(t_textures *textures);
+void		ft_clean_textures(t_textures *texture);

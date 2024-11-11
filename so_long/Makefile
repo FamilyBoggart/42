@@ -7,7 +7,8 @@ SO_LONG_SRC = src/logic/main.c\
 	src/textures/delete_images.c\
 	src/logic/map_checker.c\
 	src/logic/map_checker_2.c\
-	src/logic/collectibles.c
+	src/logic/collectibles.c\
+	src/textures/ft_clean.c
 	
 MLX_LIBRARY = MLX42/build/libmlx42.a
 COMPILER = clang $(CFLAGS)
