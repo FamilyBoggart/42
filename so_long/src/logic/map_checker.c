@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 14:37:38 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/06 15:59:07 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/11 12:14:05 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,10 @@ int	check_borders(t_coords *m)
 	i = 0;
 	m->map_columns = ft_strlen(m->map[0]) - 1;
 	m->map_lines = rows(m->map);
-	while (m->map[i])
+	while (i < m->map_lines)
 	{
 		j = 0;
-		while (m->map[i][j])
+		while (j < m->map_columns)
 		{
 			if (m->map[i][j] == '\n' && m->map[i][j + 1] == 0)
 				j++;
@@ -113,7 +113,7 @@ int	check_map(t_coords *map)
 		ft_printf("(check_map)Error: Borders are open\n");
 		return (0);
 	}
-	if (!only_one_player_and_exit(map->map))
+	if (!only_one_player(map))
 	{
 		ft_printf("(check_map)Error: Only one player and one exit allowed\n");
 		return (0);

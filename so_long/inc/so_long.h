@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:48:19 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/06 15:54:03 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/08 15:37:27 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,12 @@ typedef struct s_counter
 	int			collected;
 	int			movements;
 	char		**map;
+	// FLOODFILL UTILS
+	char		fill_char;
+	char		**f_map;
+	int			p_x;
+	int			p_y;
+
 	mlx_image_t	*player;
 	t_images	*img_link;
 	t_textures	*textures;
@@ -61,7 +67,8 @@ int			check_chars(char **map);
 int			check_rectangular(t_coords *map);
 int			check_borders(t_coords *map);
 int			check_map(t_coords *map);
-int			only_one_player_and_exit(char **map);
+int			only_one_player(t_coords *map);
+int			floodfill(t_coords *map);
 
 //Render
 void		render_map(t_coords *map, void *mlx, t_textures *textures);
