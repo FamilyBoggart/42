@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:48:19 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/11 15:14:47 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/12 12:16:15 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,6 @@ typedef struct s_textures
 	mlx_texture_t	*collectible;
 }	t_textures;
 
-typedef struct s_images
-{
-	void		*mlx;
-	mlx_image_t	**map;
-	t_list		*collectibles;
-	mlx_image_t	*exit;
-}	t_images;
-
 typedef struct s_counter
 {
 	int			x;
@@ -49,10 +41,12 @@ typedef struct s_counter
 	char		**f_map;
 	int			p_x;
 	int			p_y;
-
+	//Textures
+	int			p_col;
+	void		*mlx;
 	mlx_image_t	*player;
-	t_images	*img_link;
 	t_textures	*textures;
+	mlx_image_t	**c;
 }	t_coords;
 
 //Map functions
@@ -72,6 +66,8 @@ int			floodfill(t_coords *map);
 
 //Render
 void		render_map(t_coords *map, void *mlx, t_textures *textures);
+void		init_render_player( t_coords *m, t_textures *t);
+int			render_sprite(t_coords *m, mlx_texture_t *texture);
 void		erase_collectible(t_coords *map);
 
 //Movements

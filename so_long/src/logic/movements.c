@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:59:26 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/06 15:00:41 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/12 12:43:47 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,9 @@ void	key_callback(mlx_key_data_t keydata, void *param)
 	map = param;
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 	{
-		mlx = map->img_link->mlx;
+		mlx = map->mlx;
 		free_all(map);
-		ft_printf("\033[91mAll images freed\n\033[0m");
-		mlx_terminate(mlx);
-		ft_printf("\033[91mmlx terminated\n\033[0m");
+		mlx_terminate(map->mlx);
 		exit(EXIT_SUCCESS);
 	}
 	if (keydata.key == MLX_KEY_UP && keydata.action == MLX_PRESS)
@@ -93,7 +91,7 @@ void	exit_map(t_coords *map)
 	int		y;
 	void	*mlx;
 
-	mlx = map->img_link->mlx;
+	mlx = map->mlx;
 	x = map->player->instances[0].x / TS;
 	y = map->player->instances[0].y / TS;
 	if (map->map[y][x] == 'E' && map->collected == map->total_collectibles)

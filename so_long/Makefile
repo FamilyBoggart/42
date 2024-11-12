@@ -4,6 +4,7 @@ SO_LONG_SRC = src/logic/main.c\
 	src/logic/movements.c\
 	src/logic/map_reader.c\
 	src/textures/map_render.c\
+	src/textures/map_render_2.c\
 	src/textures/delete_images.c\
 	src/logic/map_checker.c\
 	src/logic/map_checker_2.c\
