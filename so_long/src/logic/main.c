@@ -6,11 +6,19 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 13:19:00 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/06 15:01:57 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/12 13:25:56 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/so_long.h"
+
+/*
+atexit(ft_end);
+void	ft_end(void)
+{	
+	system("leaks -q ./so_long maps/map_00.ber");
+}
+*/
 
 int	main(int argc, char *argv[])
 {

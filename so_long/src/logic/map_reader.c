@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 11:42:56 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/06 14:58:11 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/12 13:10:03 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,9 @@ t_coords	*create_map(char *arg)
 			return (map);
 		else
 		{
-			free_map(map->map);
-			return (map);
+			free_all(map);
+			mlx_terminate(map->mlx);
+			exit(EXIT_FAILURE);
 		}
 	}
 	else
