@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 13:19:00 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/12 13:25:56 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/18 15:54:59 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,17 @@ int	main(int argc, char *argv[])
 	t_textures	*textures;
 	t_coords	*map;
 
-	textures = malloc(sizeof(t_textures));
 	if (argc != 2)
 	{
 		printf("Usage: %s <map.ber>\n", argv[0]);
 		return (EXIT_FAILURE);
 	}
+	textures = malloc(sizeof(t_textures));
 	map = create_map(argv[1]);
-	if (!map->map)
+	if (!map)
 	{
 		printf("Error\n");
-		return (0);
+		exit(EXIT_FAILURE);
 	}
 	count_colectibles(map);
 	mlx = mlx_init(map->map_columns * TS, map->map_lines * TS, "So long", true);
