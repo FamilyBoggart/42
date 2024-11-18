@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 14:37:38 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/11 12:14:05 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/18 16:25:04 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,9 @@ int	check_borders(t_coords *m)
 
 int	check_map(t_coords *map)
 {
+	ft_printf("(check_map) Debug line 1\n");
+	if (!map)
+		return (0);
 	if (!check_chars(map->map))
 	{
 		ft_printf("(check_map)Error: Invalid characters in map\n");

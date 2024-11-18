@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 11:42:56 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/18 15:56:56 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/18 16:27:08 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	count_lines_map(char *arg)
 	int		i;
 
 	fd = open(arg, O_RDONLY);
-	if (fd < 0)
+	if (fd < 1)
 		return (0);
 	i = 0;
 	line = get_next_line(fd);
@@ -60,12 +60,14 @@ t_coords	*parse_map(char *arg)
 	int			i;
 	t_coords	*map;
 
-	map = malloc(sizeof(t_coords));
 	lines = count_lines_map(arg);
-	map->map = NULL;
 	if (lines == 0)
-		return (map);
+		return (NULL);
+	map = malloc(sizeof(t_coords));
+	map->map = NULL;
 	fd = open(arg, O_RDONLY);
+	if (!fd)
+		return (NULL);
 	map->map = (char **)malloc(sizeof(char *) * (lines + 1));
 	i = 0;
 	while (i < lines)
@@ -88,6 +90,8 @@ t_coords	*create_map(char *arg)
 		map = NULL;
 		return (map);
 	}
+	if (!map)
+		return (NULL);
 	if (map->map && check_map(map))
 		return (map);
 	else
