@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:48:19 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/12 12:16:15 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/19 11:31:46 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ typedef struct s_counter
 	int			movements;
 	char		**map;
 	// FLOODFILL UTILS
-	char		fill_char;
 	char		**f_map;
 	int			p_x;
 	int			p_y;
+	int			exit;
 	//Textures
 	int			p_col;
 	void		*mlx;

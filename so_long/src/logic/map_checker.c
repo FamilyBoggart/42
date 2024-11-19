@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 14:37:38 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/18 16:25:04 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/19 11:48:24 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	check_chars(char **map)
 		}
 		i++;
 	}
+	ft_printf("chars OK\n");
 	return (1);
 }
 
@@ -55,6 +56,7 @@ int	check_rectangular(t_coords *map)
 			return (0);
 		i++;
 	}
+	ft_printf("Rectangular OK\n");
 	return (1);
 }
 
@@ -93,33 +95,20 @@ int	check_borders(t_coords *m)
 		}
 		i++;
 	}
+	ft_printf("Borders OK\n");
 	return (1);
 }
 
 int	check_map(t_coords *map)
 {
-	ft_printf("(check_map) Debug line 1\n");
 	if (!map)
 		return (0);
-	if (!check_chars(map->map))
+	if (check_chars(map->map) && check_rectangular(map) && check_borders(map)
+		&& only_one_player(map))
 	{
-		ft_printf("(check_map)Error: Invalid characters in map\n");
-		return (0);
+		count_colectibles(map);
+		if (floodfill(map))
+			return (1);
 	}
-	if (!check_rectangular(map))
-	{
-		ft_printf("(check_map)Error: Map is not rectangular\n");
-		return (0);
-	}
-	if (!check_borders(map))
-	{
-		ft_printf("(check_map)Error: Borders are open\n");
-		return (0);
-	}
-	if (!only_one_player(map))
-	{
-		ft_printf("(check_map)Error: Only one player and one exit allowed\n");
-		return (0);
-	}
-	return (1);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 13:19:00 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/18 15:54:59 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/19 11:56:59 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	main(int argc, char *argv[])
 		printf("Error\n");
 		exit(EXIT_FAILURE);
 	}
-	count_colectibles(map);
+	//count_colectibles(map);
 	mlx = mlx_init(map->map_columns * TS, map->map_lines * TS, "So long", true);
 	render_map(map, mlx, textures);
 	mlx_key_hook(mlx, key_callback, map);
