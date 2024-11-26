@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:59:26 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/19 11:10:41 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/26 16:38:28 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	key_callback(mlx_key_data_t keydata, void *param)
 		mlx = map->mlx;
 		free_all(map);
 		mlx_terminate(mlx);
+		ft_printf("\033[91mDefeat...!\n\033[0m");
 		exit(EXIT_SUCCESS);
 	}
 	if (keydata.key == MLX_KEY_UP && keydata.action == MLX_PRESS)
@@ -98,9 +99,7 @@ void	exit_map(t_coords *map)
 	{
 		ft_printf("\033[91mYou win!\n\033[0m");
 		free_all(map);
-		ft_printf("\033[91mAll images freed\n\033[0m");
 		mlx_terminate(mlx);
-		ft_printf("\033[91mmlx terminated\n\033[0m");
 		exit(EXIT_SUCCESS);
 	}
 }
