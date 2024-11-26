@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 14:37:38 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/19 11:48:24 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/26 16:33:52 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int	check_chars(char **map)
 		}
 		i++;
 	}
-	ft_printf("chars OK\n");
 	return (1);
 }
 
@@ -56,7 +55,6 @@ int	check_rectangular(t_coords *map)
 			return (0);
 		i++;
 	}
-	ft_printf("Rectangular OK\n");
 	return (1);
 }
 
@@ -95,7 +93,6 @@ int	check_borders(t_coords *m)
 		}
 		i++;
 	}
-	ft_printf("Borders OK\n");
 	return (1);
 }
 
@@ -108,7 +105,15 @@ int	check_map(t_coords *map)
 	{
 		count_colectibles(map);
 		if (floodfill(map))
+		{
+			free_map(map->f_map);
 			return (1);
+		}
+		else
+		{
+			free_map(map->f_map);
+			return (0);
+		}
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 14:47:03 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/26 16:06:06 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/26 16:29:50 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,14 @@ void	create_f_map(t_coords *map)
 	while (y < map->map_lines)
 	{
 		x = 0;
-		map->f_map[y] = malloc(map->map_columns + 1);
+		map->f_map[y] = malloc(map->map_columns + 2);
 		while (x < map->map_columns)
 		{
 			map->f_map[y][x] = map->map[y][x];
 			x++;
 		}
-		map->f_map[y][x] = '\0';
+		map->f_map[y][x] = '\n';
+		map->f_map[y][x + 1] = '\0';
 		y++;
 	}
 	map->f_map[y] = NULL;
