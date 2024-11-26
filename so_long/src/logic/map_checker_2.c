@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 14:47:03 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/26 15:55:47 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/26 16:06:06 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,20 +43,21 @@ void	create_f_map(t_coords *map)
 	int		y;
 	int		x;
 
-	ft_printf("Creating f_map \n");
 	map->f_map = malloc(sizeof(char *) * (map->map_lines + 1));
 	y = 0;
 	while (y < map->map_lines)
 	{
 		x = 0;
-		map->f_map[y] = malloc(map->map_columns);
+		map->f_map[y] = malloc(map->map_columns + 1);
 		while (x < map->map_columns)
 		{
 			map->f_map[y][x] = map->map[y][x];
 			x++;
 		}
+		map->f_map[y][x] = '\0';
 		y++;
 	}
+	map->f_map[y] = NULL;
 }
 
 int	fill(t_coords *map, int x, int y)
@@ -67,9 +68,7 @@ int	fill(t_coords *map, int x, int y)
 	collectibles = 0;
 	if (!map->f_map)
 		create_f_map(map);
-	ft_printf("Map: %p, f_map: %p\n", map->map, map->f_map);
 	c = map->f_map[y][x];
-	ft_printf("c: %c\n", c);
 	if (c != '1' && c != '*')
 	{
 		if (c == 'E')
@@ -96,20 +95,17 @@ int	floodfill(t_coords *map)
 	map->exit = 0;
 	map->y = 0;
 	map->f_map = NULL;
-	ft_printf("Lines: %d\nColumns: %d\n", map->map_lines, map->map_columns);
 	while (map->y < map->map_lines)
 	{
 		map->x = 0;
 		while (map->x < map->map_columns)
 		{
-			ft_printf("[%d][%d]: %c\n",map->y,map->x, map->map[map->y][map->x]);
 			if (map->map[map->y][map->x] == 'P')
 				collectibles = fill(map, map->x, map->y);
 			map->x++;
 		}
 		map->y++;
 	}
-	ft_printf("Floodfill collectibles: %d\nTotal collectibles: %d\n",collectibles, map->total_collectibles);
 	if (collectibles != map->total_collectibles)
 		return (0);
 	else
