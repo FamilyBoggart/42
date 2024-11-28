@@ -6,11 +6,26 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:59:26 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/26 16:38:28 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/28 12:17:02 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/so_long.h"
+
+void	show_movements(t_coords *map)
+{
+	char	*mov;
+	int		x;
+	int		y;
+
+	x = (map->map_lines - 1) * TS + TS / 2;
+	y = (map->map_columns - 1) * TS;
+	if (map->moves)
+		mlx_delete_image(map->mlx, map->moves);
+	mov = ft_itoa(++map->movements);
+	map->moves = mlx_put_string(map->mlx, mov, x, TS / 2);
+	free(mov);
+}
 
 void	key_callback(mlx_key_data_t keydata, void *param)
 {
@@ -67,22 +82,22 @@ void	move_if_possible(t_coords *map, int option)
 	if (option == 1 && map->map[y - 1][x] != '1')
 	{
 		map->player->instances[0].y -= 1 * TS;
-		ft_printf("\033[93mMovements: %d\n\033[0m", ++map->movements);
+		show_movements(map);
 	}
 	if (option == 2 && map->map[y + 1][x] != '1')
 	{
 		map->player->instances[0].y += 1 * TS;
-		ft_printf("\033[93mMovements: %d\n\033[0m", ++map->movements);
+		show_movements(map);
 	}
 	if (option == 3 && map->map[y][x - 1] != '1')
 	{
 		map->player->instances[0].x -= 1 * TS;
-		ft_printf("\033[93mMovements: %d\n\033[0m", ++map->movements);
+		show_movements(map);
 	}
 	if (option == 4 && map->map[y][x + 1] != '1')
 	{
 		map->player->instances[0].x += 1 * TS;
-		ft_printf("\033[93mMovements: %d\n\033[0m", ++map->movements);
+		show_movements(map);
 	}
 }
 

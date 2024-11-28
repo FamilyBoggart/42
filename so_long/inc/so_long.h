@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:48:19 by alerome2          #+#    #+#             */
-/*   Updated: 2024/11/19 11:31:46 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/28 11:56:53 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_counter
 	mlx_image_t	*player;
 	t_textures	*textures;
 	mlx_image_t	**c;
+	mlx_image_t	*moves;
 }	t_coords;
 
 //Map functions

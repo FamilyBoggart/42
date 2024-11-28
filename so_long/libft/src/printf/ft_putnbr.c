@@ -6,13 +6,13 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 12:14:02 by alerome2          #+#    #+#             */
-/*   Updated: 2024/07/17 12:17:40 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/11/28 12:07:45 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/printf/ft_printf.h"
 
-int	n_size(int n)
+int	n_size_pf(int n)
 {
 	int	counter;
 
@@ -25,13 +25,13 @@ int	n_size(int n)
 	return (counter);
 }
 
-char	*ft_itoa(int n)
+char	*ft_itoa_pf(int n)
 {
 	int		size;
 	char	*aux;
 	int		res;
 
-	size = n_size(n);
+	size = n_size_pf(n);
 	if (n < 0 || n == 0)
 		size++;
 	aux = (char *)malloc(size + 1);
@@ -64,7 +64,7 @@ int	ft_putnbr(int number)
 		write(1, "-2147483648", 11);
 		return (11);
 	}
-	str = ft_itoa(number);
+	str = ft_itoa_pf(number);
 	if (number <= 0)
 	{
 		n++;
