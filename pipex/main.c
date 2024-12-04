@@ -6,51 +6,70 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 18:50:29 by alerome2          #+#    #+#             */
-/*   Updated: 2024/08/03 11:19:06 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/12/04 18:04:40 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
-int main(int argc, char *argv[])
+#include "./inc/pipex.h"
+
+int check_singlepath(char *path, char *cmd)
 {
-	if(argc != 5)
+	char	*fullpath;
+	char	*aux;
+
+	aux = ft_strjoin(path, "/");
+	fullpath = ft_strjoin(aux, cmd);
+	free(aux);
+	if (access(fullpath, F_OK)== 0)
 	{
-		return (0);
-	}
-	char *file1 = argv[1];
-	char *cmd1 = argv[2];
-	char *cmd2 = argv[3];
-	char *file2 = argv[4];
-	//Archivo de prueba para probar losp pipes
-	int	fd[2]; //fd[0]: file descriptor de lectura del pipe, fd[1]: file descriptor de escritura del pipe
-	int	pid;
-	if (pipe(fd)== -1)
-	{
-		perror("pipe");
+		free(fullpath);
 		return (1);
 	}
+	else
+		free(fullpath);
+	return (0);
+}
 
-	pid = fork();
-	if(pid == -1)
-	{
-		perror("Fork");
-		return (1);		
-	}
+void	checkpaths(char *cmd)
+{
+	char	*path;
+	char	**paths;
+	int		i;
 
-	if(pid == 0) //Proceso hijo
+	i = 0;
+	path = getenv("PATH");
+	paths = ft_split(path, ':');
+	while(paths[i])
 	{
-		close(fd[1]); //. Cerramos escritura y abrimos lectura
-		char buffer[100];
-		read(fd[0],buffer, sizeof(buffer));
-		printf("Hijo recibio: %s", buffer);
-		close(fd[0]);
+		if (check_singlepath(paths[i], cmd), cmd)
+			ft_printf("El comando %s se encuentra en %s\n", cmd, paths[i]);
+		free(paths[i]);
+		i++;
 	}
-	else //Proceso padre
-	{
-		close(fd[0]);
-		write(fd[1], "Hola desde el padre", 20);
-		close(fd[1]);
-	}
-	
+	free(paths);
+}
+
+void accessfile(char *filename)
+{
+	if (access(filename, R_OK) == 0)
+		ft_printf("El archivo es legible\n");
+	if (access(filename, W_OK) == 0)
+		ft_printf("El archivo es escribible\n");
+	if (access(filename, X_OK) == 0)
+		ft_printf("El archivo es ejecutable\n");
+}
+
+int	main(int argc, char *argv[])
+{
+	char *cmd1;
+
+	if (argc != 5)
+		return (0);
+	// Primer test: ./pipex cat testfile1.txt
+	cmd1 = ft_strdup(argv[1]);
+	checkpaths(cmd1);
+	free(cmd1);
+	accessfile(argv[2]);
+
 	return (0);
 }

@@ -1,6 +1,50 @@
-Esto es un archivo de prueba
-De varias lineas
-Podemos leerlo pero tambien podemos contar las palabras que existen en cada linea
+Explicacion de los 5 caracteres de control de Pipex
 
-Hay lineas vacias tambien, por que no
-Y eso, buenas tardes.
+1. <
+< testfile1.txt wc -l : Te muestra como output las lineas del archivo
+El simbolo < hace las funciones de lo que se va a usar como input en sdtinput
+
+2. |
+El simbolo | hace de pipe y redirige el output del primer comando al input del segundo comando
+
+< testfile1.txt grep eso | wc -l : Cuenta las lineas del contenido previamente filtrado, el input de wc -l 
+es el contenido filtrado por la palabra "eso" de testfile1.txt 
+
+3. >
+Por otro lado el simbolo > redirige el output a un archivo outfile.
+< testfile1.txt grep eso | wc -l > outfile1.txt && cat outfile1.txt : Nos escribirá el resultado en outfile1.txt y lo leeremos
+para comprobar que efectivamente el archivo existe
+
+4. >>
+El simbolo >> realiza lo mismo que > salvo que > sobreescribe el archivo y >> realiza un append, es decir lo escribe
+al final del archivo
+
+5. <<
+Sin embargo el simbolo << funciona de forma distinta, ya que lo que se abre es el heredoc> y no finaliza hasta encontrar
+el limitador que le pasemos como input.
+---------------------
+<< lIM cat
+heredoc> Hola
+heredoc> Como estás?
+heredoc> lIM
+Hola
+Como estás?
+--------------
+<< LIM cat funciona igual que si lo escribimos como cat << LIM
+
+------------------
+cat << LIM >> outfile
+heredoc> Hola
+heredoc> Como estás?
+heredoc> LIM
+
+cat << LIM >> outfile
+heredoc> Hola
+heredoc> Bien, y tú?
+heredoc> LIM
+
+cat outfile
+Hola
+Como estás?
+Hola
+Bien, y tú?

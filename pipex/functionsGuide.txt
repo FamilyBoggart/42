@@ -1,0 +1,7 @@
+
+1. access(): Access comprueba si el programa puede acceder al pathname dado
+	pathname: path
+	mode: R_OK, W_OK, X_OK, y F_OK si existe
+	retorna 0 si esta OK y -1 si es KO
+
+2. dup2(int oldfd, int newfd):  copia el newfd en el oldfd
