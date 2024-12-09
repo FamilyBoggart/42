@@ -7,7 +7,6 @@ OBJS = $(*.c=.o)
 LIBFT = libft/libft.a
 
 PIPEX_SRCS = main.c \
-			pipex.c \
 			utils.c
 
 all: $(NAME)
@@ -21,11 +20,11 @@ fclean: clean
 re: fclean all
 
 debug:
-	$(COMPILER) $(CDEBUGFLAGS) main.c $(LIBFT) -o $(NAME)
+	$(COMPILER) $(CDEBUGFLAGS) $(PIPEX_SRCS) $(LIBFT) -o $(NAME)
 
 $(NAME): $(LIBRARY)
 	@make -C libft re
-	@$(COMPILER) main.c $(LIBFT) -o $(NAME)
+	@$(COMPILER) $(PIPEX_SRCS) $(LIBFT) -o $(NAME)
 
 $(LIBRARY):
 	make -C libft re
