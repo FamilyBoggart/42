@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 18:59:32 by alerome2          #+#    #+#             */
-/*   Updated: 2024/12/10 12:45:22 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/12/10 12:58:48 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 #include <fcntl.h>
 
 typedef struct s_string{
-	char	*cmd1;
-	char	*cmd2;
+	char	**cmd;
 	char	*envpath;
 	char	**paths;
 	char	**aux_path;
