@@ -48,3 +48,10 @@ Hola
 Como estás?
 Hola
 Bien, y tú?
+
+--------------------------------
+
+Para este ejercicio tenemos que entender que existen 3 file descriptors asociados por defecto al sistema Unix.
+0: STDIN -> Es la entrada de datos por terminal
+1: STDOUT -> Es la salida de datos por terminal
+2: STDERR -> Es la salida por errores de la terminal

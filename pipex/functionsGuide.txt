@@ -4,4 +4,7 @@
 	mode: R_OK, W_OK, X_OK, y F_OK si existe
 	retorna 0 si esta OK y -1 si es KO
 
-2. dup2(int oldfd, int newfd):  copia el newfd en el oldfd
+2. dup2(int oldfd, int newfd):  duplica el filedescriptor del archivo (oldfd) en uno dado (newfd), apuntando ambos al mismo archivo
+	si newfd y oldfd son el mismo, la funcion retornará -1
+	si newfd esta abierto, dup2 lo cerrará primero antes de crear una copia.
+	si olfd es -1 (no existe), dup2 creará un newfd libre asociado a ese archivo

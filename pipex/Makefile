@@ -7,7 +7,8 @@ OBJS = $(*.c=.o)
 LIBFT = libft/libft.a
 
 PIPEX_SRCS = main.c \
-			utils.c
+			utils.c \
+			pipes.c
 
 all: $(NAME)
 

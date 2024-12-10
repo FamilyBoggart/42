@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   pipes.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/29 18:59:32 by alerome2          #+#    #+#             */
-/*   Updated: 2024/12/10 12:21:47 by alerome2         ###   ########.fr       */
+/*   Created: 2024/12/09 18:18:31 by alerome2          #+#    #+#             */
+/*   Updated: 2024/12/09 18:23:18 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/inc/libft/libft.h"
-#include "../libft/inc/printf/ft_printf.h"
-#include <fcntl.h>
+#include "./inc/pipex.h"
 
-typedef struct string{
-	char *path;
-	char **paths;
-	char **aux_path;
-}	t_str;
+void command(char *argv[])
+{
+	int	fd_in;
+	//int	fd_out;
 
-void	ft_free(char **str);
-void	command(char *argv[]);
+	fd_in = open(argv[0], O_RDONLY);
+	if (fd_in != -1)
+		ft_printf("Archivo leido correctamente\n");
+	close(fd_in);
+}

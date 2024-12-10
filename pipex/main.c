@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 18:50:29 by alerome2          #+#    #+#             */
-/*   Updated: 2024/12/09 13:14:15 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/12/10 12:27:49 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,31 +32,31 @@ int check_singlepath(char *path, char *cmd)
 
 void	checkpaths(char *cmd)
 {
-	char	*path;
-	char	**paths;
-	char	**aux_path;
+	t_str	*spath;
 	int		i;
 
 	i = 0;
-	path = getenv("PATH");
-	paths = ft_split(path, ':');
-	while(paths[i])
+	spath = malloc(sizeof(t_str));
+	spath->path = getenv("PATH");
+	spath->paths = ft_split(spath->path, ':');
+	while(spath->paths[i])
 	{
 		if(ft_strchr(cmd, ' '))
 		{
-			aux_path = ft_split(cmd,' ');
-			if(check_singlepath(paths[i], aux_path[0]) == 1)
-				ft_printf("El comando %s se encuentra en %s\n", aux_path[0], paths[i]);
-			ft_free(aux_path);
+			spath->aux_path = ft_split(cmd,' ');
+			if(check_singlepath(spath->paths[i], spath->aux_path[0]) == 1)
+				ft_printf("El comando %s se encuentra en %s\n", spath->aux_path[0], spath->paths[i]);
+			ft_free(spath->aux_path);
 		}
 		else
 		{
-			if (check_singlepath(paths[i], cmd) == 1)
-				ft_printf("El comando %s se encuentra en %s\n", cmd, paths[i]);
+			if (check_singlepath(spath->paths[i], cmd) == 1)
+				ft_printf("El comando %s se encuentra en %s\n", cmd, spath->paths[i]);
 		}	
 		i++;
 	}
-	ft_free(paths);
+	ft_free(spath->paths);
+	free(spath);
 }
 
 int checkfiles(char **args)
@@ -88,6 +88,8 @@ int	main(int argc, char *argv[])
 		ft_printf("Usage: ./pipex file1 cmd1 cmd2 file2\n");
 		return (0);
 	}
-	checkfiles(argv);	
+	if (checkfiles(argv))
+		command(argv);
+	write(2, "Esto es un error",16);
 	return (0);
 }
