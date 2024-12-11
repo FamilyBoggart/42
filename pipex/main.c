@@ -6,13 +6,13 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 18:50:29 by alerome2          #+#    #+#             */
-/*   Updated: 2024/12/11 11:28:32 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/12/11 16:59:28 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./inc/pipex.h"
 
-int check_singlepath(char *path, char *cmd)
+char	*check_singlepath(char *path, char *cmd)
 {
 	char	*fullpath;
 	char	**cmd_splitted;
@@ -26,55 +26,65 @@ int check_singlepath(char *path, char *cmd)
 		cmd_splitted[0] = ft_strdup(cmd);
 		cmd_splitted[1] = NULL;
 	}
-	aux = ft_strjoin(path, "/");
-	fullpath = ft_strjoin(aux, cmd_splitted[0]);
+	aux = ft_strjoin("/", cmd_splitted[0]);
+	fullpath = ft_strjoin(path, aux);
 	free(aux);
 	ft_free(cmd_splitted);
 	if (access(fullpath, F_OK)== 0 && access(fullpath, X_OK) == 0)
-	{
-		free(fullpath);
-		return (1);
-	}
+		return(fullpath);
 	else
 		free(fullpath);
-	return (0);
+	return (NULL);
 }
 
-int	checkpaths(t_str *arg, char *cmd)
+char	*checkpaths(t_str *arg, char *cmd)
 {
 	int		i;
-	int		bool_check;
+	char	*fullpath;
 
 	i = 0;
-	bool_check = 0;
-	arg->paths = ft_split(arg->envpath, ':');
 	while(arg->paths[i])
 	{
-		if(check_singlepath(arg->paths[i], cmd) == 1)
+		fullpath = check_singlepath(arg->paths[i], cmd);
+		if(fullpath)
 		{
-			ft_printf("El comando %s se encuentra en %s\n", cmd, arg->paths[i]);
-			bool_check = 1;
-			break;
+			/*
+			arg->paths[i] = ft_strdup(fullpath);
+			free(fullpath);
+			return(arg->paths[i]);
+			*/
+			return(fullpath);
 		}
-				
 		i++;
 	}
 	ft_free(arg->paths);
-	return (bool_check);
+	return (0);
 }
 
-int	check_commands(t_str *str, char **args, int argc)
+int	check_commands(t_str *str, char **args)
 {
-	str->cmd = malloc(sizeof(char *) * (argc - 2));
-	str->i = 0;
-	while (str->i < argc - 3)
+	str->cmd_path = malloc(sizeof(char *) * str->cmd_size);
+	if(!str->cmd_path)
 	{
+		ft_free(str->cmd);
+		return(0);
+	}
+	str->i = 0;
+	while (str->i < str->cmd_size - 1)
+	{
+		str->paths = ft_split(str->envpath, ':');
 		str->cmd[str->i] = ft_strdup(args[str->i + 2]);
-		checkpaths(str, str->cmd[str->i]);
+		str->cmd_path[str->i] = checkpaths(str, str->cmd[str->i]);
+		if (!str->cmd_path[str->i])
+			ft_printf("El comando no se encuentra\n");
+		else
+			ft_printf("Command path: %s\n", str->cmd_path[str->i]);
+		ft_free(str->paths);		
 		str->i++;
 	}
 	str->cmd[str->i] = NULL;
 	ft_free(str->cmd);
+	free(str->cmd_path);
 	return (1);
 }
 
@@ -92,7 +102,11 @@ t_str *checkfiles(char **args, int argc)
 	else
 	{
 		str->envpath = getenv("PATH");
-		check_commands(str, args,  argc);
+		str->cmd_size = argc - 2;
+		str->cmd = malloc(sizeof(char *) * str->cmd_size);
+		if(!str->cmd)
+			return(NULL);
+		check_commands(str, args);
 		return (str);
 	}
 }
