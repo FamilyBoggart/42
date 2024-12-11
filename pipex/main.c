@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 18:50:29 by alerome2          #+#    #+#             */
-/*   Updated: 2024/12/11 16:59:28 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/12/11 17:19:08 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*check_singlepath(char *path, char *cmd)
 	return (NULL);
 }
 
-char	*checkpaths(t_str *arg, char *cmd)
+int	checkpaths(t_str *arg, char *cmd)
 {
 	int		i;
 	char	*fullpath;
@@ -48,12 +48,9 @@ char	*checkpaths(t_str *arg, char *cmd)
 		fullpath = check_singlepath(arg->paths[i], cmd);
 		if(fullpath)
 		{
-			/*
-			arg->paths[i] = ft_strdup(fullpath);
+			arg->cmd_path[arg->i] = ft_strdup(fullpath);
 			free(fullpath);
-			return(arg->paths[i]);
-			*/
-			return(fullpath);
+			return(1);
 		}
 		i++;
 	}
@@ -74,7 +71,7 @@ int	check_commands(t_str *str, char **args)
 	{
 		str->paths = ft_split(str->envpath, ':');
 		str->cmd[str->i] = ft_strdup(args[str->i + 2]);
-		str->cmd_path[str->i] = checkpaths(str, str->cmd[str->i]);
+		checkpaths(str, str->cmd[str->i]);
 		if (!str->cmd_path[str->i])
 			ft_printf("El comando no se encuentra\n");
 		else
@@ -84,7 +81,8 @@ int	check_commands(t_str *str, char **args)
 	}
 	str->cmd[str->i] = NULL;
 	ft_free(str->cmd);
-	free(str->cmd_path);
+	str->cmd_path[str->i] = NULL;
+	ft_free(str->cmd_path);
 	return (1);
 }
 
