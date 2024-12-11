@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 18:50:29 by alerome2          #+#    #+#             */
-/*   Updated: 2024/12/10 13:07:37 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/12/11 11:28:32 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,21 @@
 int check_singlepath(char *path, char *cmd)
 {
 	char	*fullpath;
+	char	**cmd_splitted;
 	char	*aux;
 
+	if(ft_strchr(cmd, ' '))
+		cmd_splitted = ft_split(cmd, ' ');
+	else
+	{
+		cmd_splitted = malloc(sizeof (char *) * 2);
+		cmd_splitted[0] = ft_strdup(cmd);
+		cmd_splitted[1] = NULL;
+	}
 	aux = ft_strjoin(path, "/");
-	fullpath = ft_strjoin(aux, cmd);
+	fullpath = ft_strjoin(aux, cmd_splitted[0]);
 	free(aux);
+	ft_free(cmd_splitted);
 	if (access(fullpath, F_OK)== 0 && access(fullpath, X_OK) == 0)
 	{
 		free(fullpath);
@@ -30,59 +40,60 @@ int check_singlepath(char *path, char *cmd)
 	return (0);
 }
 
-void	checkpaths(t_str *arg, char *cmd)
+int	checkpaths(t_str *arg, char *cmd)
 {
 	int		i;
+	int		bool_check;
 
 	i = 0;
+	bool_check = 0;
 	arg->paths = ft_split(arg->envpath, ':');
 	while(arg->paths[i])
 	{
-		if(ft_strchr(cmd, ' '))
+		if(check_singlepath(arg->paths[i], cmd) == 1)
 		{
-			arg->aux_path = ft_split(cmd,' ');
-			if(check_singlepath(arg->paths[i], arg->aux_path[0]) == 1)
-				ft_printf("El comando %s se encuentra en %s\n", arg->aux_path[0], arg->paths[i]);
-			ft_free(arg->aux_path);
+			ft_printf("El comando %s se encuentra en %s\n", cmd, arg->paths[i]);
+			bool_check = 1;
+			break;
 		}
-		else
-		{
-			if (check_singlepath(arg->paths[i], cmd) == 1)
-				ft_printf("El comando %s se encuentra en %s\n", cmd, arg->paths[i]);
-		}	
+				
 		i++;
 	}
 	ft_free(arg->paths);
+	return (bool_check);
+}
+
+int	check_commands(t_str *str, char **args, int argc)
+{
+	str->cmd = malloc(sizeof(char *) * (argc - 2));
+	str->i = 0;
+	while (str->i < argc - 3)
+	{
+		str->cmd[str->i] = ft_strdup(args[str->i + 2]);
+		checkpaths(str, str->cmd[str->i]);
+		str->i++;
+	}
+	str->cmd[str->i] = NULL;
+	ft_free(str->cmd);
+	return (1);
 }
 
 t_str *checkfiles(char **args, int argc)
 {
-	t_str	*arguments;
-	int		i;
+	t_str	*str;
 	
-	arguments = malloc(sizeof(t_str));
-	if (!arguments)
-		return (NULL);
-	arguments->cmd = malloc(sizeof(char *) * (argc - 2));
-	if (access(args[1], F_OK) == 0)
+	str = malloc(sizeof(t_str));
+	if (!str || access(args[1], F_OK) != 0)
 	{
-		arguments->envpath = getenv("PATH");
-		i = 0;
-		while (i < argc - 3)
-		{
-			arguments->cmd[i] = ft_strdup(args[i + 2]);
-			checkpaths(arguments, arguments->cmd[i]);
-			i++;
-		}
-		arguments->cmd[i] = NULL;
-		ft_free(arguments->cmd);
-		return (arguments);
+		if(str)
+			free(str);
+		return(NULL);
 	}
 	else
 	{
-		free(arguments);
-		ft_printf("Error. El archivo especificado no existe\n");
-		return (NULL);
+		str->envpath = getenv("PATH");
+		check_commands(str, args,  argc);
+		return (str);
 	}
 }
 
@@ -101,6 +112,8 @@ int	main(int argc, char *argv[])
 		command(argv);
 		free(arguments);
 	}
+	else
+		ft_printf("Error\n");
 	//write(2, "Esto es un error",16);
 	return (0);
 }
