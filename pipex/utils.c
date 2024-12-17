@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 13:13:35 by alerome2          #+#    #+#             */
-/*   Updated: 2024/12/09 12:00:43 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/12/17 12:39:07 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,6 @@ void	ft_free(char **str)
 	i = 0;
 	if(!str)
 		return;
-	if (!*str && str)
-	{
-		free(str);
-		return;
-	}
 	while (str[i])
 	{
 		free(str[i]);
@@ -33,4 +28,15 @@ void	ft_free(char **str)
 		free(str);
 	else
 		ft_printf("ERROR DE LIBERACION DE MEMORIA\n");
+}
+
+void finish(t_str *str, int ok)
+{
+	if (ok == 1)
+	{
+		str->cmd[str->i] = NULL;
+		str->cmd_path[str->i] = NULL;
+	}
+	ft_free(str->cmd);
+	ft_free(str->cmd_path);
 }

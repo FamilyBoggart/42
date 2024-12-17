@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 18:50:29 by alerome2          #+#    #+#             */
-/*   Updated: 2024/12/11 17:19:08 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/12/17 13:17:25 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,6 @@ int	check_commands(t_str *str, char **args)
 		ft_free(str->paths);		
 		str->i++;
 	}
-	str->cmd[str->i] = NULL;
-	ft_free(str->cmd);
-	str->cmd_path[str->i] = NULL;
-	ft_free(str->cmd_path);
 	return (1);
 }
 
@@ -104,9 +100,10 @@ t_str *checkfiles(char **args, int argc)
 		str->cmd = malloc(sizeof(char *) * str->cmd_size);
 		if(!str->cmd)
 			return(NULL);
-		check_commands(str, args);
-		return (str);
+		if (check_commands(str, args))
+			return (str);
 	}
+	return (NULL);
 }
 
 int	main(int argc, char *argv[])
@@ -122,10 +119,11 @@ int	main(int argc, char *argv[])
 	if (arguments)
 	{
 		command(argv);
+		finish(arguments, 1);
 		free(arguments);
 	}
 	else
 		ft_printf("Error\n");
-	//write(2, "Esto es un error",16);
+	
 	return (0);
 }

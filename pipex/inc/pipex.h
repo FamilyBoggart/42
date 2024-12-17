@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 18:59:32 by alerome2          #+#    #+#             */
-/*   Updated: 2024/12/11 11:57:16 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/12/17 12:39:26 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ typedef struct s_string{
 	char	**aux_path;
 }	t_str;
 
+void	finish(t_str *str, int ok);
 void	ft_free(char **str);
 void	command(char *argv[]);
