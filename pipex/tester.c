@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 12:45:17 by alerome2          #+#    #+#             */
-/*   Updated: 2024/12/17 13:53:52 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/12/17 13:57:53 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void check(void)
 }
 int main(void)
 {
+	system("make debug");
 	write(1, "\033[34m[1]. /pipex\n\033[0m", 22);
 	system ("./pipex");
 	check();

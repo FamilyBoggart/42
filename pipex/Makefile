@@ -24,7 +24,7 @@ re: fclean all tester
 debug:
 	@$(COMPILER) $(CDEBUGFLAGS) $(PIPEX_SRCS) $(LIBFT) -o $(NAME)
 
-tester: debug
+tester: $(LIBRARY)
 	$(COMPILER) tester.c -o $(TESTER) $(LIBFT)
 
 $(NAME): $(LIBRARY)
@@ -32,4 +32,4 @@ $(NAME): $(LIBRARY)
 	@$(COMPILER) $(PIPEX_SRCS) $(LIBFT) -o $(NAME)
 
 $(LIBRARY):
-	make -C libft re
+	@make -C libft re
