@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 18:18:31 by alerome2          #+#    #+#             */
-/*   Updated: 2024/12/20 15:43:43 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/12/23 13:09:22 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,19 +45,5 @@ void pipes(void)
 
 void	command(t_str *args)
 {
-	int		i;
-	char	**cmd;
-
-	cmd = malloc(sizeof(char *) * 3);
-	i = 0;
 	ft_printf("Archivo a trabajar: %s\n", args->input_file);
-	while (i < args->i)
-	{
-		cmd[0] = args->cmd_path[i];
-		cmd[1] = args->input_file;
-		cmd[2] = NULL;
-		ft_printf("Comando %d:\t%s\n", i + 1, args->cmd_path[i]);
-		execv(cmd[0], cmd);
-		i++;
-	}
 }
