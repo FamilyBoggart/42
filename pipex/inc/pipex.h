@@ -6,13 +6,14 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 18:59:32 by alerome2          #+#    #+#             */
-/*   Updated: 2024/12/17 12:39:26 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/12/19 13:18:12 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/inc/libft/libft.h"
 #include "../libft/inc/printf/ft_printf.h"
 #include <fcntl.h>
+#include <sys/types.h>
 
 /**
  * @brief Estructura usada durante todo el proyecto
@@ -28,6 +29,7 @@
 typedef struct s_string{
 	int		i;
 	int		cmd_size;
+	char	*input_file;
 	char	*envpath;
 	char	**paths;
 	char	**cmd;
@@ -36,6 +38,6 @@ typedef struct s_string{
 	char	**aux_path;
 }	t_str;
 
-void	finish(t_str *str, int ok);
+void	finish(t_str *arguments, int ok);
 void	ft_free(char **str);
-void	command(char *argv[]);
+void	command(t_str *arguments);

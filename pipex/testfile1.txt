@@ -55,3 +55,9 @@ Para este ejercicio tenemos que entender que existen 3 file descriptors asociado
 0: STDIN -> Es la entrada de datos por terminal
 1: STDOUT -> Es la salida de datos por terminal
 2: STDERR -> Es la salida por errores de la terminal
+
+---------------------------------
+
+En el uso de procesos. Cada proceso guarda 2 include
+Id del proceso actual: pid --> getpid()
+Id del proceso padre: ppid --> getppid()

@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 18:50:29 by alerome2          #+#    #+#             */
-/*   Updated: 2024/12/17 14:13:20 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/12/19 13:18:26 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ t_str *checkfiles(char **args, int argc)
 	}
 	else
 	{
+		str->input_file = args[1];
 		str->envpath = getenv("PATH");
 		str->cmd_size = argc - 2;
 		str->cmd = malloc(sizeof(char *) * str->cmd_size);
@@ -122,7 +123,7 @@ int	main(int argc, char *argv[])
 	arguments = checkfiles(argv, argc);
 	if (arguments)
 	{
-		command(argv);
+		command(arguments);
 		finish(arguments, 1);
 		free(arguments);
 	}

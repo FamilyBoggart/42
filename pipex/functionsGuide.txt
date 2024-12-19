@@ -8,3 +8,8 @@
 	si newfd y oldfd son el mismo, la funcion retornará -1
 	si newfd esta abierto, dup2 lo cerrará primero antes de crear una copia.
 	si olfd es -1 (no existe), dup2 creará un newfd libre asociado a ese archivo
+
+3. fork(). Sirve para crear un nuevo proceso, el proceso padre crea un proceso hijo
+	el proceso padre tiene un id (pid). El proceso hijo lo hereda en (ppid)
+	el fork devuelve 0 si se trata del proceso hijo.
+	Fork tambien traspasa los file descriptors
