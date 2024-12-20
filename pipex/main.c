@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 18:50:29 by alerome2          #+#    #+#             */
-/*   Updated: 2024/12/19 13:18:26 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/12/20 15:28:40 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*check_singlepath(char *path, char *cmd)
 	char	**cmd_splitted;
 	char	*aux;
 
-	if(ft_strchr(cmd, ' '))
+	if (ft_strchr(cmd, ' '))
 		cmd_splitted = ft_split(cmd, ' ');
 	else
 	{
@@ -30,8 +30,8 @@ char	*check_singlepath(char *path, char *cmd)
 	fullpath = ft_strjoin(path, aux);
 	free(aux);
 	ft_free(cmd_splitted);
-	if (access(fullpath, F_OK)== 0 && access(fullpath, X_OK) == 0)
-		return(fullpath);
+	if (access(fullpath, F_OK) == 0 && access(fullpath, X_OK) == 0)
+		return (fullpath);
 	else
 		free(fullpath);
 	return (NULL);
@@ -43,15 +43,15 @@ int	checkpaths(t_str *arg, char *cmd)
 	char	*fullpath;
 
 	i = 0;
-	while(arg->paths[i])
+	while (arg->paths[i])
 	{
 		fullpath = check_singlepath(arg->paths[i], cmd);
-		if(fullpath)
+		if (fullpath)
 		{
 			arg->cmd[arg->i] = ft_strdup(cmd);
 			arg->cmd_path[arg->i] = ft_strdup(fullpath);
 			free(fullpath);
-			return(1);
+			return (1);
 		}
 		i++;
 	}
@@ -64,10 +64,10 @@ int	checkpaths(t_str *arg, char *cmd)
 int	check_commands(t_str *str, char **args)
 {
 	str->cmd_path = malloc(sizeof(char *) * str->cmd_size);
-	if(!str->cmd_path)
+	if (!str->cmd_path)
 	{
 		ft_free(str->cmd);
-		return(0);
+		return (0);
 	}
 	str->i = 0;
 	while (str->i < str->cmd_size - 1)
@@ -78,22 +78,22 @@ int	check_commands(t_str *str, char **args)
 			return (0);
 		else
 			ft_printf("Command path: %s\n", str->cmd_path[str->i]);
-		ft_free(str->paths);		
+		ft_free(str->paths);
 		str->i++;
 	}
 	return (1);
 }
 
-t_str *checkfiles(char **args, int argc)
+t_str	*checkfiles(char **args, int argc)
 {
 	t_str	*str;
-	
+
 	str = malloc(sizeof(t_str));
 	if (!str || access(args[1], F_OK) != 0)
 	{
-		if(str)
+		if (str)
 			free(str);
-		return(NULL);
+		return (NULL);
 	}
 	else
 	{
@@ -101,8 +101,8 @@ t_str *checkfiles(char **args, int argc)
 		str->envpath = getenv("PATH");
 		str->cmd_size = argc - 2;
 		str->cmd = malloc(sizeof(char *) * str->cmd_size);
-		if(!str->cmd)
-			return(NULL);
+		if (!str->cmd)
+			return (NULL);
 		if (check_commands(str, args))
 			return (str);
 	}
@@ -114,7 +114,7 @@ t_str *checkfiles(char **args, int argc)
 int	main(int argc, char *argv[])
 {
 	t_str	*arguments;
-	
+
 	if (argc < 5)
 	{
 		ft_printf("Usage: ./pipex file1 cmd1 cmd2 file2\n");
@@ -129,6 +129,5 @@ int	main(int argc, char *argv[])
 	}
 	else
 		ft_printf("Error\n");
-	
 	return (0);
 }
