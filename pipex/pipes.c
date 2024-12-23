@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 18:18:31 by alerome2          #+#    #+#             */
-/*   Updated: 2024/12/23 13:09:22 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/12/23 14:05:27 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,42 @@ void pipes(void)
 
 void	command(t_str *args)
 {
-	ft_printf("Archivo a trabajar: %s\n", args->input_file);
+	char	**cmd;
+	int		*fd;
+	int		pid;
+	char	*buf[10];
+
+/*
+EJECUCION DEL COMANDO
+*/
+	cmd = malloc(sizeof(char *) * 3);
+	cmd[0] = args->cmd_path[0];
+	cmd[1] = args->input_file;
+	cmd[2] = NULL;
+/*
+DISTRIBUCION DE PROCESOS
+*/
+	fd = malloc(sizeof(int) * 2);
+	pipe(fd);
+	pid = fork();
+	if(pid == 0)
+	{
+		close(fd[0]);
+		dup2(fd[1], STDOUT_FILENO); //Rediriges el output a la escritura del pipe
+		execv(cmd[0], cmd);
+		close(fd[1]);
+		exit(1);
+	}
+	else
+	{
+		wait(NULL);
+		ft_printf("\033[31mPROCESO PADRE\n\033[0m");
+		close(fd[1]);
+		int br = read(fd[0], buf, sizeof(buf));
+		if(br > 0)
+			ft_printf("Buffer leido: %s", buf);
+		close(fd[0]);
+		free(fd);
+		free(cmd);
+	}
 }

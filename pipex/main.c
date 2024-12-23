@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 18:50:29 by alerome2          #+#    #+#             */
-/*   Updated: 2024/12/20 15:28:40 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/12/23 13:55:18 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ int	check_commands(t_str *str, char **args)
 		checkpaths(str, args[str->i + 2]);
 		if (!str->cmd_path[str->i])
 			return (0);
-		else
-			ft_printf("Command path: %s\n", str->cmd_path[str->i]);
+		//else
+			//ft_printf("Command path: %s\n", str->cmd_path[str->i]);
 		ft_free(str->paths);
 		str->i++;
 	}

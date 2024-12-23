@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 18:59:32 by alerome2          #+#    #+#             */
-/*   Updated: 2024/12/19 13:18:12 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/12/23 13:15:20 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "../libft/inc/printf/ft_printf.h"
 #include <fcntl.h>
 #include <sys/types.h>
+#include <sys/wait.h>
 
 /**
  * @brief Estructura usada durante todo el proyecto
