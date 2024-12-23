@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 12:45:17 by alerome2          #+#    #+#             */
-/*   Updated: 2024/12/17 13:57:53 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/12/23 17:26:01 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,10 @@ int main(void)
 	// [6.] ERROR. COMMAND NOT FOUND
 	ft_printf("\033[34m[6]. /pipex testfile1.txt ls cato outfile.txt:\n\033[0m");
 	system ("./pipex testfile1.txt ls cato outfile.txt");
+	check();
+	// [7.] EMPTY FILE
+	ft_printf("\033[34m[7]. /pipex testfile2.txt cat ls outfile.txt:\n\033[0m");
+	system ("./pipex testfile2.txt cat ls outfile.txt");
 	check();
 	return (0);
 }

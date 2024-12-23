@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 18:59:32 by alerome2          #+#    #+#             */
-/*   Updated: 2024/12/23 13:15:20 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/12/23 17:17:09 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
+#define BUFFER_SIZE 1024
 /**
  * @brief Estructura usada durante todo el proyecto
  * 
@@ -39,6 +40,7 @@ typedef struct s_string{
 	char	**aux_path;
 }	t_str;
 
+char	*read_output(int fd);
 void	finish(t_str *arguments, int ok);
 void	ft_free(char **str);
 void	command(t_str *arguments);

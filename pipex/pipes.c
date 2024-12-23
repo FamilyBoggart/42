@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 18:18:31 by alerome2          #+#    #+#             */
-/*   Updated: 2024/12/23 14:47:33 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/12/23 17:23:57 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void pipes(void)
 
 void	exec_process(char	**cmd, int *fd, int pid)
 {
-	char	*buf[10];
+	char	*buf;
+	int		fd_aux;
 	
 	if(pid == 0)
 	{
@@ -29,14 +30,14 @@ void	exec_process(char	**cmd, int *fd, int pid)
 		exit(0);
 	}
 	else
-	{
+	{ //PROCESO PADRE
 		wait(NULL);
-		ft_printf("\033[31mPROCESO PADRE\n\033[0m");
 		close(fd[1]);
-		int br = read(fd[0], buf, sizeof(buf));
-		if(br > 0)
-			ft_printf("Buffer leido: %s", buf);
+		fd_aux = dup(fd[0]);
+		buf = read_output(fd_aux);
+		ft_printf("Buffer: %s\n", buf);
 		close(fd[0]);
+		free(buf);
 		free(fd);
 		free(cmd);
 	}
