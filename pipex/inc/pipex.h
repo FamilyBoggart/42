@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 18:59:32 by alerome2          #+#    #+#             */
-/*   Updated: 2024/12/23 17:17:09 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/12/24 14:03:21 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,10 @@
  */
 typedef struct s_string{
 	int		i;
+	int		j;
 	int		cmd_size;
 	char	*input_file;
+	char	*output_file;
 	char	*envpath;
 	char	**paths;
 	char	**cmd;

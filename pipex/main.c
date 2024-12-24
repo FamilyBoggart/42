@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 18:50:29 by alerome2          #+#    #+#             */
-/*   Updated: 2024/12/23 13:55:18 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/12/24 13:00:21 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ t_str	*checkfiles(char **args, int argc)
 	else
 	{
 		str->input_file = args[1];
+		str->output_file = args[argc - 1];
 		str->envpath = getenv("PATH");
 		str->cmd_size = argc - 2;
 		str->cmd = malloc(sizeof(char *) * str->cmd_size);
