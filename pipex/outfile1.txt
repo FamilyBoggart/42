@@ -1,1 +1,1 @@
-  62  333 1900 outfile1.txt
+ 1  1 14 outfile1.txt

@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 18:18:31 by alerome2          #+#    #+#             */
-/*   Updated: 2024/12/24 14:04:39 by alerome2         ###   ########.fr       */
+/*   Updated: 2024/12/24 14:10:33 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,26 @@ void	command(t_str *args)
 	char	*buffer;
 
 	args->j = 0;
+	while (args->j < args->i)
+	{
+		if (args->j == 0)
+			cmd = preparecmd(args, args->input_file);
+		else
+			cmd = preparecmd(args, args->output_file);
+		fd = malloc(sizeof(int) * 2);
+		if (!fd)
+			return ;
+		if (pipe(fd) == -1)
+			return ;
+		pid = fork();
+		if (pid == -1)
+			return ;
+		buffer = exec_process(cmd, fd, pid);
+		create_file(args, buffer);
+		free(buffer);
+		args->j++;
+	}
+	/*
 	cmd = preparecmd(args, args->input_file); //Preparacion del comando
 	ft_printf("cmd[0]:\t%s\n", cmd[0]);
 	ft_printf("cmd[1]:\t%s\n", cmd[1]);
@@ -100,5 +120,6 @@ void	command(t_str *args)
 	create_file(args, buffer);
 	free(buffer);
 	ft_printf("(command)Aqui solo llega el padre\n");
+	*/
 
 }
