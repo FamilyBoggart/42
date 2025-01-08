@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 18:50:29 by alerome2          #+#    #+#             */
-/*   Updated: 2024/12/24 13:00:21 by alerome2         ###   ########.fr       */
+/*   Updated: 2025/01/09 00:33:14 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,7 @@ char	*check_singlepath(char *path, char *cmd)
 	char	**cmd_splitted;
 	char	*aux;
 
-	if (ft_strchr(cmd, ' '))
-		cmd_splitted = ft_split(cmd, ' ');
-	else
-	{
-		cmd_splitted = malloc(sizeof (char *) * 2);
-		cmd_splitted[0] = ft_strdup(cmd);
-		cmd_splitted[1] = NULL;
-	}
+	cmd_splitted = ft_split(cmd, ' ');
 	aux = ft_strjoin("/", cmd_splitted[0]);
 	fullpath = ft_strjoin(path, aux);
 	free(aux);
@@ -35,6 +28,18 @@ char	*check_singlepath(char *path, char *cmd)
 	else
 		free(fullpath);
 	return (NULL);
+}
+int	checkflags(t_str *arg, char *cmd)
+{
+	arg->cmd_splitted = ft_split(cmd, ' ');
+	int i = 0;
+	while (arg->cmd_splitted[i])
+	{
+			ft_printf("split %d: %s\n", i, arg->cmd_splitted[i]);
+			i++;
+	}
+	ft_free(arg->cmd_splitted);
+	return (1);
 }
 
 int	checkpaths(t_str *arg, char *cmd)
@@ -48,6 +53,7 @@ int	checkpaths(t_str *arg, char *cmd)
 		fullpath = check_singlepath(arg->paths[i], cmd);
 		if (fullpath)
 		{
+			checkflags(arg, cmd);
 			arg->cmd[arg->i] = ft_strdup(cmd);
 			arg->cmd_path[arg->i] = ft_strdup(fullpath);
 			free(fullpath);
@@ -76,8 +82,8 @@ int	check_commands(t_str *str, char **args)
 		checkpaths(str, args[str->i + 2]);
 		if (!str->cmd_path[str->i])
 			return (0);
-		//else
-			//ft_printf("Command path: %s\n", str->cmd_path[str->i]);
+		else
+			ft_printf("Command path: %s\n", str->cmd_path[str->i]);
 		ft_free(str->paths);
 		str->i++;
 	}
@@ -116,11 +122,13 @@ int	main(int argc, char *argv[])
 {
 	t_str	*arguments;
 
+/*
 	if (argc < 5)
 	{
 		ft_printf("Usage: ./pipex file1 cmd1 cmd2 file2\n");
 		return (0);
 	}
+*/
 	arguments = checkfiles(argv, argc);
 	if (arguments)
 	{

@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 18:59:32 by alerome2          #+#    #+#             */
-/*   Updated: 2024/12/24 14:03:21 by alerome2         ###   ########.fr       */
+/*   Updated: 2025/01/09 00:19:39 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_string{
 	char	**paths;
 	char	**cmd;
 	char	**cmd_path;
+	char	**cmd_splitted;
 
 	char	**aux_path;
 }	t_str;
