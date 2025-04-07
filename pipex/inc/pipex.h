@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 18:59:32 by alerome2          #+#    #+#             */
-/*   Updated: 2025/01/09 00:19:39 by alerome2         ###   ########.fr       */
+/*   Updated: 2025/04/07 15:47:30 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@
  * @param cmd_path	Ruta desde PATH para activar cada comando (Ej: "usr/bin/ls usr/sbin/find")
  * @param 
  */
-typedef struct s_string{
+typedef struct s_string
+{
 	int		i;
 	int		j;
 	int		cmd_size;

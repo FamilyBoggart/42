@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 18:50:29 by alerome2          #+#    #+#             */
-/*   Updated: 2025/01/09 00:33:14 by alerome2         ###   ########.fr       */
+/*   Updated: 2025/04/07 16:30:05 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,19 +76,26 @@ int	check_commands(t_str *str, char **args)
 		return (0);
 	}
 	str->i = 0;
+	str->paths = ft_split(str->envpath, ':');
 	while (str->i < str->cmd_size - 1)
 	{
-		str->paths = ft_split(str->envpath, ':');
 		checkpaths(str, args[str->i + 2]);
 		if (!str->cmd_path[str->i])
 			return (0);
 		else
 			ft_printf("Command path: %s\n", str->cmd_path[str->i]);
-		ft_free(str->paths);
 		str->i++;
 	}
+	ft_free(str->paths);
 	return (1);
 }
+/**
+ * @brief La funcion access nos retorna 1 si el acceso 
+ * 
+ * @param args 
+ * @param argc 
+ * @return t_str* 
+ */
 
 t_str	*checkfiles(char **args, int argc)
 {
@@ -122,13 +129,6 @@ int	main(int argc, char *argv[])
 {
 	t_str	*arguments;
 
-/*
-	if (argc < 5)
-	{
-		ft_printf("Usage: ./pipex file1 cmd1 cmd2 file2\n");
-		return (0);
-	}
-*/
 	arguments = checkfiles(argv, argc);
 	if (arguments)
 	{
