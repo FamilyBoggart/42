@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 12:45:17 by alerome2          #+#    #+#             */
-/*   Updated: 2025/04/07 16:54:32 by alerome2         ###   ########.fr       */
+/*   Updated: 2025/04/08 17:22:04 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,11 @@ int main(void)
 	check();
 	
 	ft_printf("\033[31m[EMPTY FILE]\033[0m\n");
-	ft_printf("\033[34m[7]. /pipex testfile2.txt ls cat outfile.txt:\n\033[0m");
+	ft_printf("\033[34m[7]. /pipex testfile2.txt cat ls outfile.txt:\n\033[0m");
+	system ("./pipex testfile2.txt cat ls outfile.txt");
+	check();
+	ft_printf("\033[31m[ROMPER EL PROGRAMA]\033[0m\n");
+	ft_printf("\033[34m[7]. /pipex /dev/urandom cat head outfile.txt:\n\033[0m");
 	system ("./pipex testfile2.txt cat ls outfile.txt");
 	check();
 	return (0);

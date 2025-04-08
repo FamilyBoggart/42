@@ -6,12 +6,19 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 18:50:29 by alerome2          #+#    #+#             */
-/*   Updated: 2025/04/07 16:30:05 by alerome2         ###   ########.fr       */
+/*   Updated: 2025/04/08 18:31:24 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./inc/pipex.h"
 
+/**
+ * @brief Va a buscar el comando dado en el path dado y retorna si lo encontro
+ * 
+ * @param path 
+ * @param cmd 
+ * @return char* 
+ */
 char	*check_singlepath(char *path, char *cmd)
 {
 	char	*fullpath;
@@ -22,6 +29,7 @@ char	*check_singlepath(char *path, char *cmd)
 	aux = ft_strjoin("/", cmd_splitted[0]);
 	fullpath = ft_strjoin(path, aux);
 	free(aux);
+	//Mirar las flags aqui
 	ft_free(cmd_splitted);
 	if (access(fullpath, F_OK) == 0 && access(fullpath, X_OK) == 0)
 		return (fullpath);
@@ -29,32 +37,26 @@ char	*check_singlepath(char *path, char *cmd)
 		free(fullpath);
 	return (NULL);
 }
-int	checkflags(t_str *arg, char *cmd)
-{
-	arg->cmd_splitted = ft_split(cmd, ' ');
-	int i = 0;
-	while (arg->cmd_splitted[i])
-	{
-			ft_printf("split %d: %s\n", i, arg->cmd_splitted[i]);
-			i++;
-	}
-	ft_free(arg->cmd_splitted);
-	return (1);
-}
 
+/**
+ * @brief Va a buscar el comando introducido en alguno de los PATHS de env
+ * 
+ * @param arg El objeto 
+ * @param cmd El comando a buscar en algun path
+ * @return int 
+ */
 int	checkpaths(t_str *arg, char *cmd)
 {
 	int		i;
 	char	*fullpath;
 
 	i = 0;
-	while (arg->paths[i])
+	while (arg->envpaths[i])
 	{
-		fullpath = check_singlepath(arg->paths[i], cmd);
+		fullpath = check_singlepath(arg->envpaths[i], cmd);
 		if (fullpath)
 		{
-			checkflags(arg, cmd);
-			arg->cmd[arg->i] = ft_strdup(cmd);
+			arg->cmd[arg->i] = ft_split(cmd, ' ');
 			arg->cmd_path[arg->i] = ft_strdup(fullpath);
 			free(fullpath);
 			return (1);
@@ -63,30 +65,31 @@ int	checkpaths(t_str *arg, char *cmd)
 	}
 	arg->cmd[arg->i] = NULL;
 	arg->cmd_path[arg->i] = NULL;
-	ft_free(arg->paths);
+	ft_free(arg->envpaths);
 	return (0);
 }
 
 int	check_commands(t_str *str, char **args)
 {
+	char	*path;
+
+	path = getenv("PATH");
+	str->envpaths = ft_split(path, ':');
 	str->cmd_path = malloc(sizeof(char *) * str->cmd_size);
 	if (!str->cmd_path)
 	{
-		ft_free(str->cmd);
+		ft_free(*str->cmd);
+		free(str->cmd);
 		return (0);
 	}
 	str->i = 0;
-	str->paths = ft_split(str->envpath, ':');
 	while (str->i < str->cmd_size - 1)
 	{
 		checkpaths(str, args[str->i + 2]);
 		if (!str->cmd_path[str->i])
 			return (0);
-		else
-			ft_printf("Command path: %s\n", str->cmd_path[str->i]);
 		str->i++;
 	}
-	ft_free(str->paths);
 	return (1);
 }
 /**
@@ -112,9 +115,8 @@ t_str	*checkfiles(char **args, int argc)
 	{
 		str->input_file = args[1];
 		str->output_file = args[argc - 1];
-		str->envpath = getenv("PATH");
 		str->cmd_size = argc - 2;
-		str->cmd = malloc(sizeof(char *) * str->cmd_size);
+		str->cmd = malloc(sizeof(char **) * str->cmd_size);
 		if (!str->cmd)
 			return (NULL);
 		if (check_commands(str, args))
@@ -132,11 +134,12 @@ int	main(int argc, char *argv[])
 	arguments = checkfiles(argv, argc);
 	if (arguments)
 	{
+		test_read(arguments);
 		command(arguments);
 		finish(arguments, 1);
 		free(arguments);
 	}
 	else
-		ft_printf("Error\n");
+		ft_printf("(main)Error\n");
 	return (0);
 }

@@ -1,10 +1,1 @@
-Explicacion de los 5 caracteres de control de Pipex
-
-1. <
-< testfile1.txt wc -l : Te muestra como output las lineas del archivo
-El simbolo < hace las funciones de lo que se va a usar como input en sdtinput
-
-2. |
-El simbolo | hace de pipe y redirige el output del primer comando al input del segundo comando
-
-< testfile1.txt grep eso | wc -l : Cuenta las lineas del contenido previamente filtrado, el input de wc -l 
+-rw-r--r-- 1 alerome2 2024_42malaga 1900 Dec 20 11:43 testfile1.txt
