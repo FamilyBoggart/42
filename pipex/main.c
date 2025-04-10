@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 18:50:29 by alerome2          #+#    #+#             */
-/*   Updated: 2025/04/08 18:31:24 by alerome2         ###   ########.fr       */
+/*   Updated: 2025/04/08 19:03:00 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,11 @@ int	main(int argc, char *argv[])
 {
 	t_str	*arguments;
 
+	if (argc < 5)
+	{
+		ft_printf("Error\n");
+		return (0);
+	}
 	arguments = checkfiles(argv, argc);
 	if (arguments)
 	{
@@ -140,6 +145,6 @@ int	main(int argc, char *argv[])
 		free(arguments);
 	}
 	else
-		ft_printf("(main)Error\n");
+		ft_printf("Error\n");
 	return (0);
 }
