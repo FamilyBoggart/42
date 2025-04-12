@@ -19,7 +19,7 @@ clean :
 fclean: clean
 	@rm -f $(NAME)
 
-re: fclean all tester
+re: fclean all
 
 debug:
 	@$(COMPILER) $(CDEBUGFLAGS) $(PIPEX_SRCS) $(LIBFT) -o $(NAME)

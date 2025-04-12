@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 18:50:29 by alerome2          #+#    #+#             */
-/*   Updated: 2025/04/08 19:03:00 by alerome2         ###   ########.fr       */
+/*   Updated: 2025/04/12 18:07:24 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,13 +92,6 @@ int	check_commands(t_str *str, char **args)
 	}
 	return (1);
 }
-/**
- * @brief La funcion access nos retorna 1 si el acceso 
- * 
- * @param args 
- * @param argc 
- * @return t_str* 
- */
 
 t_str	*checkfiles(char **args, int argc)
 {
@@ -139,7 +132,7 @@ int	main(int argc, char *argv[])
 	arguments = checkfiles(argv, argc);
 	if (arguments)
 	{
-		test_read(arguments);
+		//test_read(arguments);
 		command(arguments);
 		finish(arguments, 1);
 		free(arguments);

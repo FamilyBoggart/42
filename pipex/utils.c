@@ -6,7 +6,7 @@
 /*   By: alerome2 <alerome2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 13:13:35 by alerome2          #+#    #+#             */
-/*   Updated: 2025/04/08 18:21:40 by alerome2         ###   ########.fr       */
+/*   Updated: 2025/04/12 18:02:03 by alerome2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ char	*read_output(int fd)
 	chars = 0;
 	while (br > 0)
 	{
-		//fprintf(stderr,"DEBUGGER\n");
 		if (chars == buf_size)
 		{
 			buf_size += BUFFER_SIZE;

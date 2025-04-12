@@ -1,10 +1,63 @@
-Explicacion de los 5 caracteres de control de Pipex
-
-1. <
-< testfile1.txt wc -l : Te muestra como output las lineas del archivo
-El simbolo < hace las funciones de lo que se va a usar como input en sdtinput
-
-2. |
-El simbolo | hace de pipe y redirige el output del primer comando al input del segundo comando
-
-< testfile1.txt grep eso | wc -l : Cuenta las lineas del contenido previamente filtrado, el input de wc -l 
+Explicacion de los 5 caracteres de control de Pipex$$
+$$
+1. <$$
+< testfile1.txt wc -l : Te muestra como output las lineas del archivo$$
+El simbolo < hace las funciones de lo que se va a usar como input en sdtinput$$
+$$
+2. |$$
+El simbolo | hace de pipe y redirige el output del primer comando al input del segundo comando$$
+$$
+< testfile1.txt grep eso | wc -l : Cuenta las lineas del contenido previamente filtrado, el input de wc -l $$
+es el contenido filtrado por la palabra "eso" de testfile1.txt $$
+$$
+3. >$$
+Por otro lado el simbolo > redirige el output a un archivo outfile.$$
+< testfile1.txt grep eso | wc -l > outfile1.txt && cat outfile1.txt : Nos escribirM-CM-! el resultado en outfile1.txt y lo leeremos$$
+para comprobar que efectivamente el archivo existe$$
+$$
+4. >>$$
+El simbolo >> realiza lo mismo que > salvo que > sobreescribe el archivo y >> realiza un append, es decir lo escribe$$
+al final del archivo$$
+$$
+5. <<$$
+Sin embargo el simbolo << funciona de forma distinta, ya que lo que se abre es el heredoc> y no finaliza hasta encontrar$$
+el limitador que le pasemos como input.$$
+---------------------$$
+<< lIM cat$$
+heredoc> Hola$$
+heredoc> Como estM-CM-!s?$$
+heredoc> lIM$$
+Hola$$
+Como estM-CM-!s?$$
+--------------$$
+<< LIM cat funciona igual que si lo escribimos como cat << LIM$$
+$$
+------------------$$
+cat << LIM >> outfile$$
+heredoc> Hola$$
+heredoc> Como estM-CM-!s?$$
+heredoc> LIM$$
+$$
+cat << LIM >> outfile$$
+heredoc> Hola$$
+heredoc> Bien, y tM-CM-:?$$
+heredoc> LIM$$
+$$
+cat outfile$$
+Hola$$
+Como estM-CM-!s?$$
+Hola$$
+Bien, y tM-CM-:?$$
+$$
+--------------------------------$$
+$$
+Para este ejercicio tenemos que entender que existen 3 file descriptors asociados por defecto al sistema Unix.$$
+0: STDIN -> Es la entrada de datos por terminal$$
+1: STDOUT -> Es la salida de datos por terminal$$
+2: STDERR -> Es la salida por errores de la terminal$$
+$$
+---------------------------------$$
+$$
+En el uso de procesos. Cada proceso guarda 2 include$$
+Id del proceso actual: pid --> getpid()$$
+Id del proceso padre: ppid --> getppid()
